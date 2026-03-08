@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vigilink-SOS — Privacy Policy</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #e0e0e0; line-height: 1.7; padding: 24px; max-width: 800px; margin: 0 auto; }
+    h1 { color: #fff; font-size: 28px; margin-bottom: 8px; }
+    h2 { color: #10b981; font-size: 20px; margin-top: 32px; margin-bottom: 12px; }
+    p, li { font-size: 15px; margin-bottom: 12px; }
+    ul { padding-left: 24px; }
+    .date { color: #888; font-size: 13px; margin-bottom: 32px; }
+    a { color: #10b981; }
+    .logo { font-size: 14px; color: #10b981; font-weight: 700; margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+  <div class="logo">VIGILINK-SOS</div>
+  <h1>Privacy Policy</h1>
+  <p class="date">Last updated: March 8, 2026</p>
+
+  <h2>1. Introduction</h2>
+  <p>Vigilink-SOS ("the Application") is a personal safety application developed by Vigilink. We take the protection of your personal data very seriously. This policy explains what data we collect, why, and how we protect it.</p>
+
+  <h2>2. Data Collected</h2>
+  <p>The Application collects the following data:</p>
+  <ul>
+    <li><strong>Name and phone number</strong> — to identify your account and send SOS alerts</li>
+    <li><strong>Emergency contacts</strong> — names and phone numbers of people to contact in case of emergency</li>
+    <li><strong>GPS location</strong> — only at the time of an SOS alert, to locate and transmit your position to your emergency contacts</li>
+    <li><strong>Medical profile</strong> (optional) — blood type, allergies, medications, medical conditions, voluntarily entered by the user</li>
+    <li><strong>Security journal</strong> (optional) — notes and photos added by the user</li>
+  </ul>
+
+  <h2>3. Use of Data</h2>
+  <p>Your data is used exclusively to:</p>
+  <ul>
+    <li>Send emergency SMS to your contacts when an SOS is triggered</li>
+    <li>Display your GPS location in the emergency message</li>
+    <li>Generate your emergency medical QR code</li>
+    <li>Synchronize your profile across your devices (if you enable cloud sync)</li>
+    <li>Provide the Guardian AI chat service (messages are not retained)</li>
+  </ul>
+
+  <h2>4. Data Storage</h2>
+  <ul>
+    <li><strong>Locally</strong> — Most of your data (contacts, settings, journal) is stored only on your device via the browser's local storage (localStorage)</li>
+    <li><strong>On server</strong> — If you enable cloud synchronization, your encrypted profile is stored on our secure PostgreSQL server. Your password is never transmitted or stored — only a derived token (SHA-256 hash) is used for authentication</li>
+    <li><strong>SMS via Twilio</strong> — SOS messages are sent through the Twilio service. We do not retain SMS logs beyond the session</li>
+  </ul>
+
+  <h2>5. Data Sharing</h2>
+  <p>We never sell, rent, or share your personal data with third parties for commercial or advertising purposes.</p>
+  <p>Your data is shared only with:</p>
+  <ul>
+    <li><strong>Twilio</strong> — for sending emergency SMS (phone numbers and message content only)</li>
+    <li><strong>Stripe</strong> — for payment processing (no credit card data passes through our servers)</li>
+    <li><strong>OpenAI</strong> — for Guardian AI chat (conversation messages only, without personally identifiable data)</li>
+  </ul>
+
+  <h2>6. Device Permissions</h2>
+  <ul>
+    <li><strong>Geolocation</strong> — to include your position in SOS alerts</li>
+    <li><strong>Notifications</strong> — for timer alerts and confirmations</li>
+    <li><strong>Vibration</strong> — for haptic feedback during alerts</li>
+    <li><strong>Motion sensors</strong> — for fall and shake detection (Platinum only)</li>
+  </ul>
+
+  <h2>7. Security</h2>
+  <p>We implement appropriate security measures:</p>
+  <ul>
+    <li>Encrypted communications via HTTPS</li>
+    <li>Derived token authentication (SHA-256) — your password never leaves your device in clear text</li>
+    <li>No payment data stored on our servers</li>
+    <li>Temporary emergency profiles (deleted after 24 hours)</li>
+  </ul>
+
+  <h2>8. User Rights</h2>
+  <p>You can at any time:</p>
+  <ul>
+    <li>Delete your account and all your local data via the application settings</li>
+    <li>Request deletion of your cloud data by contacting us</li>
+    <li>Modify or remove your emergency contacts and medical information</li>
+    <li>Revoke device permissions via your phone settings</li>
+  </ul>
+
+  <h2>9. Children</h2>
+  <p>The Application is not intended for children under 13. We do not knowingly collect data from minors under 13.</p>
+
+  <h2>10. Changes</h2>
+  <p>We reserve the right to modify this privacy policy. Changes will be posted on this page with an updated date.</p>
+
+  <h2>11. Contact</h2>
+  <p>For any questions regarding this privacy policy or your personal data:</p>
+  <p>Email: <a href="mailto:izmaghiles@gmail.com">izmaghiles@gmail.com</a></p>
+
+  <p style="margin-top: 48px; color: #666; font-size: 13px; text-align: center;">© 2026 Vigilink-SOS. All rights reserved.</p>
+</body>
+</html>

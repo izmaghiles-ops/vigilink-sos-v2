@@ -1,0 +1,74 @@
+Etape 3 : Copier les plugins natifs
+
+Copier les fichiers Java dans le projet Android genere.
+Depuis la racine du projet vigilink-sos :
+
+```bash
+mkdir -p android/app/src/main/java/com/vigilinksos/plugins
+copy android-plugin\com\vigilinksos\plugins\*.java android\app\src\main\java\com\vigilinksos\plugins\
+```
+
+Ou manuellement : copier tous les fichiers .java du dossier
+`android-plugin/com/vigilinksos/plugins/` vers
+`android/app/src/main/java/com/vigilinksos/plugins/`
+
+## Etape 4 : Enregistrer les plugins
+
+Ouvrir le fichier :
+`android/app/src/main/java/com/vigilinksos/app/MainActivity.java`
+
+Remplacer le contenu par :
+
+```java
+package com.vigilinksos.app;
+
+import android.os.Bundle;
+import com.getcapacitor.BridgeActivity;
+import com.vigilinksos.plugins.NativeSMSPlugin;
+import com.vigilinksos.plugins.VoiceTriggerPlugin;
+
+public class MainActivity extends BridgeActivity {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        registerPlugin(NativeSMSPlugin.class);
+        registerPlugin(VoiceTriggerPlugin.class);
+        super.onCreate(savedInstanceState);
+    }
+}
+```
+
+## Etape 5 : Modifier le AndroidManifest.xml
+
+Ouvrir : `android/app/src/main/AndroidManifest.xml`
+
+Ajouter ces permissions AVANT la balise `<application>` :
+
+```xml
+<uses-permission android:name="android.permission.SEND_SMS" />
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.VIBRATE" />
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+```
+
+Ajouter le service DANS la balise `<application>`, apres `</activity>` :
+
+```xml
+<service
+    android:name="com.vigilinksos.plugins.VoiceTriggerService"
+    android:enabled="true"
+    android:exported="false"
+    android:foregroundServiceType="microphone" />
+```
+
+## Etape 6 : Ouvrir dans Android Studio
+
+```bash
+npx cap open android
+```
+
+Android Studio va s'ouvrir avec le projet. Attendre que le Gradle sync se termine (barre de progression en bas).

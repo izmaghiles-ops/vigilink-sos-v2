@@ -1,0 +1,32 @@
+{
+  "packageId": "com.vigilink.sos",
+  "host": "vigilink-sos.replit.app",
+  "name": "Vigilink-SOS",
+  "launcherName": "Vigilink-SOS",
+  "display": "standalone",
+  "themeColor": "#000000",
+  "navigationColor": "#000000",
+  "navigationColorDark": "#000000",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#000000",
+  "enableNotifications": true,
+  "startUrl": "/",
+  "iconUrl": "https://vigilink-sos.replit.app/icon-512.png",
+  "maskableIconUrl": "https://vigilink-sos.replit.app/icon-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "vigilink-sos.keystore",
+    "alias": "vigilink-sos"
+  },
+  "appVersionCode": 1,
+  "appVersionName": "1.0.0",
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://vigilink-sos.replit.app/manifest.json",
+  "fallbackType": "customtabs",
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "orientation": "portrait",
+  "fingerprints": []
+}

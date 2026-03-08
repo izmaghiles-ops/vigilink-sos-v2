@@ -1,0 +1,68 @@
+{
+  "name": "Vigilink-SOS",
+  "short_name": "Vigilink-SOS",
+  "description": "Protection personnelle 24/7 — Votre garde du corps numérique",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "SOS Urgence",
+      "short_name": "SOS",
+      "description": "Envoyer une alerte SOS immédiate",
+      "url": "/?action=sos",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Numéros d'urgence",
+      "short_name": "Urgences",
+      "description": "Numéros d'urgence de votre pays",
+      "url": "/?action=emergency-numbers",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "categories": ["lifestyle", "utilities", "security"],
+  "lang": "fr",
+  "prefer_related_applications": false
+}

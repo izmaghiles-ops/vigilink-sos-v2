@@ -1,0 +1,34 @@
+CONTRAT D'UTILISATION ET DÉCHARGE DE RESPONSABILITÉ - VIGILINK-SOS
+IMPORTANT : EN UTILISANT CETTE APPLICATION, VOUS RENONCEZ À TOUT RECOURS JURIDIQUE CONTRE LEs DÉVELOPPEURs.
+
+1. Absence de garantie de service d'urgence
+L'application Vigilink-SOS est un outil technologique de support personnel et ne constitue en aucun cas un service de réponse aux urgences ou un substitut aux services de secours officiels (911, 112, etc.). Les développeurs ne garantit pas qu'une alerte sera transmise, reçue ou traitée par vos contacts d'urgence.
+
+2. Dépendance aux services tiers (Réseaux et Infrastructures)
+Le bon fonctionnement de Vigilink-SOS dépend entièrement de services tiers dont les développeurs nont aucun contrôle. Vous reconnaissez que les développeurs n'est pas responsable en cas de défaillance, d'interruption ou de panne provenant de :
+
+Fournisseurs de réseaux .
+
+Services de cartographie et GPS (Google Maps, services de localisation Android/iOS).
+
+Services d'hébergement.
+
+Services d'IA et de paiement.
+
+3. Clause spécifique à l'Intelligence Artificielle (Guardian Chat)
+Les réponses fournies par l'IA (Guardian Chat) sont générées de manière automatisée par des modèles de langage qui peuvent produire des erreurs ou des informations inexactes.
+
+Ces conseils ne sont pas des avis médicaux, juridiques ou de sécurité officiels.
+
+L'utilisateur assume l'entière responsabilité de l'interprétation et de l'application de ces conseils.
+
+Les développeurs ne peuvent être tenu responsable des conséquences d'une action entreprise sur la base d'une réponse de l'IA.
+
+4. Limitation de responsabilité "As-Is" (Tel Quel)
+Cette application est fournie « telle quelle » sans aucune garantie de performance ou de résultat. Les développeurs décline toute responsabilité pour tout dommage direct, indirect, consécutif ou accidentel, incluant mais sans s'y limiter : les blessures corporelles, le décès, le traumatisme psychologique ou les pertes de données résultant de l'utilisation ou de l'incapacité d'utiliser l'application.
+
+5. Clause d'indemnisation et de non-poursuite
+En acceptant ces termes, vous vous engagez à ne pas entamer de poursuites judiciaires contre les développeurs. Vous acceptez d'indemniser, de défendre et de dégager de toute responsabilité le développeur contre toute réclamation, perte, dépense ou frais d'avocat résultant de votre utilisation de l'application ou d'une violation de ces conditions.
+
+6. Précision des données et permissions
+Vous reconnaissez que la précision du GPS peut varier et que l'envoi de SMS automatique nécessite des permissions spécifiques que vous acceptez d'accorder à vos propres risques.

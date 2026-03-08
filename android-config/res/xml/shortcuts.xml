@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <capability android:name="actions.intent.OPEN_APP_FEATURE">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.vigilinksos.app"
+            android:targetClass="com.vigilinksos.app.MainActivity">
+            <url-template android:value="https://vigilinksos.app/sos{?action}" />
+            <parameter
+                android:name="feature"
+                android:key="action" />
+        </intent>
+    </capability>
+
+    <shortcut
+        android:shortcutId="sos_alert"
+        android:shortcutShortLabel="@string/shortcut_sos_label"
+        android:shortcutLongLabel="@string/shortcut_sos_long_label"
+        android:enabled="true">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://vigilinksos.app/sos?action=sos" />
+        <capability-binding android:key="actions.intent.OPEN_APP_FEATURE">
+            <parameter-binding
+                android:key="feature"
+                android:value="sos" />
+        </capability-binding>
+    </shortcut>
+
+</shortcuts>

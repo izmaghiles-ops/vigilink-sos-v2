@@ -1,0 +1,337 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 65%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 98%;
+    --border: 0 0% 18%;
+    --input: 0 0% 12%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 98%;
+    --primary: 0 85% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 92%;
+    --accent: 0 75% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --ring: 0 85% 55%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 65%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 98%;
+    --border: 0 0% 18%;
+    --input: 0 0% 12%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 98%;
+    --primary: 0 85% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 92%;
+    --accent: 0 75% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --ring: 0 85% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-size: 18px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+:root {
+  --sidebar: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(240 4.8% 95.9%);
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --sidebar-border: hsl(220 13% 91%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+.dark {
+  --sidebar: hsl(240 5.9% 10%);
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(240 3.7% 15.9%);
+  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-border: hsl(240 3.7% 15.9%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+/* ── Thèmes dynamiques par plan ───────────────────────────────────────────── */
+.theme-free,
+.theme-free body {
+  --background:         0 0% 4%;
+  --foreground:         0 0% 98%;
+  --card:               0 0% 7%;
+  --card-foreground:    0 0% 98%;
+  --border:             0 0% 18%;
+  --input:              0 0% 12%;
+  --muted:              0 0% 10%;
+  --muted-foreground:   0 0% 65%;
+  --primary:            0 85% 55%;
+  --primary-foreground: 0 0% 100%;
+  --accent:             0 75% 45%;
+  --nav-bg:             rgba(10,10,10,0.97);
+  --nav-border:         rgba(255,255,255,0.12);
+  background-color:     #0a0a0a;
+  color:                #fafafa;
+}
+
+/* ── PLAN PRO — Argent / Gris métal brossé ──────────────────────────────── */
+.theme-pro {
+  --background:         222 14% 11%;
+  --foreground:         210 20% 95%;
+  --card:               220 12% 14%;
+  --card-foreground:    210 20% 95%;
+  --border:             220 10% 28%;
+  --input:              220 12% 17%;
+  --muted:              220 12% 16%;
+  --muted-foreground:   220 8% 65%;
+  --primary:            217 80% 62%;
+  --primary-foreground: 0 0% 100%;
+  --accent:             217 65% 52%;
+  --nav-bg:             rgba(14,18,28,0.97);
+  --nav-border:         rgba(120,160,255,0.18);
+}
+.theme-pro body {
+  background-color:  #141a24 !important;
+  color:             #e0eaf5 !important;
+  background-image:  radial-gradient(ellipse 90% 60% at 50% 0%, rgba(80,120,220,0.10) 0%, transparent 70%) !important;
+}
+.theme-pro .bg-white\/5    { background-color: rgba(180,200,255,0.05) !important; }
+.theme-pro .border-white\/10 { border-color: rgba(180,200,255,0.12) !important; }
+.theme-pro .bg-black       { background-color: #141a24 !important; }
+.theme-pro .bg-background  { background-color: #141a24 !important; }
+
+/* ── PLAN PLATINUM — Or luxueux ─────────────────────────────────────────── */
+.theme-platinum {
+  --background:         36 22% 8%;
+  --foreground:         44 85% 92%;
+  --card:               36 18% 11%;
+  --card-foreground:    44 85% 92%;
+  --border:             40 28% 26%;
+  --input:              36 18% 14%;
+  --muted:              36 18% 13%;
+  --muted-foreground:   40 22% 58%;
+  --primary:            43 92% 52%;
+  --primary-foreground: 36 22% 8%;
+  --accent:             38 82% 46%;
+  --nav-bg:             rgba(20,15,5,0.97);
+  --nav-border:         rgba(212,175,55,0.22);
+}
+.theme-platinum body {
+  background-color:  #130f05 !important;
+  color:             #f5dc90 !important;
+  background-image:  radial-gradient(ellipse 90% 60% at 50% 0%, rgba(212,175,55,0.12) 0%, transparent 70%) !important;
+}
+.theme-platinum .bg-white\/5      { background-color: rgba(212,175,55,0.05) !important; }
+.theme-platinum .border-white\/10 { border-color: rgba(212,175,55,0.14) !important; }
+.theme-platinum .bg-black         { background-color: #130f05 !important; }
+.theme-platinum .bg-background    { background-color: #130f05 !important; }
+.theme-platinum .text-gray-500    { color: rgba(212,175,55,0.55) !important; }
+.theme-platinum .text-gray-600    { color: rgba(212,175,55,0.42) !important; }
+
+/* Transition douce lors du changement de plan */
+body,
+.min-h-screen {
+  transition: background-color 0.5s ease, color 0.4s ease;
+}
+
+/* ── 3D Button Utility ───────────────────────────────────────────────────── */
+.btn-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: perspective(500px) translateZ(0);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-3d:active {
+  transform: perspective(500px) translateZ(-4px) scale(0.97);
+}
+
+.btn-3d-red {
+  background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%);
+  box-shadow:
+    0 6px 0 #7f1d1d,
+    0 8px 20px rgba(220,38,38,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.btn-3d-red:active {
+  box-shadow:
+    0 2px 0 #7f1d1d,
+    0 3px 10px rgba(220,38,38,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.btn-3d-green {
+  background: linear-gradient(180deg, #22c55e 0%, #15803d 100%);
+  box-shadow:
+    0 5px 0 #14532d,
+    0 7px 16px rgba(34,197,94,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.btn-3d-green:active {
+  box-shadow:
+    0 2px 0 #14532d,
+    0 3px 8px rgba(34,197,94,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.btn-3d-blue {
+  background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+  box-shadow:
+    0 5px 0 #1e3a8a,
+    0 7px 16px rgba(59,130,246,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.btn-3d-blue:active {
+  box-shadow:
+    0 2px 0 #1e3a8a,
+    0 3px 8px rgba(59,130,246,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.btn-3d-slate {
+  background: linear-gradient(180deg, #475569 0%, #1e293b 100%);
+  box-shadow:
+    0 5px 0 #0f172a,
+    0 7px 16px rgba(71,85,105,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.btn-3d-slate:active {
+  box-shadow:
+    0 2px 0 #0f172a,
+    0 3px 8px rgba(71,85,105,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.btn-3d-gold {
+  background: linear-gradient(180deg, #eab308 0%, #a16207 100%);
+  box-shadow:
+    0 5px 0 #713f12,
+    0 7px 16px rgba(234,179,8,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.25);
+  color: #1a1a1a;
+}
+.btn-3d-gold:active {
+  box-shadow:
+    0 2px 0 #713f12,
+    0 3px 8px rgba(234,179,8,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+/* Vigilink-SOS Custom Animations */
+@keyframes sos-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7), 0 0 0 0 rgba(220, 38, 38, 0.4); }
+  50%       { box-shadow: 0 0 0 30px rgba(220, 38, 38, 0), 0 0 0 60px rgba(220, 38, 38, 0); }
+}
+
+@keyframes sos-press {
+  0%   { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.9); }
+  100% { box-shadow: 0 0 0 80px rgba(220, 38, 38, 0); }
+}
+
+@keyframes timer-danger {
+  0%, 100% { color: rgb(220, 38, 38); }
+  50%       { color: rgb(255, 100, 100); }
+}
+
+@keyframes sweep-in {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes status-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(220, 38, 38, 0.4); }
+  50%       { box-shadow: 0 0 24px rgba(220, 38, 38, 0.8); }
+}
+
+@keyframes alert-flash {
+  0%, 100% { background: rgba(220, 38, 38, 0.15); }
+  50%       { background: rgba(220, 38, 38, 0.35); }
+}
+
+@keyframes ripple {
+  to { transform: scale(3); opacity: 0; }
+}
+
+.sos-pulse   { animation: sos-pulse 1.8s ease-in-out infinite; }
+.sos-pressing { animation: sos-press 0.4s ease-out forwards; }
+.timer-danger { animation: timer-danger 0.8s ease-in-out infinite; }
+.sweep-in    { animation: sweep-in 0.4s ease-out forwards; }
+.status-glow { animation: status-glow 2s ease-in-out infinite; }
+.alert-active { animation: alert-flash 1s ease-in-out infinite; }
+
+/* Full screen spinner styles */
+.genesis__spinner-container {
+  position: fixed;
+  inset: 0;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.genesis__spinner-ring {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid transparent;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: genesis__spin 1s linear infinite;
+}
+
+@keyframes genesis__spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out both;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-100%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-down {
+  animation: slideDown 0.4s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .genesis__spinner-ring {
+    animation: none;
+    border-top-color: rgba(255, 255, 255, 0.9);
+  }
+}

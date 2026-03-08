@@ -1,0 +1,149 @@
+================================================================================
+ INSTRUCTIONS — Modifications à appliquer au projet Android
+================================================================================
+
+ÉTAPE 1 — REMPLACER LE MAINACTIVITY
+────────────────────────────────────
+Chemin : android/app/src/main/java/com/vigilinksos/app/MainActivity.java
+
+Remplacer le contenu par le fichier :
+  android-config/app/src/main/java/com/vigilinksos/app/MainActivity.java
+
+Ce fichier custom :
+  - Détecte si l'app a été ouverte par Google Assistant (referrer/callingPackage)
+  - Injecte ?action=sos dans l'URL du WebView pour déclencher l'alerte
+  - S'affiche PAR-DESSUS l'écran de verrouillage (setShowWhenLocked)
+  - Allume l'écran automatiquement (setTurnScreenOn + WakeLock)
+  - Contourne le keyguard pour les urgences (requestDismissKeyguard)
+
+ÉTAPE 2 — MODIFIER LE ANDROIDMANIFEST.XML
+──────────────────────────────────────────
+Chemin : android/app/src/main/AndroidManifest.xml
+
+A. AJOUTER LES PERMISSIONS (avant <application>) :
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+
+B. AJOUTER la balise <meta-data> DANS <application> (avant </application>) :
+
+    <meta-data
+        android:name="android.app.shortcuts"
+        android:resource="@xml/shortcuts" />
+
+C. AJOUTER l'attribut showOnLockScreen à l'activity principale :
+
+    android:showOnLockScreen="true"
+
+D. AJOUTER les Intent Filters DANS <activity> principale, APRÈS l'intent-filter
+   MAIN/LAUNCHER existant :
+
+    <intent-filter android:autoVerify="true">
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data
+            android:scheme="https"
+            android:host="vigilinksos.app"
+            android:pathPrefix="/sos" />
+    </intent-filter>
+
+    <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data
+            android:scheme="vigilinksos"
+            android:host="sos" />
+    </intent-filter>
+
+ÉTAPE 3 — COPIER LES FICHIERS DE RESSOURCES
+────────────────────────────────────────────
+Copier dans android/app/src/main/res/ :
+  android-config/res/xml/shortcuts.xml   → res/xml/shortcuts.xml
+  android-config/res/values/strings.xml  → MERGER dans res/values/strings.xml
+
+================================================================================
+ EXEMPLE COMPLET — AndroidManifest.xml
+================================================================================
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.vigilinksos.app">
+
+    <!-- Permissions pour l'affichage d'urgence et le réveil de l'écran -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:showOnLockScreen="true"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="https"
+                    android:host="vigilinksos.app"
+                    android:pathPrefix="/sos" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="vigilinksos"
+                    android:host="sos" />
+            </intent-filter>
+
+        </activity>
+
+        <meta-data
+            android:name="android.app.shortcuts"
+            android:resource="@xml/shortcuts" />
+
+    </application>
+
+</manifest>
+
+================================================================================
+ SOLUTION IMMÉDIATE — Routine Google Assistant (PWA / sans APK)
+================================================================================
+
+Pour les testeurs qui utilisent la version web (pas l'APK), configurer
+une Routine Google Assistant sur chaque téléphone :
+
+1. Ouvre l'app Google sur ton téléphone
+2. Va dans Paramètres → Google Assistant → Routines
+3. Crée une nouvelle routine :
+   - Déclencheur vocal : "Lance Vigilink"
+   - Action : "Ouvrir un site web" → https://vigilink-sos.replit.app/?action=sos
+4. Sauvegarde
+
+Maintenant quand tu dis "OK Google, lance Vigilink", Google ouvrira
+cette URL et le SMS SOS partira automatiquement.
+
+Note : Le téléphone doit être déverrouillé pour la version web.
+Avec l'APK compilé, l'app s'affichera PAR-DESSUS l'écran de
+verrouillage grâce aux flags setShowWhenLocked/setTurnScreenOn.
