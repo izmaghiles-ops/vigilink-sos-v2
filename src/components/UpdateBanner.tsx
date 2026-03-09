@@ -83,8 +83,8 @@ export const UpdateBanner: React.FC = () => {
     <div className="fixed top-0 left-0 right-0 z-[9999] px-4 pt-4 animate-slide-down">
       <div className={`max-w-lg mx-auto rounded-2xl p-4 shadow-2xl border ${
         isWhatsNew
-          ? 'bg-gradient-to-r from-emerald-600 to-emerald-700 border-emerald-400/30'
-          : 'bg-gradient-to-r from-blue-600 to-blue-700 border-blue-400/30'
+          ? 'bg-gradient-to-r from-[#1a2e4a] to-[#0f1e33] border-[#2b4a6e]/40'
+          : 'bg-gradient-to-r from-[#1a2e4a] to-[#0f1e33] border-[#2b4a6e]/40'
       }`}>
         <div className="flex items-start gap-3">
           <div className="p-2 rounded-full bg-white/20 shrink-0 mt-0.5">
@@ -97,7 +97,7 @@ export const UpdateBanner: React.FC = () => {
             <p className="text-white font-bold text-base">
               {isWhatsNew ? t('updateBanner.whatsNewTitle') : t('updateBanner.title')}
             </p>
-            <p className={`text-sm mt-1 ${isWhatsNew ? 'text-emerald-100' : 'text-blue-100'}`}>
+            <p className={`text-sm mt-1 ${isWhatsNew ? 'text-blue-100' : 'text-blue-100'}`}>
               {isWhatsNew ? t('updateBanner.whatsNewMessage') : t('updateBanner.message')}
             </p>
             <div className="flex gap-3 mt-3">
@@ -106,7 +106,7 @@ export const UpdateBanner: React.FC = () => {
                 onClick={handleUpdate}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-colors ${
                   isWhatsNew
-                    ? 'bg-white text-emerald-700 hover:bg-emerald-50'
+                    ? 'bg-white text-[#1e3a5f] hover:bg-blue-50'
                     : 'bg-white text-blue-700 hover:bg-blue-50'
                 }`}
               >

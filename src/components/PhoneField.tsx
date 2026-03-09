@@ -185,48 +185,48 @@ const SélecteurPays: React.FC<SélecteurPaysProps> = ({ paysSélectionné, onCh
       <button
         type="button"
         onClick={() => { setOuvert((o) => !o); setRecherche(''); }}
-        className="flex items-center gap-1.5 shrink-0 h-full px-2 hover:bg-white/8 rounded-lg transition-colors"
+        className="flex items-center gap-1.5 shrink-0 h-full px-2 hover:bg-muted rounded-lg transition-colors"
         aria-label={`Pays : ${paysSélectionné.nom}`}
       >
         <span
           className="w-6 h-6 rounded-full flex items-center justify-center text-sm overflow-hidden shrink-0"
-          style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}
+          style={{ background: 'var(--color-muted, #f1f5f9)', border: '1px solid var(--color-border, #e2e8f0)' }}
         >
           {paysSélectionné.drapeau}
         </span>
-        <span className="text-xs font-mono text-gray-400 tabular-nums">
+        <span className="text-xs font-mono text-muted-foreground tabular-nums">
           {paysSélectionné.indicatif}
         </span>
         <ChevronDown
           size={10}
-          className={`text-gray-600 transition-transform duration-200 ${ouvert ? 'rotate-180' : ''}`}
+          className={`text-muted-foreground transition-transform duration-200 ${ouvert ? 'rotate-180' : ''}`}
         />
       </button>
 
       <AnimatePresence>
         {ouvert && (
           <motion.div
-            className="absolute left-0 top-full mt-1 z-50 w-64 rounded-2xl overflow-hidden shadow-2xl shadow-black/60"
-            style={{ background: 'rgb(15,15,18)', border: '1px solid rgba(255,255,255,0.1)' }}
+            className="absolute left-0 top-full mt-1 z-50 w-64 rounded-2xl overflow-hidden shadow-2xl"
+            style={{ background: 'var(--color-card, #ffffff)', border: '1px solid var(--color-border, #e2e8f0)' }}
             initial={{ opacity: 0, y: -6, scale: 0.97 }}
             animate={{ opacity: 1, y: 0,  scale: 1 }}
             exit={{   opacity: 0, y: -4, scale: 0.97 }}
             transition={{ duration: 0.14 }}
           >
-            <div className="px-3 py-2.5 border-b border-white/8">
+            <div className="px-3 py-2.5 border-b border-border">
               <input
                 ref={inputRef}
                 type="text"
                 value={recherche}
                 onChange={(e) => setRecherche(e.target.value)}
                 placeholder={t('phone.searchCountry')}
-                className="w-full bg-transparent text-xs text-white placeholder-gray-600 focus:outline-none"
+                className="w-full bg-transparent text-xs text-foreground placeholder-muted-foreground focus:outline-none"
               />
             </div>
 
             <div className="max-h-56 overflow-y-auto">
               {paysFiltres.length === 0 ? (
-                <div className="py-6 text-center text-xs text-gray-600">{t('common.noResults')}</div>
+                <div className="py-6 text-center text-xs text-muted-foreground">{t('common.noResults')}</div>
               ) : (
                 paysFiltres.map((p) => (
                   <button
@@ -236,18 +236,18 @@ const SélecteurPays: React.FC<SélecteurPaysProps> = ({ paysSélectionné, onCh
                     className={[
                       'w-full flex items-center gap-2.5 px-3 py-2.5 text-left transition-colors',
                       p.code === paysSélectionné.code
-                        ? 'bg-red-950/30 text-red-300'
-                        : 'hover:bg-white/5 text-gray-300',
+                        ? 'bg-red-50 text-red-600'
+                        : 'hover:bg-muted text-foreground',
                     ].join(' ')}
                   >
                     <span
                       className="w-6 h-6 rounded-full flex items-center justify-center text-sm overflow-hidden shrink-0"
-                      style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.10)' }}
+                      style={{ background: 'var(--color-muted, #f1f5f9)', border: '1px solid var(--color-border, #e2e8f0)' }}
                     >
                       {p.drapeau}
                     </span>
                     <span className="flex-1 text-xs truncate">{p.nom}</span>
-                    <span className="text-sm font-mono text-gray-500 shrink-0">{p.indicatif}</span>
+                    <span className="text-sm font-mono text-muted-foreground shrink-0">{p.indicatif}</span>
                   </button>
                 ))
               )}
@@ -299,15 +299,15 @@ export const PhoneField: React.FC<PhoneFieldProps> = ({
   return (
     <div className="flex flex-col gap-1.5">
       {label && (
-        <label htmlFor={id} className="text-xs text-gray-500 uppercase tracking-wider">
+        <label htmlFor={id} className="text-xs text-muted-foreground uppercase tracking-wider">
           {label}
         </label>
       )}
       <div
-        className={`relative flex items-center gap-0 bg-white/5 border border-white/10 rounded-xl transition-colors ${accentClass}`}
+        className={`relative flex items-center gap-0 bg-card border border-border rounded-xl transition-colors ${accentClass}`}
       >
         <SélecteurPays paysSélectionné={pays} onChangement={handlePaysChange} />
-        <div className="w-px h-7 bg-white/8 shrink-0" />
+        <div className="w-px h-7 bg-border shrink-0" />
         <input
           id={id}
           type="tel"
@@ -316,7 +316,7 @@ export const PhoneField: React.FC<PhoneFieldProps> = ({
           onChange={(e) => handleLocalChange(e.target.value)}
           placeholder={t('phone.localNumber')}
           autoComplete="tel"
-          className="flex-1 bg-transparent px-3 py-3.5 text-sm text-foreground placeholder-gray-600 focus:outline-none"
+          className="flex-1 bg-transparent px-3 py-3.5 text-sm text-foreground placeholder-muted-foreground focus:outline-none"
         />
       </div>
     </div>

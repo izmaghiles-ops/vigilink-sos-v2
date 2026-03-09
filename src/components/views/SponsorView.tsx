@@ -219,9 +219,9 @@ const PanneauParrain: React.FC = () => {
   return (
     <div className="flex flex-col gap-5">
 
-      <div className="rounded-2xl border border-white/8 bg-white/3 p-4 flex flex-col gap-2">
+      <div className="rounded-2xl border border-white/8 bg-card p-4 flex flex-col gap-2">
         <div className="flex items-center justify-between">
-          <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+          <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
             {t('sponsor.guestBenefits')}
           </span>
           <span className="text-[10px] font-bold text-yellow-500">
@@ -235,8 +235,8 @@ const PanneauParrain: React.FC = () => {
             { icon: <Sparkles size={12} />,       label: t('sponsor.allProOptions')       },
           ].map(({ icon, label }) => (
             <div key={label} className="flex items-center gap-1.5">
-              <span className="text-yellow-400/70">{icon}</span>
-              <span className="text-[10px] text-gray-400">{label}</span>
+              <span className="text-yellow-600/70">{icon}</span>
+              <span className="text-[10px] text-muted-foreground">{label}</span>
             </div>
           ))}
         </div>
@@ -269,9 +269,9 @@ const PanneauParrain: React.FC = () => {
               </div>
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-xl bg-yellow-500/15 border border-yellow-500/25 flex items-center justify-center shrink-0">
-                  <Phone size={14} className="text-yellow-400" />
+                  <Phone size={14} className="text-yellow-600" />
                 </div>
-                <span className="text-sm font-bold text-white font-mono">{invitationAffichée.guestPhone}</span>
+                <span className="text-sm font-bold text-foreground font-mono">{invitationAffichée.guestPhone}</span>
               </div>
               <div className="flex flex-col items-center gap-2 pt-1">
                 <span className="text-[10px] text-yellow-600/70">{t('sponsor.otpCode')}</span>
@@ -286,15 +286,15 @@ const PanneauParrain: React.FC = () => {
             {smsEnvoyé && (
               <motion.div className="rounded-xl border border-green-500/30 bg-green-950/25 p-3 flex items-center gap-2.5"
                 initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }}>
-                <Check size={14} className="text-green-400 shrink-0" />
+                <Check size={14} className="text-green-600 shrink-0" />
                 <span className="text-xs text-green-300 font-bold">{t('sponsor.smsSentSuccess')}</span>
               </motion.div>
             )}
 
             <div className="flex gap-2">
               <motion.button onClick={handleCopier} whileTap={{ scale: 0.97 }}
-                className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm border border-white/10 bg-white/5 text-gray-300 hover:bg-white/10 transition-all">
-                {copié ? <Check size={14} className="text-green-400" /> : <Copy size={14} />}
+                className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm border border-border bg-card text-foreground hover:bg-muted transition-all">
+                {copié ? <Check size={14} className="text-green-600" /> : <Copy size={14} />}
                 {copié ? t('sponsor.copied') : t('sponsor.copyText')}
               </motion.button>
             </div>
@@ -322,7 +322,7 @@ const PanneauParrain: React.FC = () => {
                           ? plan === 'platinum' ? 'border-purple-500/50 bg-purple-950/30 text-purple-300'
                             : plan === 'pro' ? 'border-yellow-500/50 bg-yellow-950/30 text-yellow-300'
                             : 'border-green-500/50 bg-green-950/30 text-green-300'
-                          : 'border-white/10 bg-white/5 text-gray-500 hover:bg-white/10',
+                          : 'border-border bg-card text-muted-foreground hover:bg-muted',
                       ].join(' ')}>
                       {plan === 'free' ? 'GRATUIT' : plan.toUpperCase()}
                     </button>
@@ -345,7 +345,7 @@ const PanneauParrain: React.FC = () => {
             </div>
             <motion.button onClick={handleGénérer} whileTap={{ scale: 0.98 }}
               disabled={loading || limiteAtteinte || téléphoneInvité.replace(/\D/g, '').length < 7}
-              className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl bg-gradient-to-r from-yellow-600 to-amber-500 hover:from-yellow-500 hover:to-amber-400 disabled:opacity-40 text-white font-black text-sm shadow-lg shadow-yellow-900/30 transition-all">
+              className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl bg-gradient-to-r from-yellow-600 to-amber-500 hover:from-yellow-500 hover:to-amber-400 disabled:opacity-40 text-white font-black text-sm shadow-lg shadow-yellow-200/50 transition-all">
               {loading
                 ? <motion.span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full" animate={{ rotate: 360 }} transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }} />
                 : <> <Send size={15} /> {t('sponsor.sendInvite')} </> }
@@ -361,7 +361,7 @@ const PanneauParrain: React.FC = () => {
 
       {toutesInvitations.length > 0 && (
         <div className="flex flex-col gap-2">
-          <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+          <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
             {t('sponsor.sentInvitations')} ({nbInvitations}{estAdmin ? '' : '/10'})
           </span>
           <div className="flex flex-col gap-1.5">
@@ -369,12 +369,12 @@ const PanneauParrain: React.FC = () => {
               const expiré = new Date(inv.expiresAt) <= new Date();
               const enSuppression = suppressionEnCours === inv.id;
               return (
-                <div key={inv.id} className="rounded-xl border border-white/8 bg-white/3 px-3 py-2.5 flex items-center gap-2.5">
+                <div key={inv.id} className="rounded-xl border border-white/8 bg-card px-3 py-2.5 flex items-center gap-2.5">
                   <div className={`w-2 h-2 rounded-full shrink-0 ${inv.used ? 'bg-green-400' : expiré ? 'bg-gray-600' : 'bg-yellow-400 animate-pulse'}`} />
                   <div className="flex-1 min-w-0">
-                    <span className="text-xs font-bold text-white font-mono truncate block">{inv.guestPhone}</span>
+                    <span className="text-xs font-bold text-foreground font-mono truncate block">{inv.guestPhone}</span>
                   </div>
-                  <span className={`text-[10px] font-bold ${inv.used ? 'text-green-400' : expiré ? 'text-gray-600' : 'text-yellow-400'}`}>
+                  <span className={`text-[10px] font-bold ${inv.used ? 'text-green-600' : expiré ? 'text-muted-foreground' : 'text-yellow-600'}`}>
                     {inv.used ? t('sponsor.statusUsed') : expiré ? t('sponsor.statusExpired') : t('sponsor.statusPending')}
                   </span>
                   <motion.button
@@ -436,7 +436,7 @@ const PanneauInvité: React.FC = () => {
         <div className="rounded-2xl border border-yellow-500/25 bg-yellow-950/15 p-5 flex flex-col gap-3">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-yellow-500/15 border border-yellow-500/25 flex items-center justify-center shrink-0">
-              <UserCheck size={18} className="text-yellow-400" />
+              <UserCheck size={18} className="text-yellow-600" />
             </div>
             <div className="flex flex-col gap-0.5">
               <span className="text-sm font-black text-yellow-300">{t('sponsor.guestActivePro')}</span>
@@ -445,13 +445,13 @@ const PanneauInvité: React.FC = () => {
               </span>
             </div>
           </div>
-          <div className="rounded-xl bg-black/20 border border-white/5 p-3 flex flex-col gap-1.5">
-            <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">{t('sponsor.yourSponsor')}</span>
-            <span className="text-sm font-bold text-white">{user.sponsorLink.sponsorName}</span>
+          <div className="rounded-xl bg-card border border-white/5 p-3 flex flex-col gap-1.5">
+            <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">{t('sponsor.yourSponsor')}</span>
+            <span className="text-sm font-bold text-foreground">{user.sponsorLink.sponsorName}</span>
             <span className="text-xs text-gray-500 font-mono">{user.sponsorLink.sponsorPhone}</span>
             <div className="flex items-center gap-1.5 mt-1.5">
               <Users size={11} className="text-gray-500 shrink-0" />
-              <span className="text-[11px] text-gray-400">{t('sponsor.extraContact')}</span>
+              <span className="text-[11px] text-muted-foreground">{t('sponsor.extraContact')}</span>
             </div>
           </div>
         </div>
@@ -460,10 +460,10 @@ const PanneauInvité: React.FC = () => {
   }
   return (
     <div className="flex flex-col gap-4">
-      <div className="rounded-2xl border border-white/8 bg-white/3 p-4 flex flex-col gap-2">
+      <div className="rounded-2xl border border-white/8 bg-card p-4 flex flex-col gap-2">
         <div className="flex items-center gap-2">
           <Gift size={13} className="text-gray-400 shrink-0" />
-          <span className="text-sm font-bold text-white/80">{t('sponsor.receivedCode')}</span>
+          <span className="text-sm font-bold text-foreground/80">{t('sponsor.receivedCode')}</span>
         </div>
         <p className="text-[11px] text-gray-500 leading-relaxed">
           {t('sponsor.receivedCodeDescPro')}
@@ -473,17 +473,17 @@ const PanneauInvité: React.FC = () => {
         {succès && (
           <motion.div className="rounded-2xl border border-green-500/30 bg-green-950/25 p-4 flex items-start gap-3"
             initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-            <Check size={16} className="text-green-400 shrink-0 mt-0.5" />
+            <Check size={16} className="text-green-600 shrink-0 mt-0.5" />
             <p className="text-[12px] text-green-300 leading-relaxed">{succès}</p>
           </motion.div>
         )}
       </AnimatePresence>
       <div className="flex flex-col gap-2">
-        <label className="text-xs text-gray-500 uppercase tracking-wider">{t('sponsor.codeLabel')}</label>
+        <label className="text-xs text-muted-foreground uppercase tracking-wider">{t('sponsor.codeLabel')}</label>
         <input type="tel" inputMode="numeric" maxLength={6} value={saisie}
           onChange={(e) => { setSaisie(e.target.value.replace(/\D/g, '').slice(0, 6)); setErreur(null); }}
           placeholder="• • • • • •"
-          className="bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-2xl text-center font-black text-white font-mono tracking-[0.5em] placeholder-gray-800 focus:outline-none focus:border-yellow-500/50 transition-colors" />
+          className="bg-card border border-border rounded-xl px-4 py-4 text-2xl text-center font-black text-foreground font-mono tracking-[0.5em] placeholder-gray-800 focus:outline-none focus:border-yellow-500/50 transition-colors" />
         <AnimatePresence>
           {erreur && (
             <motion.p className="text-xs text-red-400 leading-relaxed"
@@ -495,7 +495,7 @@ const PanneauInvité: React.FC = () => {
       </div>
       <motion.button onClick={handleValider} whileTap={{ scale: 0.98 }}
         disabled={loading || saisie.replace(/\D/g, '').length !== 6}
-        className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl bg-gradient-to-r from-yellow-600 to-amber-500 hover:from-yellow-500 hover:to-amber-400 disabled:opacity-40 text-white font-black text-sm shadow-lg shadow-yellow-900/20 transition-all">
+        className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl bg-gradient-to-r from-yellow-600 to-amber-500 hover:from-yellow-500 hover:to-amber-400 disabled:opacity-40 text-white font-black text-sm shadow-lg shadow-yellow-200/50 transition-all">
         <ChevronRight size={16} /> {t('sponsor.activateSponsorship')}
       </motion.button>
     </div>
@@ -514,28 +514,28 @@ export const SponsorView: React.FC = () => {
     <div className="flex flex-col gap-5 py-2">
       <div className="flex items-center gap-3">
         <button onClick={() => setView('settings')}
-          className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all">
+          className="p-2 rounded-xl bg-card hover:bg-muted text-muted-foreground hover:text-foreground transition-all">
           <ArrowLeft size={16} />
         </button>
         <div className="flex flex-col gap-0.5">
-          <h2 className="text-lg font-black text-white flex items-center gap-2">
-            <Crown size={17} className="text-yellow-400" /> {t('sponsor.platinumTitle')}
+          <h2 className="text-lg font-black text-foreground flex items-center gap-2">
+            <Crown size={17} className="text-yellow-600" /> {t('sponsor.platinumTitle')}
           </h2>
-          <p className="text-[11px] text-gray-500">{t('sponsor.platinumDesc')}</p>
+          <p className="text-[11px] text-muted-foreground">{t('sponsor.platinumDesc')}</p>
         </div>
       </div>
 
-      <div className="flex gap-1 rounded-xl bg-white/5 p-1">
+      <div className="flex gap-1 rounded-xl bg-card p-1">
         {peutParrainer && (
           <button onClick={() => setOnglet('sponsor')}
             className={['flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs font-bold transition-all',
-              onglet === 'sponsor' ? 'bg-yellow-600/80 text-white shadow' : 'text-gray-500 hover:text-gray-300'].join(' ')}>
+              onglet === 'sponsor' ? 'bg-yellow-600 text-white shadow' : 'text-muted-foreground hover:text-foreground'].join(' ')}>
             <Gift size={12} /> {t('sponsor.inviteTab')}
           </button>
         )}
         <button onClick={() => setOnglet('guest')}
           className={['flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs font-bold transition-all',
-            onglet === 'guest' ? 'bg-white/10 text-white shadow' : 'text-gray-500 hover:text-gray-300'].join(' ')}>
+            onglet === 'guest' ? 'bg-muted text-foreground shadow' : 'text-muted-foreground hover:text-foreground'].join(' ')}>
           <UserCheck size={12} /> {isGuest ? t('sponsor.mySponsor') : t('sponsor.enterCodeTab')}
         </button>
       </div>
@@ -543,12 +543,12 @@ export const SponsorView: React.FC = () => {
       {!isPlatinum && onglet === 'sponsor' && (
         <motion.div className="rounded-2xl border border-yellow-500/20 bg-yellow-950/15 p-4 flex items-start gap-3"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-          <Crown size={15} className="text-yellow-400 shrink-0 mt-0.5" />
+          <Crown size={15} className="text-yellow-600 shrink-0 mt-0.5" />
           <div className="flex flex-col gap-1">
             <span className="text-sm font-bold text-yellow-300">{t('sponsor.platinumOnly')}</span>
             <span className="text-[11px] text-gray-500 leading-relaxed">{t('sponsor.platinumOnlyDesc')}</span>
             <button onClick={() => setView('upgrade')}
-              className="mt-2 self-start px-3 py-1.5 rounded-xl bg-yellow-600/80 hover:bg-yellow-500/80 text-white text-xs font-bold transition-all">
+              className="mt-2 self-start px-3 py-1.5 rounded-xl bg-yellow-600 hover:bg-yellow-500/80 text-white text-xs font-bold transition-all">
               {t('sponsor.viewPlatinum')}
             </button>
           </div>

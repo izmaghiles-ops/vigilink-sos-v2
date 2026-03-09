@@ -65,11 +65,11 @@ const Champ: React.FC<ChampProps> = ({
   placeholder, suffixe, autoFocus, autoComplete, inputMode,
 }) => (
   <div className="flex flex-col gap-2">
-    <label htmlFor={id} className="text-sm text-gray-400 uppercase tracking-wider font-bold">
+    <label htmlFor={id} className="text-sm text-muted-foreground uppercase tracking-wider font-bold">
       {label}
     </label>
-    <div className="flex items-center gap-3 bg-white/5 border border-white/15 rounded-xl px-4 py-4 focus-within:border-red-500/40 transition-colors">
-      <span className="text-gray-500 shrink-0">{icone}</span>
+    <div className="flex items-center gap-3 bg-card border border-border rounded-xl px-4 py-4 focus-within:border-red-500/40 transition-colors">
+      <span className="text-muted-foreground shrink-0">{icone}</span>
       <input
         id={id}
         type={type}
@@ -80,7 +80,7 @@ const Champ: React.FC<ChampProps> = ({
         autoFocus={autoFocus}
         autoComplete={autoComplete ?? 'off'}
         inputMode={inputMode}
-        className="flex-1 bg-transparent text-base text-foreground placeholder-gray-500 focus:outline-none"
+        className="flex-1 bg-transparent text-base text-foreground placeholder-muted-foreground focus:outline-none"
       />
       {suffixe}
     </div>
@@ -734,8 +734,7 @@ export const LoginView: React.FC = () => {
   }, [adminPhone, adminEmail, adminPwd, adminStep, adminCode, setUser, setContacts, setView]);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-6 transition-colors duration-500"
-         style={{ backgroundColor: 'var(--nav-bg, #0a0a0a)' }}>
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center px-6 transition-colors duration-500">
 
       <div className="w-full max-w-sm flex flex-col gap-6">
 
@@ -755,7 +754,7 @@ export const LoginView: React.FC = () => {
             <Shield size={36} className="text-red-500" />
           </motion.div>
           <div className="flex flex-col items-center gap-1 text-center">
-            <h1 className="text-2xl font-bold text-white">{t('app.name')}</h1>
+            <h1 className="text-2xl font-bold text-foreground">{t('app.name')}</h1>
             <p className="text-xs text-muted-foreground tracking-widest">
               {t('app.tagline')}
             </p>
@@ -790,63 +789,63 @@ export const LoginView: React.FC = () => {
                     setAdminCodeSent(false);
                   }
                 }}
-                className="text-gray-600 hover:text-gray-400 transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 <ArrowLeft size={15} />
               </button>
-              <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">
+              <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
                 {adminStep === 'creds' ? t('login.adminTitle') : t('login.adminSmsTitle')}
               </span>
             </div>
 
             {adminStep === 'creds' ? (
               <>
-                <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 focus-within:border-red-500/50 transition-colors">
-                  <Shield size={14} className="text-gray-600 shrink-0" />
+                <div className="flex items-center gap-2 bg-card border border-border rounded-xl px-4 py-3.5 focus-within:border-red-500/50 transition-colors">
+                  <Shield size={14} className="text-muted-foreground shrink-0" />
                   <input
                     type="tel"
                     placeholder={t('login.phoneLabel')}
                     value={adminPhone}
                     onChange={(e) => { setAdminPhone(e.target.value); setAdminErr(false); }}
                     onKeyDown={(e) => e.key === 'Enter' && handleAdminLogin()}
-                    className="bg-transparent text-sm text-white placeholder-gray-600 focus:outline-none w-full"
+                    className="bg-transparent text-sm text-foreground placeholder-muted-foreground focus:outline-none w-full"
                     autoFocus
                   />
                 </div>
-                <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 focus-within:border-red-500/50 transition-colors">
-                  <AlertCircle size={14} className="text-gray-600 shrink-0" />
+                <div className="flex items-center gap-2 bg-card border border-border rounded-xl px-4 py-3.5 focus-within:border-red-500/50 transition-colors">
+                  <AlertCircle size={14} className="text-muted-foreground shrink-0" />
                   <input
                     type="email"
                     placeholder={t('login.emailPlaceholder')}
                     value={adminEmail}
                     onChange={(e) => { setAdminEmail(e.target.value); setAdminErr(false); }}
                     onKeyDown={(e) => e.key === 'Enter' && handleAdminLogin()}
-                    className="bg-transparent text-sm text-white placeholder-gray-600 focus:outline-none w-full"
+                    className="bg-transparent text-sm text-foreground placeholder-muted-foreground focus:outline-none w-full"
                   />
                 </div>
-                <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 focus-within:border-red-500/50 transition-colors">
-                  <Lock size={14} className="text-gray-600 shrink-0" />
+                <div className="flex items-center gap-2 bg-card border border-border rounded-xl px-4 py-3.5 focus-within:border-red-500/50 transition-colors">
+                  <Lock size={14} className="text-muted-foreground shrink-0" />
                   <input
                     type="password"
                     placeholder={t('login.passwordLabel')}
                     value={adminPwd}
                     onChange={(e) => { setAdminPwd(e.target.value); setAdminErr(false); }}
                     onKeyDown={(e) => e.key === 'Enter' && handleAdminLogin()}
-                    className="bg-transparent text-sm text-white placeholder-gray-600 focus:outline-none w-full"
+                    className="bg-transparent text-sm text-foreground placeholder-muted-foreground focus:outline-none w-full"
                   />
                 </div>
               </>
             ) : (
               <>
-                <div className="bg-green-500/10 border border-green-500/20 rounded-xl px-4 py-3 text-center">
-                  <p className="text-xs text-green-400">
+                <div className="bg-green-50 border border-green-300 rounded-xl px-4 py-3 text-center">
+                  <p className="text-xs text-green-600">
                     {t('login.adminSmsVerification', { last4: ADMIN_PHONE.slice(-4) })}
                   </p>
-                  <p className="text-sm text-gray-500 mt-1">{t('login.adminSmsExpiry')}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{t('login.adminSmsExpiry')}</p>
                 </div>
 
-                <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 focus-within:border-red-500/50 transition-colors">
-                  <Key size={14} className="text-gray-600 shrink-0" />
+                <div className="flex items-center gap-2 bg-card border border-border rounded-xl px-4 py-3.5 focus-within:border-red-500/50 transition-colors">
+                  <Key size={14} className="text-muted-foreground shrink-0" />
                   <input
                     type="text"
                     inputMode="numeric"
@@ -855,7 +854,7 @@ export const LoginView: React.FC = () => {
                     value={adminCode}
                     onChange={(e) => { setAdminCode(e.target.value.replace(/\D/g, '').slice(0, 6)); setAdminErr(false); }}
                     onKeyDown={(e) => e.key === 'Enter' && handleAdminLogin()}
-                    className="bg-transparent text-sm text-white placeholder-gray-600 focus:outline-none w-full tracking-[0.3em] text-center font-mono text-lg"
+                    className="bg-transparent text-sm text-foreground placeholder-muted-foreground focus:outline-none w-full tracking-[0.3em] text-center font-mono text-lg"
                     autoFocus
                   />
                 </div>
@@ -863,7 +862,7 @@ export const LoginView: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => { setAdminStep('creds'); setAdminCode(''); setAdminErr(false); setAdminErrMsg(''); }}
-                  className="text-sm text-gray-600 hover:text-gray-400 text-center transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground text-center transition-colors"
                 >
                   {t('login.adminResend')}
                 </button>
@@ -871,7 +870,7 @@ export const LoginView: React.FC = () => {
             )}
 
             {adminErr && adminErrMsg && (
-              <p className="text-xs text-red-400 text-center">{adminErrMsg}</p>
+              <p className="text-xs text-[#c41e2a] text-center">{adminErrMsg}</p>
             )}
 
             <motion.button
@@ -890,19 +889,19 @@ export const LoginView: React.FC = () => {
           <>
             <button
               onClick={() => setShowAdmin(true)}
-              className="self-end flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 border border-white/8 text-gray-600 hover:text-gray-400 hover:bg-white/8 text-sm font-bold uppercase tracking-wider transition-all"
+              className="self-end flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-card border border-border text-muted-foreground hover:text-foreground hover:bg-muted text-sm font-bold uppercase tracking-wider transition-all"
             >
               <Shield size={10} />
               {t('login.adminLogin')}
             </button>
 
         {/* Onglets Login / Creer un compte / Invitation OTP */}
-        <div className="flex gap-1 p-1 rounded-2xl bg-white/5 border border-white/8">
+        <div className="flex gap-1 p-1 rounded-2xl bg-card border border-border">
           <button
             onClick={() => { setMode('login'); reinitialiser(); }}
             className={[
               'flex-1 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200',
-              mode === 'login' ? 'bg-red-600 text-white shadow-md' : 'text-gray-600 hover:text-gray-400',
+              mode === 'login' ? 'bg-red-600 text-white shadow-md' : 'text-muted-foreground hover:text-foreground',
             ].join(' ')}
           >
             {t('login.title')}
@@ -911,7 +910,7 @@ export const LoginView: React.FC = () => {
             onClick={() => { setMode('register'); reinitialiser(); }}
             className={[
               'flex-1 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200',
-              mode === 'register' ? 'bg-red-600 text-white shadow-md' : 'text-gray-600 hover:text-gray-400',
+              mode === 'register' ? 'bg-red-600 text-white shadow-md' : 'text-muted-foreground hover:text-foreground',
             ].join(' ')}
           >
             {t('login.register')}
@@ -920,7 +919,7 @@ export const LoginView: React.FC = () => {
             onClick={() => { setMode('otp'); reinitialiser(); }}
             className={[
               'flex-1 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-1',
-              mode === 'otp' ? 'bg-yellow-600 text-white shadow-md' : 'text-gray-600 hover:text-gray-400',
+              mode === 'otp' ? 'bg-yellow-600 text-white shadow-md' : 'text-muted-foreground hover:text-foreground',
             ].join(' ')}
           >
             <Crown size={10} />
@@ -947,12 +946,12 @@ export const LoginView: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => { resetRecovery(); setMode('login'); }}
-                    className="text-gray-600 hover:text-gray-400 transition-colors"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label={t('common.back')}
                   >
                     <ArrowLeft size={15} />
                   </button>
-                  <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">
+                  <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
                     {t('login.recovery.title')}
                   </span>
                 </div>
@@ -971,14 +970,14 @@ export const LoginView: React.FC = () => {
                           'w-6 h-6 rounded-full flex items-center justify-center text-sm font-black transition-all duration-300',
                           isPast   ? 'bg-green-600 text-white'  :
                           isActive ? 'bg-red-600 text-white shadow-lg shadow-red-900/40 scale-110' :
-                                     'bg-white/5 text-gray-700 border border-white/8',
+                                     'bg-card text-muted-foreground border border-border',
                         ].join(' ')}>
                           {isPast ? <CheckCircle size={10} /> : i + 1}
                         </div>
                         {i < 3 && (
                           <div className={[
                             'flex-1 h-px transition-all duration-500',
-                            isPast ? 'bg-green-600' : 'bg-white/8',
+                            isPast ? 'bg-green-600' : 'bg-border',
                           ].join(' ')} />
                         )}
                       </React.Fragment>
@@ -992,9 +991,9 @@ export const LoginView: React.FC = () => {
                     <motion.div key="r-phone" className="flex flex-col gap-4"
                       initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.2 }}>
-                      <div className="rounded-2xl border border-white/8 bg-white/3 p-3.5 flex items-start gap-2.5">
-                        <MessageSquare size={13} className="text-red-400 shrink-0 mt-0.5" />
-                        <p className="text-sm text-gray-500 leading-relaxed">
+                      <div className="rounded-2xl border border-border bg-card p-3.5 flex items-start gap-2.5">
+                        <MessageSquare size={13} className="text-[#c41e2a] shrink-0 mt-0.5" />
+                        <p className="text-sm text-muted-foreground leading-relaxed">
                           {t('login.recovery.phoneInfo')}
                         </p>
                       </div>
@@ -1021,9 +1020,9 @@ export const LoginView: React.FC = () => {
                     <motion.div key="r-code" className="flex flex-col gap-4"
                       initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.2 }}>
-                      <div className="rounded-2xl border border-white/8 bg-white/3 p-3.5 flex items-start gap-2.5">
-                        <Key size={13} className="text-red-400 shrink-0 mt-0.5" />
-                        <p className="text-sm text-gray-500 leading-relaxed">
+                      <div className="rounded-2xl border border-border bg-card p-3.5 flex items-start gap-2.5">
+                        <Key size={13} className="text-[#c41e2a] shrink-0 mt-0.5" />
+                        <p className="text-sm text-muted-foreground leading-relaxed">
                           {t('login.recovery.codeInfo')}
                         </p>
                       </div>
@@ -1062,7 +1061,7 @@ export const LoginView: React.FC = () => {
                         onChange={setNewPassword}
                         placeholder={t('login.recovery.newPasswordPlaceholder')}
                         suffixe={
-                          <button type="button" onClick={() => setNewPwVisible(v => !v)} className="text-gray-600 hover:text-gray-400">
+                          <button type="button" onClick={() => setNewPwVisible(v => !v)} className="text-muted-foreground hover:text-foreground">
                             {newPwVisible ? <EyeOff size={14} /> : <Eye size={14} />}
                           </button>
                         }
@@ -1076,7 +1075,7 @@ export const LoginView: React.FC = () => {
                         onChange={setConfirmPassword}
                         placeholder={t('login.recovery.confirmPasswordPlaceholder')}
                         suffixe={
-                          <button type="button" onClick={() => setConfirmPwVisible(v => !v)} className="text-gray-600 hover:text-gray-400">
+                          <button type="button" onClick={() => setConfirmPwVisible(v => !v)} className="text-muted-foreground hover:text-foreground">
                             {confirmPwVisible ? <EyeOff size={14} /> : <Eye size={14} />}
                           </button>
                         }
@@ -1097,9 +1096,9 @@ export const LoginView: React.FC = () => {
                     <motion.div key="r-done" className="flex flex-col gap-4 items-center py-4"
                       initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3 }}>
-                      <CheckCircle size={40} className="text-green-400" />
-                      <p className="text-sm text-green-300 font-bold text-center">{t('login.recovery.success')}</p>
-                      <p className="text-xs text-gray-500 text-center">{t('login.recovery.connected')}</p>
+                      <CheckCircle size={40} className="text-green-600" />
+                      <p className="text-sm text-green-600 font-bold text-center">{t('login.recovery.success')}</p>
+                      <p className="text-xs text-muted-foreground text-center">{t('login.recovery.connected')}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -1125,7 +1124,7 @@ export const LoginView: React.FC = () => {
                   onKeyDown={handleKeyDown}
                   placeholder={t('login.passwordPlaceholder')}
                   suffixe={
-                    <button type="button" onClick={toggleVisible} className="text-gray-600 hover:text-gray-400">
+                    <button type="button" onClick={toggleVisible} className="text-muted-foreground hover:text-foreground">
                       {visible ? <EyeOff size={14} /> : <Eye size={14} />}
                     </button>
                   }
@@ -1133,7 +1132,7 @@ export const LoginView: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => { setMode('recovery'); resetRecovery(); reinitialiser(); }}
-                  className="text-sm text-gray-600 hover:text-gray-400 text-right transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground text-right transition-colors"
                 >
                   {t('login.forgotPassword')}
                 </button>
@@ -1169,7 +1168,7 @@ export const LoginView: React.FC = () => {
                   onKeyDown={handleKeyDown}
                   placeholder={t('login.recovery.newPasswordPlaceholder')}
                   suffixe={
-                    <button type="button" onClick={toggleVisible} className="text-gray-600 hover:text-gray-400">
+                    <button type="button" onClick={toggleVisible} className="text-muted-foreground hover:text-foreground">
                       {visible ? <EyeOff size={14} /> : <Eye size={14} />}
                     </button>
                   }
@@ -1180,9 +1179,9 @@ export const LoginView: React.FC = () => {
             {/* ── Mode OTP Invité ────────────────────────────────────────── */}
             {mode === 'otp' && (
               <div className="flex flex-col gap-4">
-                <div className="rounded-2xl border border-yellow-500/20 bg-yellow-950/10 p-3.5 flex items-start gap-2.5">
-                  <Crown size={13} className="text-yellow-400 shrink-0 mt-0.5" />
-                  <p className="text-sm text-gray-500 leading-relaxed">
+                <div className="rounded-2xl border border-yellow-300 bg-yellow-50 p-3.5 flex items-start gap-2.5">
+                  <Crown size={13} className="text-yellow-600 shrink-0 mt-0.5" />
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {t('login.otpInfo')}
                   </p>
                 </div>
@@ -1219,20 +1218,20 @@ export const LoginView: React.FC = () => {
             <AnimatePresence>
               {erreur && (
                 <motion.div
-                  className="flex items-start gap-2 rounded-xl bg-red-950/30 border border-red-500/20 p-3"
+                  className="flex items-start gap-2 rounded-xl bg-red-100 border border-red-200 p-3"
                   initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
                 >
-                  <AlertCircle size={13} className="text-red-400 shrink-0 mt-0.5" />
-                  <p className="text-sm text-red-300 leading-relaxed">{erreur}</p>
+                  <AlertCircle size={13} className="text-[#c41e2a] shrink-0 mt-0.5" />
+                  <p className="text-sm text-red-600 leading-relaxed">{erreur}</p>
                 </motion.div>
               )}
               {succes && (
                 <motion.div
-                  className="flex items-center gap-2 rounded-xl bg-green-950/30 border border-green-500/20 p-3"
+                  className="flex items-center gap-2 rounded-xl bg-green-50 border border-green-300 p-3"
                   initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }}
                 >
-                  <CheckCircle size={13} className="text-green-400 shrink-0" />
-                  <p className="text-sm text-green-300">{t('login.successMessage')}</p>
+                  <CheckCircle size={13} className="text-green-600 shrink-0" />
+                  <p className="text-sm text-green-600">{t('login.successMessage')}</p>
                 </motion.div>
               )}
             </AnimatePresence>

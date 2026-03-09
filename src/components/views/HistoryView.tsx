@@ -72,7 +72,7 @@ export const HistoryView: React.FC = () => {
   return (
     <div className="flex flex-col gap-4 py-2">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-bold text-white">{t('history.title')}</h2>
+        <h2 className="text-lg font-bold text-foreground">{t('history.title')}</h2>
         <div className="flex items-center gap-2">
           {alertHistory.length > 0 && (
             <button
@@ -81,7 +81,7 @@ export const HistoryView: React.FC = () => {
                   setAlertHistory([]);
                 }
               }}
-              className="p-2 rounded-xl bg-red-900/20 hover:bg-red-900/40 text-red-400 hover:text-red-300 transition-all"
+              className="p-2 rounded-xl bg-red-100 hover:bg-red-200 text-red-600 hover:text-red-700 transition-all"
               title={t('history.clearHistory')}
             >
               <Trash2 size={14} />
@@ -89,7 +89,7 @@ export const HistoryView: React.FC = () => {
           )}
           <button
             onClick={charger}
-            className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all"
+            className="p-2 rounded-xl bg-card hover:bg-muted text-muted-foreground hover:text-foreground transition-all"
           >
             <RefreshCw size={14} className={chargement ? 'animate-spin' : ''} />
           </button>
@@ -117,7 +117,7 @@ export const HistoryView: React.FC = () => {
             return (
               <motion.div
                 key={alert.id}
-                className="rounded-2xl border border-white/10 bg-white/5 p-4 flex flex-col gap-2"
+                className="rounded-2xl border border-border bg-card p-4 flex flex-col gap-2"
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.04 }}
@@ -128,11 +128,11 @@ export const HistoryView: React.FC = () => {
                   </span>
                   <div className="flex items-center gap-1.5">
                     <div className={`w-1.5 h-1.5 rounded-full ${couleurPoint}`} />
-                            <span className="text-sm text-gray-500">{t(statusKey)}</span>
+                            <span className="text-sm text-muted-foreground">{t(statusKey)}</span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                   <Clock size={11} />
                   {formaterDate(alert.triggeredAt)}
                 </div>
@@ -142,7 +142,7 @@ export const HistoryView: React.FC = () => {
                     href={alert.mapsLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-1.5 text-xs text-red-400 hover:text-red-300 transition-colors"
+                    className="flex items-center gap-1.5 text-xs text-red-600 hover:text-red-700 transition-colors"
                   >
                             <MapPin size={11} />
                     {alert.latitude && alert.longitude

@@ -68,13 +68,13 @@ export const EmergencyNumbersView: React.FC = () => {
   const renderCountryCard = (country: CountryEmergency, highlight = false) => (
     <div
       key={country.code}
-      className={`rounded-2xl border p-4 flex flex-col gap-3 ${highlight ? 'border-red-500/30 bg-red-950/10' : 'border-white/10 bg-white/[0.03]'}`}
+      className={`rounded-2xl border p-4 flex flex-col gap-3 ${highlight ? 'border-red-300 bg-red-50' : 'border-border bg-card'}`}
     >
       <div className="flex items-center gap-2.5">
         <span className="text-2xl leading-none">{country.flag}</span>
-        <span className="text-sm font-bold text-white">{country.country}</span>
+        <span className="text-sm font-bold text-foreground">{country.country}</span>
         {highlight && (
-          <span className="ml-auto text-sm font-bold text-red-400 bg-red-500/15 px-2 py-0.5 rounded-full uppercase">
+          <span className="ml-auto text-sm font-bold text-red-600 bg-red-100 px-2 py-0.5 rounded-full uppercase">
             {t('emergencyNumbers.yourCountry') || 'Your country'}
           </span>
         )}
@@ -83,44 +83,44 @@ export const EmergencyNumbersView: React.FC = () => {
       <div className="grid grid-cols-3 gap-2">
         <a
           href={`tel:${country.police}`}
-          className="flex flex-col items-center gap-1.5 rounded-xl border border-blue-500/20 bg-blue-950/20 py-2.5 px-2 hover:bg-blue-950/40 transition-colors active:scale-95"
+          className="flex flex-col items-center gap-1.5 rounded-xl border border-blue-300 bg-blue-50 py-2.5 px-2 hover:bg-blue-100 transition-colors active:scale-95"
         >
-          <Shield size={16} className="text-blue-400" />
-          <span className="text-sm font-semibold text-gray-400">{t('emergencyNumbers.police')}</span>
-          <span className="text-xs font-bold text-white">{country.police}</span>
+          <Shield size={16} className="text-blue-600" />
+          <span className="text-sm font-semibold text-muted-foreground">{t('emergencyNumbers.police')}</span>
+          <span className="text-xs font-bold text-foreground">{country.police}</span>
         </a>
         <a
           href={`tel:${country.ambulance}`}
-          className="flex flex-col items-center gap-1.5 rounded-xl border border-green-500/20 bg-green-950/20 py-2.5 px-2 hover:bg-green-950/40 transition-colors active:scale-95"
+          className="flex flex-col items-center gap-1.5 rounded-xl border border-green-300 bg-green-50 py-2.5 px-2 hover:bg-green-100 transition-colors active:scale-95"
         >
-          <Heart size={16} className="text-green-400" />
-          <span className="text-sm font-semibold text-gray-400">{t('emergencyNumbers.ambulance')}</span>
-          <span className="text-xs font-bold text-white">{country.ambulance}</span>
+          <Heart size={16} className="text-green-600" />
+          <span className="text-sm font-semibold text-muted-foreground">{t('emergencyNumbers.ambulance')}</span>
+          <span className="text-xs font-bold text-foreground">{country.ambulance}</span>
         </a>
         <a
           href={`tel:${country.fire}`}
-          className="flex flex-col items-center gap-1.5 rounded-xl border border-red-500/20 bg-red-950/20 py-2.5 px-2 hover:bg-red-950/40 transition-colors active:scale-95"
+          className="flex flex-col items-center gap-1.5 rounded-xl border border-red-300 bg-red-50 py-2.5 px-2 hover:bg-red-100 transition-colors active:scale-95"
         >
-          <Flame size={16} className="text-red-400" />
-          <span className="text-sm font-semibold text-gray-400">{t('emergencyNumbers.fire')}</span>
-          <span className="text-xs font-bold text-white">{country.fire}</span>
+          <Flame size={16} className="text-red-600" />
+          <span className="text-sm font-semibold text-muted-foreground">{t('emergencyNumbers.fire')}</span>
+          <span className="text-xs font-bold text-foreground">{country.fire}</span>
         </a>
       </div>
 
       {country.hotlines && country.hotlines.length > 0 && (
-        <div className="flex flex-col gap-1.5 pt-1 border-t border-white/5">
-          <span className="text-sm font-bold text-gray-500 uppercase tracking-wider">
+        <div className="flex flex-col gap-1.5 pt-1 border-t border-border">
+          <span className="text-sm font-bold text-muted-foreground uppercase tracking-wider">
             {t('emergencyNumbers.hotlines')}
           </span>
           {country.hotlines.map((hl, i) => (
             <a
               key={i}
               href={`tel:${hl.number.replace(/\s/g, '')}`}
-              className="flex items-center justify-between gap-2 rounded-lg bg-white/[0.03] px-3 py-2 hover:bg-white/[0.06] transition-colors"
+              className="flex items-center justify-between gap-2 rounded-lg bg-muted px-3 py-2 hover:bg-muted/80 transition-colors"
             >
-              <span className="text-sm text-gray-400 truncate">{hl.name}</span>
-              <span className="flex items-center gap-1 text-sm font-semibold text-white shrink-0">
-                <Phone size={10} className="text-gray-500" />
+              <span className="text-sm text-muted-foreground truncate">{hl.name}</span>
+              <span className="flex items-center gap-1 text-sm font-semibold text-foreground shrink-0">
+                <Phone size={10} className="text-muted-foreground" />
                 {hl.number}
               </span>
             </a>
@@ -135,43 +135,43 @@ export const EmergencyNumbersView: React.FC = () => {
       <div className="flex items-center gap-3">
         <button
           onClick={() => setView('home')}
-          className="p-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+          className="p-2 rounded-xl border border-border bg-card hover:bg-muted transition-colors"
         >
-          <ArrowLeft size={18} className="text-gray-400" />
+          <ArrowLeft size={18} className="text-muted-foreground" />
         </button>
-        <h1 className="text-lg font-bold text-white flex-1">
+        <h1 className="text-lg font-bold text-foreground flex-1">
           {t('emergencyNumbers.title')}
         </h1>
       </div>
 
-      <p className="text-sm text-gray-600 text-center">
+      <p className="text-sm text-muted-foreground text-center">
         {t('emergencyNumbers.tapToCall')}
       </p>
 
       {userCountry && renderCountryCard(userCountry, true)}
 
       {!userCountry && !showAll && (
-        <div className="flex flex-col items-center gap-3 py-8 text-gray-500">
+        <div className="flex flex-col items-center gap-3 py-8 text-muted-foreground">
           <Globe size={28} />
           <p className="text-sm text-center">{t('emergencyNumbers.countryNotDetected') || 'Country not detected'}</p>
         </div>
       )}
 
       <div className="relative">
-        <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+        <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
         <input
           type="text"
           value={search}
           onChange={(e) => { setSearch(e.target.value); if (e.target.value) setShowAll(true); }}
           placeholder={t('emergencyNumbers.search')}
-          className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-white/10 bg-white/5 text-sm text-white placeholder-gray-500 outline-none focus:border-white/20 transition-colors"
+          className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-border bg-card text-sm text-foreground placeholder-muted-foreground outline-none focus:border-muted-foreground transition-colors"
         />
       </div>
 
       {!showAll && (
         <button
           onClick={() => setShowAll(true)}
-          className="flex items-center justify-center gap-2 py-3 rounded-xl border border-white/10 bg-white/5 text-sm text-gray-400 hover:bg-white/8 transition-colors"
+          className="flex items-center justify-center gap-2 py-3 rounded-xl border border-border bg-card text-sm text-muted-foreground hover:bg-muted transition-colors"
         >
           <Globe size={14} />
           {t('emergencyNumbers.showAll') || 'Show all countries'}
@@ -187,7 +187,7 @@ export const EmergencyNumbersView: React.FC = () => {
       )}
 
       {showAll && filtered.filter((c) => c.code !== detectedCode).length === 0 && search.trim() && (
-        <div className="flex flex-col items-center gap-2 py-12 text-gray-600">
+        <div className="flex flex-col items-center gap-2 py-12 text-muted-foreground">
           <Search size={32} />
           <p className="text-sm">{t('emergencyNumbers.search')}</p>
         </div>

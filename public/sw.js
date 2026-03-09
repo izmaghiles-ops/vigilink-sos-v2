@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vigilinksos-v17';
+const CACHE_NAME = 'vigilinksos-v21';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -172,6 +172,10 @@ self.addEventListener('fetch', (event) => {
         })
       )
     );
+    return;
+  }
+
+  if (url.pathname.startsWith('/site/') || url.pathname === '/site' || url.pathname.startsWith('/privacy') || url.pathname.startsWith('/.well-known/')) {
     return;
   }
 

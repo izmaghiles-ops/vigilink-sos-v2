@@ -150,7 +150,7 @@ export const GuardianChat: React.FC = () => {
         onDrag={handleDrag}
         onDragEnd={handleDragEnd}
         onClick={handleClick}
-        className="fixed z-50 w-12 h-12 rounded-full bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-900/40 flex items-center justify-center transition-colors cursor-grab active:cursor-grabbing"
+        className="fixed z-50 w-12 h-12 rounded-full bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-200/50 flex items-center justify-center transition-colors cursor-grab active:cursor-grabbing"
         style={{ left: pos.x, top: pos.y, touchAction: 'none' }}
         whileTap={{ scale: 0.92 }}
         aria-label={`${t('chat.title')} Vigilink-SOS`}
@@ -181,7 +181,7 @@ export const GuardianChat: React.FC = () => {
       <AnimatePresence>
         {ouvert && (
           <motion.div
-            className="fixed z-40 flex flex-col rounded-2xl border border-white/10 bg-black/95 backdrop-blur-xl shadow-2xl shadow-black/60 overflow-hidden"
+            className="fixed z-40 flex flex-col rounded-2xl border border-border bg-background/95 backdrop-blur-xl shadow-2xl overflow-hidden"
             style={{
               left: chatX,
               top: chatY,
@@ -193,12 +193,12 @@ export const GuardianChat: React.FC = () => {
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
           >
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-red-950/20">
-              <Shield size={15} className="text-red-400" />
-              <span className="text-sm font-bold text-white">{t('app.name')} {t('chat.title')}</span>
+            <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-red-50">
+              <Shield size={15} className="text-red-600" />
+              <span className="text-sm font-bold text-foreground">{t('app.name')} {t('chat.title')}</span>
               <div className="ml-auto flex items-center gap-1.5">
                 <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                <span className="text-sm text-gray-500">{t('network.online')}</span>
+                <span className="text-sm text-muted-foreground">{t('network.online')}</span>
               </div>
             </div>
 
@@ -213,7 +213,7 @@ export const GuardianChat: React.FC = () => {
                       'max-w-[85%] rounded-2xl px-3 py-2 text-xs leading-relaxed whitespace-pre-wrap',
                       m.role === 'user'
                         ? 'bg-red-700 text-white rounded-br-sm'
-                        : 'bg-white/8 text-gray-200 rounded-bl-sm border border-white/5',
+                        : 'bg-card text-foreground rounded-bl-sm border border-border',
                     ].join(' ')}
                   >
                     {m.contenu}
@@ -226,7 +226,7 @@ export const GuardianChat: React.FC = () => {
               <div ref={basRef} />
             </div>
 
-            <div className="flex gap-2 p-3 border-t border-white/10">
+            <div className="flex gap-2 p-3 border-t border-border">
               <input
                 type="text"
                 value={saisie}
@@ -234,7 +234,7 @@ export const GuardianChat: React.FC = () => {
                 onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && handleEnvoyer()}
                 placeholder={t('chat.placeholder')}
                 disabled={envoi}
-                className="flex-1 bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-red-500/40 disabled:opacity-40"
+                className="flex-1 bg-card border border-border rounded-xl px-3 py-2 text-xs text-foreground placeholder-muted-foreground focus:outline-none focus:border-red-500/40 disabled:opacity-40"
               />
               <button
                 onClick={handleEnvoyer}

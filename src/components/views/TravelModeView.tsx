@@ -37,12 +37,12 @@ export const TravelModeView: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#0a0a0a] text-white">
-      <div className="flex items-center gap-3 px-5 py-4 border-b border-white/10">
+    <div className="flex flex-col h-full bg-background text-foreground">
+      <div className="flex items-center gap-3 px-5 py-4 border-b border-border">
         <button
           type="button"
           onClick={() => setView('settings')}
-          className="p-2 rounded-xl hover:bg-white/10 transition-colors"
+          className="p-2 rounded-xl hover:bg-muted transition-colors"
         >
           <ArrowLeft size={20} />
         </button>
@@ -53,10 +53,10 @@ export const TravelModeView: React.FC = () => {
       <div className="flex-1 overflow-y-auto px-5 py-6 flex flex-col gap-6">
         {!hasAccess ? (
           <div className="flex flex-col items-center justify-center gap-4 py-20 text-center">
-            <div className="p-4 rounded-full bg-white/5 border border-white/10">
-              <Lock size={32} className="text-gray-500" />
+            <div className="p-4 rounded-full bg-card border border-border">
+              <Lock size={32} className="text-muted-foreground" />
             </div>
-            <p className="text-gray-400 text-sm">{t('travel.proOnly')}</p>
+            <p className="text-muted-foreground text-sm">{t('travel.proOnly')}</p>
             <button
               type="button"
               onClick={() => setView('upgrade')}
@@ -67,17 +67,17 @@ export const TravelModeView: React.FC = () => {
           </div>
         ) : (
           <>
-            <p className="text-gray-400 text-sm">{t('travel.description')}</p>
+            <p className="text-muted-foreground text-sm">{t('travel.description')}</p>
 
             {travelMode.active && (
-              <div className="flex items-center gap-3 p-4 rounded-xl bg-blue-500/10 border border-blue-500/20">
-                <CheckCircle size={20} className="text-blue-400" />
-                <span className="text-blue-300 text-sm font-medium">{t('travel.active')}</span>
+              <div className="flex items-center gap-3 p-4 rounded-xl bg-blue-50 border border-blue-300">
+                <CheckCircle size={20} className="text-blue-600" />
+                <span className="text-blue-700 text-sm font-medium">{t('travel.active')}</span>
               </div>
             )}
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs text-gray-500 uppercase tracking-wider flex items-center gap-1.5">
+              <label className="text-xs text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
                 <MapPin size={14} />
                 {t('travel.destination')}
               </label>
@@ -86,12 +86,12 @@ export const TravelModeView: React.FC = () => {
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
                 placeholder={t('travel.destination')}
-                className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+                className="bg-card border border-border rounded-xl px-4 py-2.5 text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue-500/40"
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs text-gray-500 uppercase tracking-wider flex items-center gap-1.5">
+              <label className="text-xs text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
                 <Clock size={14} />
                 {t('travel.morningCheckIn')}
               </label>
@@ -99,12 +99,12 @@ export const TravelModeView: React.FC = () => {
                 type="time"
                 value={checkInMorning}
                 onChange={(e) => setCheckInMorning(e.target.value)}
-                className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+                className="bg-card border border-border rounded-xl px-4 py-2.5 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/40"
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs text-gray-500 uppercase tracking-wider flex items-center gap-1.5">
+              <label className="text-xs text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
                 <Clock size={14} />
                 {t('travel.eveningCheckIn')}
               </label>
@@ -112,7 +112,7 @@ export const TravelModeView: React.FC = () => {
                 type="time"
                 value={checkInEvening}
                 onChange={(e) => setCheckInEvening(e.target.value)}
-                className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/40"
+                className="bg-card border border-border rounded-xl px-4 py-2.5 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/40"
               />
             </div>
 
@@ -128,14 +128,14 @@ export const TravelModeView: React.FC = () => {
                 </button>
 
                 {travelMode.lastCheckIn && (
-                  <div className="flex items-center gap-2 text-sm text-gray-400">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Clock size={14} />
                     <span>{t('travel.lastCheckIn')}: {new Date(travelMode.lastCheckIn).toLocaleString()}</span>
                   </div>
                 )}
 
                 {travelMode.missedCheckIns > 0 && (
-                  <div className="flex items-center gap-2 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-300 text-sm">
+                  <div className="flex items-center gap-2 p-3 rounded-xl bg-red-50 border border-red-300 text-red-700 text-sm">
                     <AlertTriangle size={16} />
                     <span>{t('travel.missedCheckIns')}: {travelMode.missedCheckIns}</span>
                   </div>
@@ -168,7 +168,7 @@ export const TravelModeView: React.FC = () => {
                   <button
                     type="button"
                     onClick={handleDeactivate}
-                    className="w-full py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-gray-300 font-semibold text-sm transition-colors"
+                    className="w-full py-3 rounded-xl bg-card border border-border hover:bg-muted text-foreground font-semibold text-sm transition-colors"
                   >
                     {t('travel.deactivate')}
                   </button>

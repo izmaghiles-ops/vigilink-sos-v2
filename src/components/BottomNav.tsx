@@ -37,11 +37,11 @@ export const BottomNav: React.FC<BottomNavProps> = ({ current, onChange }) => {
               onClick={() => onChange(vue as AppView)}
               className={[
                 'flex-1 flex flex-col items-center justify-center py-3 gap-1.5 transition-all relative',
-                estActif ? 'text-red-400' : 'text-gray-500 hover:text-gray-300',
+                estActif ? 'text-red-600' : 'text-muted-foreground hover:text-foreground',
               ].join(' ')}
             >
               {icone(estActif)}
-              <span className={`text-xs font-bold uppercase tracking-wider ${estActif ? 'text-red-400' : ''}`}>
+              <span className={`text-xs font-bold uppercase tracking-wider ${estActif ? 'text-red-600' : ''}`}>
                 {t(labelKey)}
               </span>
               {estActif && (

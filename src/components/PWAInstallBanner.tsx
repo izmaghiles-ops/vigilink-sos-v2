@@ -49,13 +49,13 @@ export const PWAInstallBanner: React.FC = () => {
           exit={{ y: 80, opacity: 0 }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         >
-          <div className="rounded-2xl border border-red-500/30 bg-black/95 backdrop-blur-xl shadow-2xl shadow-red-900/30 p-4 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-red-900/40 border border-red-500/30 flex items-center justify-center shrink-0">
-              <Shield size={18} className="text-red-400" />
+          <div className="rounded-2xl border border-red-300 bg-card shadow-xl p-4 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-red-100 border border-red-300 flex items-center justify-center shrink-0">
+              <Shield size={18} className="text-red-600" />
             </div>
             <div className="flex flex-col gap-0.5 flex-1 min-w-0">
-              <span className="text-xs font-black text-white">{t('pwa.install')}</span>
-              <span className="text-[10px] text-gray-500 leading-tight">
+              <span className="text-xs font-black text-foreground">{t('pwa.install')}</span>
+              <span className="text-[10px] text-muted-foreground leading-tight">
                 {t('pwa.installDesc')}
               </span>
             </div>
@@ -69,7 +69,7 @@ export const PWAInstallBanner: React.FC = () => {
               </button>
               <button
                 onClick={handleDismiss}
-                className="p-1.5 rounded-xl text-gray-600 hover:text-gray-400 transition-all"
+                className="p-1.5 rounded-xl text-muted-foreground hover:text-foreground transition-all"
               >
                 <X size={13} />
               </button>

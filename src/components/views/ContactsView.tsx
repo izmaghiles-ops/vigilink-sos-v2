@@ -27,9 +27,9 @@ function maxContactsPourPlan(plan: SubscriptionPlan): number {
 const PRIORITES: ContactPriority[] = ['primary', 'secondary', 'tertiary'];
 
 const STYLE_PRIORITE: Record<ContactPriority, string> = {
-  primary:   'text-red-400 border-red-500/40 bg-red-500/10',
-  secondary: 'text-yellow-400 border-yellow-500/40 bg-yellow-500/10',
-  tertiary:  'text-gray-400 border-gray-500/40 bg-gray-500/10',
+  primary:   'text-[#c41e2a] border-red-300 bg-red-50',
+  secondary: 'text-yellow-600 border-yellow-300 bg-yellow-50',
+  tertiary:  'text-muted-foreground border-border bg-muted',
 };
 
 const PRIORITY_KEYS: Record<ContactPriority, string> = {
@@ -50,7 +50,7 @@ const formulaireVide = () => ({
 
 const ToastConfirmation: React.FC<{ message: string }> = ({ message }) => (
   <motion.div
-    className="flex items-center gap-2 rounded-2xl border border-green-500/30 bg-green-950/30 px-4 py-2.5 text-xs font-semibold text-green-400"
+    className="flex items-center gap-2 rounded-2xl border border-green-300 bg-green-50 px-4 py-2.5 text-xs font-semibold text-green-600"
     initial={{ opacity: 0, y: -6 }}
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: -6 }}
@@ -81,7 +81,7 @@ const FormulaireContact: React.FC<FormulaireContactProps> = ({
       placeholder={placeholder}
       value={String(form[cle])}
       onChange={(e) => setForm((f) => ({ ...f, [cle]: e.target.value }))}
-      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-red-500/50 transition-colors"
+      className="w-full bg-card border border-border rounded-xl px-4 py-3 text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-red-500/50 transition-colors"
     />
   );
 
@@ -102,7 +102,7 @@ const FormulaireContact: React.FC<FormulaireContactProps> = ({
         <button
           type="button"
           onClick={onAnnuler}
-          className="flex-1 py-2.5 rounded-xl bg-white/5 text-gray-400 text-sm font-bold hover:bg-white/10 transition-all"
+          className="flex-1 py-2.5 rounded-xl bg-card text-muted-foreground text-sm font-bold hover:bg-muted transition-all"
         >
           {t('common.cancel')}
         </button>
@@ -123,45 +123,45 @@ const CarteVerrouillee: React.FC<{ onUpgrade: () => void }> = ({ onUpgrade }) =>
   const { t } = useTranslation();
   return (
     <motion.div
-      className="rounded-2xl border border-dashed border-white/15 bg-white/3 p-5 flex flex-col items-center gap-3 text-center"
+      className="rounded-2xl border border-dashed border-border bg-card p-5 flex flex-col items-center gap-3 text-center"
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25 }}
     >
-      <div className="w-11 h-11 rounded-2xl bg-red-950/40 border border-red-500/20 flex items-center justify-center">
-        <Lock size={18} className="text-red-400/70" />
+      <div className="w-11 h-11 rounded-2xl bg-red-100 border border-red-200 flex items-center justify-center">
+        <Lock size={18} className="text-[#c41e2a]/70" />
       </div>
 
       <div className="flex flex-col gap-1">
-        <p className="text-sm font-bold text-white/80">
+        <p className="text-sm font-bold text-foreground/80">
           {t('contacts.limitTitle')}
         </p>
-        <p className="text-sm text-gray-500 leading-relaxed max-w-[220px]"
+        <p className="text-sm text-muted-foreground leading-relaxed max-w-[220px]"
            dangerouslySetInnerHTML={{ __html: t('contacts.limitDesc') }} />
       </div>
 
       <div className="w-full grid grid-cols-2 gap-2 mt-1">
-        <div className="rounded-xl border border-yellow-500/20 bg-yellow-950/15 px-3 py-2.5 flex flex-col gap-0.5">
+        <div className="rounded-xl border border-yellow-300 bg-yellow-50 px-3 py-2.5 flex flex-col gap-0.5">
           <div className="flex items-center gap-1.5">
-            <Zap size={10} className="text-yellow-400" />
-            <span className="text-sm font-black text-yellow-400 uppercase tracking-widest">{t('common.pro')}</span>
+            <Zap size={10} className="text-yellow-600" />
+            <span className="text-sm font-black text-yellow-600 uppercase tracking-widest">{t('common.pro')}</span>
           </div>
-          <span className="text-xs font-bold text-white">{t('contacts.proContacts')}</span>
-          <span className="text-sm text-gray-500">{t('contacts.multiRecipients')}</span>
+          <span className="text-xs font-bold text-foreground">{t('contacts.proContacts')}</span>
+          <span className="text-sm text-muted-foreground">{t('contacts.multiRecipients')}</span>
         </div>
-        <div className="rounded-xl border border-amber-500/20 bg-amber-950/10 px-3 py-2.5 flex flex-col gap-0.5">
+        <div className="rounded-xl border border-amber-300 bg-amber-50 px-3 py-2.5 flex flex-col gap-0.5">
           <div className="flex items-center gap-1.5">
-            <Crown size={10} className="text-amber-300" />
-            <span className="text-sm font-black text-amber-300 uppercase tracking-widest">{t('common.platinum')}</span>
+            <Crown size={10} className="text-amber-600" />
+            <span className="text-sm font-black text-amber-600 uppercase tracking-widest">{t('common.platinum')}</span>
           </div>
-          <span className="text-xs font-bold text-white">{t('contacts.platinumContacts')}</span>
-          <span className="text-sm text-gray-500">{t('contacts.familyPackComplete')}</span>
+          <span className="text-xs font-bold text-foreground">{t('contacts.platinumContacts')}</span>
+          <span className="text-sm text-muted-foreground">{t('contacts.familyPackComplete')}</span>
         </div>
       </div>
 
       <button
         onClick={onUpgrade}
-        className="w-full py-3 rounded-xl bg-gradient-to-r from-yellow-600 to-amber-500 hover:from-yellow-500 hover:to-amber-400 text-white text-sm font-black tracking-wide transition-all shadow-lg shadow-yellow-900/30"
+        className="w-full py-3 rounded-xl bg-gradient-to-r from-yellow-600 to-amber-500 hover:from-yellow-500 hover:to-amber-400 text-white text-sm font-black tracking-wide transition-all shadow-lg shadow-yellow-200/50"
       >
         {t('contacts.unlockMore')}
       </button>
@@ -261,11 +261,11 @@ export const ContactsView: React.FC = () => {
       </AnimatePresence>
 
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-bold text-white">{t('contacts.title')}</h2>
+        <h2 className="text-lg font-bold text-foreground">{t('contacts.title')}</h2>
         <div className="flex items-center gap-2">
           <button
             onClick={chargerContacts}
-            className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all"
+            className="p-2 rounded-xl bg-card hover:bg-muted text-muted-foreground hover:text-foreground transition-all"
           >
             <RefreshCw size={14} className={chargement ? 'animate-spin' : ''} />
           </button>
@@ -282,11 +282,11 @@ export const ContactsView: React.FC = () => {
       </div>
 
       <div className="flex items-center justify-between">
-        <span className="text-xs text-gray-600">
+        <span className="text-xs text-muted-foreground">
           {t('contacts.contactsCountLabel', { current: contacts.length, max: maxContacts })}
         </span>
         {estGratuit && (
-          <span className="text-sm font-bold text-red-400/70 uppercase tracking-widest">
+          <span className="text-sm font-bold text-[#c41e2a]/70 uppercase tracking-widest">
             {t('contacts.freePlan')}
           </span>
         )}
@@ -323,12 +323,12 @@ export const ContactsView: React.FC = () => {
       <AnimatePresence>
         {afficherForm && (
           <motion.div
-            className="rounded-2xl border border-white/10 bg-white/5 p-4 flex flex-col gap-3"
+            className="rounded-2xl border border-border bg-card p-4 flex flex-col gap-3"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto', overflow: 'visible' }}
             exit={{ opacity: 0, height: 0, overflow: 'hidden' }}
           >
-            <h3 className="text-sm font-bold text-white">{t('contacts.newContact')}</h3>
+            <h3 className="text-sm font-bold text-foreground">{t('contacts.newContact')}</h3>
             <FormulaireContact
               initial={formulaireVide()}
               onSubmit={handleAjouter}
@@ -344,27 +344,27 @@ export const ContactsView: React.FC = () => {
           {contacts.map((c, i) => (
             <motion.div
               key={c.id}
-              className="rounded-2xl border border-white/10 bg-white/5"
+              className="rounded-2xl border border-border bg-card"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ delay: i * 0.04 }}
             >
               <div className="flex items-center gap-3 p-4">
-                <div className="w-10 h-10 rounded-full bg-red-900/30 border border-red-500/20 flex items-center justify-center shrink-0">
-                  <span className="text-base font-black text-red-400">
+                <div className="w-10 h-10 rounded-full bg-red-100 border border-red-200 flex items-center justify-center shrink-0">
+                  <span className="text-base font-black text-[#c41e2a]">
                     {c.name.charAt(0).toUpperCase()}
                   </span>
                 </div>
 
                 <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">
-                    <span className="text-sm font-bold text-white truncate">{c.name}</span>
-                    <Star size={10} className="text-red-400 shrink-0" />
+                    <span className="text-sm font-bold text-foreground truncate">{c.name}</span>
+                    <Star size={10} className="text-[#c41e2a] shrink-0" />
                   </div>
-                      <span className="text-xs text-gray-500">{c.phone || t('contacts.noNumber')}</span>
+                      <span className="text-xs text-muted-foreground">{c.phone || t('contacts.noNumber')}</span>
                   {c.relationship ? (
-                    <span className="text-xs text-gray-600 ml-2">· {c.relationship}</span>
+                    <span className="text-xs text-muted-foreground ml-2">· {c.relationship}</span>
                   ) : null}
                 </div>
 
@@ -384,13 +384,13 @@ export const ContactsView: React.FC = () => {
                       </span>
                       <button
                         onClick={() => setEnEdition(enEdition === c.id ? null : c.id)}
-                        className="p-1.5 rounded-lg text-gray-600 hover:text-blue-400 hover:bg-blue-500/10 transition-all"
+                        className="p-1.5 rounded-lg text-muted-foreground hover:text-blue-400 hover:bg-blue-500/10 transition-all"
                       >
                         {enEdition === c.id ? <X size={13} /> : <Pencil size={13} />}
                       </button>
                       <button
                         onClick={() => handleSupprimer(c)}
-                        className="p-1.5 rounded-lg text-gray-600 hover:text-red-400 hover:bg-red-500/10 transition-all"
+                        className="p-1.5 rounded-lg text-muted-foreground hover:text-red-400 hover:bg-red-500/10 transition-all"
                       >
                         <Trash2 size={13} />
                       </button>
@@ -402,12 +402,12 @@ export const ContactsView: React.FC = () => {
               <AnimatePresence>
                 {enEdition === c.id && !estContactParrain(c.id) && (
                   <motion.div
-                    className="border-t border-white/10 px-4 pb-4 pt-3 flex flex-col gap-3 bg-white/3"
+                    className="border-t border-border px-4 pb-4 pt-3 flex flex-col gap-3 bg-card"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto', overflow: 'visible' }}
                     exit={{ opacity: 0, height: 0, overflow: 'hidden' }}
                   >
-                    <p className="text-xs text-gray-500 font-semibold uppercase tracking-widest">
+                    <p className="text-xs text-muted-foreground font-semibold uppercase tracking-widest">
                       {t('contacts.editContact')}
                     </p>
                     <FormulaireContact
@@ -431,7 +431,7 @@ export const ContactsView: React.FC = () => {
         </AnimatePresence>
 
         {contacts.length === 0 && !chargement && (
-          <div className="text-center py-10 text-gray-600 text-sm">
+          <div className="text-center py-10 text-muted-foreground text-sm">
             {t('contacts.emptyHelp')}
           </div>
         )}

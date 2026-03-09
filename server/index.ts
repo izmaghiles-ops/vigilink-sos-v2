@@ -1328,7 +1328,11 @@ app.get('/sw.js', (_req, res) => {
 });
 
 app.use(express.static(distPath, { dotfiles: 'allow' }));
-app.get('/{*splat}', (_req, res) => {
+app.get('/{*splat}', (req, res) => {
+  if (req.path.startsWith('/site/') || req.path === '/site' || req.path.startsWith('/privacy') || req.path.startsWith('/.well-known/')) {
+    res.status(404).send('Not Found');
+    return;
+  }
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.sendFile(path.join(distPath, 'index.html'));
 });

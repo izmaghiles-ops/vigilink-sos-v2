@@ -68,15 +68,15 @@ const WardForm: React.FC<{
   return (
     <motion.div className="flex flex-col gap-4" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
       <div className="flex items-center gap-3 mb-1">
-        <button onClick={onCancel} className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all">
+        <button onClick={onCancel} className="p-2 rounded-xl bg-card hover:bg-muted text-muted-foreground hover:text-foreground transition-all">
           <ArrowLeft size={16} />
         </button>
-        <h3 className="text-lg font-black text-white">
+        <h3 className="text-lg font-black text-foreground">
           {isNew ? t('alzheimerSponsor.addPerson') : t('alzheimerSponsor.editProfile')}
         </h3>
       </div>
 
-      <div className="rounded-2xl border border-blue-500/20 bg-blue-950/10 p-4 flex flex-col gap-4">
+      <div className="rounded-2xl border border-blue-300 bg-blue-50 p-4 flex flex-col gap-4">
         <p className="text-[10px] font-bold text-blue-400 uppercase tracking-widest flex items-center gap-1.5">
           <Brain size={10} /> Identité
         </p>
@@ -84,14 +84,14 @@ const WardForm: React.FC<{
         <div className="flex flex-col gap-1.5">
           <label className="text-xs text-gray-500 uppercase tracking-wider">{t('alzheimerSponsor.name')}</label>
           <input type="text" value={w.name} onChange={(e) => upd('name', e.target.value)}
-            className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-blue-500/50 transition-colors" />
+            className="bg-card border border-border rounded-xl px-4 py-3 text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-blue-500/50 transition-colors" />
         </div>
 
         <div className="flex flex-col gap-1.5">
           <label className="text-xs text-gray-500 uppercase tracking-wider">{t('alzheimerSponsor.displayName')}</label>
           <input type="text" value={w.displayName} onChange={(e) => upd('displayName', e.target.value)}
             placeholder={w.name || 'Nom sur la page QR'}
-            className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-blue-500/50 transition-colors" />
+            className="bg-card border border-border rounded-xl px-4 py-3 text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-blue-500/50 transition-colors" />
         </div>
 
         <div className="flex flex-col gap-1.5">
@@ -100,7 +100,7 @@ const WardForm: React.FC<{
         </div>
       </div>
 
-      <div className="rounded-2xl border border-green-500/20 bg-green-950/10 p-4 flex flex-col gap-4">
+      <div className="rounded-2xl border border-green-300 bg-green-50 p-4 flex flex-col gap-4">
         <p className="text-[10px] font-bold text-green-400 uppercase tracking-widest flex items-center gap-1.5">
           <Phone size={10} /> Tuteur / Aidant
         </p>
@@ -109,7 +109,7 @@ const WardForm: React.FC<{
           <label className="text-xs text-gray-500 uppercase tracking-wider">{t('alzheimerSponsor.caregiverName')}</label>
           <input type="text" value={w.caregiverName} onChange={(e) => upd('caregiverName', e.target.value)}
             placeholder="Ex: Marie Tremblay"
-            className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-green-500/50 transition-colors" />
+            className="bg-card border border-border rounded-xl px-4 py-3 text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-green-500/50 transition-colors" />
         </div>
 
         <div className="flex flex-col gap-1.5">
@@ -121,7 +121,7 @@ const WardForm: React.FC<{
           <div className="flex items-center gap-2.5">
             <EyeOff size={14} className="text-blue-400" />
             <div className="flex flex-col gap-0.5">
-              <span className="text-sm font-bold text-white">{t('alzheimerSponsor.hideAddress')}</span>
+              <span className="text-sm font-bold text-foreground">{t('alzheimerSponsor.hideAddress')}</span>
               <span className="text-xs text-gray-500">{t('alzheimerSponsor.hideAddressDesc')}</span>
             </div>
           </div>
@@ -132,15 +132,15 @@ const WardForm: React.FC<{
         </div>
       </div>
 
-      <div className="rounded-2xl border border-amber-500/20 bg-amber-950/10 p-4 flex flex-col gap-4">
+      <div className="rounded-2xl border border-amber-300 bg-amber-50 p-4 flex flex-col gap-4">
         <p className="text-[10px] font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5">
           <Shield size={10} /> {t('alzheimerSponsor.instructions')}
         </p>
         <textarea value={w.instructions} onChange={(e) => upd('instructions', e.target.value)}
           placeholder={t('alzheimerSponsor.instructionsPlaceholder')}
           rows={4}
-          className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-amber-500/50 transition-colors resize-none" />
-        <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-amber-950/20 border border-amber-500/15">
+          className="bg-card border border-border rounded-xl px-4 py-3 text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-amber-500/50 transition-colors resize-none" />
+        <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-amber-50 border border-amber-200">
           <AlertTriangle size={11} className="text-amber-400 shrink-0" />
           <span className="text-xs text-amber-300 leading-relaxed">
             {t('alzheimerSponsor.profileInfo')}
@@ -148,7 +148,7 @@ const WardForm: React.FC<{
         </div>
       </div>
 
-      <div className="rounded-2xl border border-red-500/20 bg-red-950/10 p-4 flex flex-col gap-4">
+      <div className="rounded-2xl border border-red-200 bg-red-50 p-4 flex flex-col gap-4">
         <p className="text-[10px] font-bold text-red-400 uppercase tracking-widest flex items-center gap-1.5">
           <Heart size={10} /> Médical
         </p>
@@ -156,38 +156,38 @@ const WardForm: React.FC<{
         <div className="flex flex-col gap-1.5">
           <label className="text-xs text-gray-500 uppercase tracking-wider">{t('alzheimerSponsor.bloodType')}</label>
           <input type="text" value={w.bloodType} onChange={(e) => upd('bloodType', e.target.value)} placeholder="Ex: A+"
-            className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-red-500/50 transition-colors" />
+            className="bg-card border border-border rounded-xl px-4 py-3 text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-red-500/50 transition-colors" />
         </div>
 
         <div className="flex flex-col gap-1.5">
           <label className="text-xs text-gray-500 uppercase tracking-wider">{t('alzheimerSponsor.allergies')}</label>
           <input type="text" value={w.allergies} onChange={(e) => upd('allergies', e.target.value)} placeholder={t('alzheimerSponsor.allergiesPlaceholder')}
-            className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-red-500/50 transition-colors" />
+            className="bg-card border border-border rounded-xl px-4 py-3 text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-red-500/50 transition-colors" />
         </div>
 
         <div className="flex flex-col gap-1.5">
           <label className="text-xs text-gray-500 uppercase tracking-wider">{t('alzheimerSponsor.medications')}</label>
           <input type="text" value={w.medications} onChange={(e) => upd('medications', e.target.value)} placeholder={t('alzheimerSponsor.medicationsPlaceholder')}
-            className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-red-500/50 transition-colors" />
+            className="bg-card border border-border rounded-xl px-4 py-3 text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-red-500/50 transition-colors" />
         </div>
 
         <div className="flex flex-col gap-1.5">
           <label className="text-xs text-gray-500 uppercase tracking-wider">{t('alzheimerSponsor.conditions')}</label>
           <input type="text" value={w.conditions} onChange={(e) => upd('conditions', e.target.value)} placeholder={t('alzheimerSponsor.conditionsPlaceholder')}
-            className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-red-500/50 transition-colors" />
+            className="bg-card border border-border rounded-xl px-4 py-3 text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-red-500/50 transition-colors" />
         </div>
 
         <div className="flex flex-col gap-1.5">
           <label className="text-xs text-gray-500 uppercase tracking-wider">{t('alzheimerSponsor.emergencyNotes')}</label>
           <textarea value={w.emergencyNotes} onChange={(e) => upd('emergencyNotes', e.target.value)} placeholder={t('alzheimerSponsor.emergencyNotesPlaceholder')}
             rows={2}
-            className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none focus:border-red-500/50 transition-colors resize-none" />
+            className="bg-card border border-border rounded-xl px-4 py-3 text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-red-500/50 transition-colors resize-none" />
         </div>
       </div>
 
       <motion.button onClick={() => onSave(w)} whileTap={{ scale: 0.98 }}
         disabled={!w.name.trim() || !w.caregiverPhone.trim()}
-        className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 disabled:opacity-40 text-white font-black text-sm shadow-lg shadow-blue-900/30 transition-all">
+        className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 disabled:opacity-40 text-white font-black text-sm shadow-lg shadow-blue-200/50 transition-all">
         <Save size={15} /> {t('common.save')}
       </motion.button>
     </motion.div>
@@ -205,7 +205,7 @@ const WardQRView: React.FC<{ ward: AlzheimerWard; onBack: () => void }> = ({ war
     if (!canvasRef.current) return;
     QRCode.toCanvas(canvasRef.current, profileUrl, {
       width: 280, margin: 2,
-      color: { dark: '#ffffff', light: '#0a0a0a' },
+      color: { dark: '#1a2e4a', light: '#edf1f7' },
       errorCorrectionLevel: 'M',
     }).then(() => {
       setQrDataUrl(canvasRef.current!.toDataURL('image/png'));
@@ -225,16 +225,16 @@ const WardQRView: React.FC<{ ward: AlzheimerWard; onBack: () => void }> = ({ war
   return (
     <motion.div className="flex flex-col gap-4" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
       <div className="flex items-center gap-3 mb-1">
-        <button onClick={onBack} className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all">
+        <button onClick={onBack} className="p-2 rounded-xl bg-card hover:bg-muted text-muted-foreground hover:text-foreground transition-all">
           <ArrowLeft size={16} />
         </button>
-        <h3 className="text-lg font-black text-white flex items-center gap-2">
+        <h3 className="text-lg font-black text-foreground flex items-center gap-2">
           <QrCode size={17} className="text-blue-400" /> {ward.displayName || ward.name}
         </h3>
       </div>
 
-      <div className="rounded-2xl border border-blue-500/20 bg-blue-950/10 p-5 flex flex-col items-center gap-4">
-        <canvas ref={canvasRef} className="rounded-xl border-2 border-blue-500/30" />
+      <div className="rounded-2xl border border-blue-300 bg-blue-50 p-5 flex flex-col items-center gap-4">
+        <canvas ref={canvasRef} className="rounded-xl border-2 border-blue-300" />
 
         <p className="text-xs text-gray-500 text-center break-all">{profileUrl}</p>
 
@@ -252,21 +252,21 @@ const WardQRView: React.FC<{ ward: AlzheimerWard; onBack: () => void }> = ({ war
 
       <motion.button onClick={handleDownload} whileTap={{ scale: 0.98 }}
         disabled={!qrDataUrl}
-        className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl border border-blue-500/30 bg-blue-950/20 text-blue-300 font-bold text-sm hover:bg-blue-950/40 transition-all disabled:opacity-40">
+        className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl border border-blue-300 bg-blue-50 text-blue-600 font-bold text-sm hover:bg-blue-100 transition-all disabled:opacity-40">
         <Download size={14} /> {t('qrcode.download')}
       </motion.button>
 
-      <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-950/20 border border-blue-500/15">
+      <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-50 border border-blue-200">
         <Brain size={11} className="text-blue-400 shrink-0" />
-        <span className="text-xs text-blue-300 leading-relaxed">{t('alzheimerSponsor.qrInfo')}</span>
+        <span className="text-xs text-blue-600 leading-relaxed">{t('alzheimerSponsor.qrInfo')}</span>
       </div>
 
       {ward.instructions && (
-        <div className="rounded-2xl border border-amber-500/20 bg-amber-950/10 p-4">
+        <div className="rounded-2xl border border-amber-300 bg-amber-50 p-4">
           <p className="text-[10px] font-bold text-amber-400 uppercase tracking-widest mb-2 flex items-center gap-1.5">
             <Shield size={10} /> {t('alzheimerSponsor.instructions')}
           </p>
-          <p className="text-sm text-gray-300 leading-relaxed whitespace-pre-wrap">{ward.instructions}</p>
+          <p className="text-sm text-foreground leading-relaxed whitespace-pre-wrap">{ward.instructions}</p>
         </div>
       )}
     </motion.div>
@@ -345,18 +345,18 @@ const WardOtpInvite: React.FC<{ ward: AlzheimerWard; userName: string }> = ({ wa
 
       {sent && otp ? (
         <motion.div className="flex flex-col gap-2" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }}>
-          <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-green-950/25 border border-green-500/20">
+          <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-green-50 border border-green-300">
             <Check size={12} className="text-green-400 shrink-0" />
-            <span className="text-xs text-green-300 font-bold">{t('alzheimerSponsor.otpSent')}</span>
+            <span className="text-xs text-green-600 font-bold">{t('alzheimerSponsor.otpSent')}</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="flex-1 flex gap-1 justify-center">
               {otp.split('').map((c, i) => (
-                <span key={i} className="w-8 h-10 rounded-lg border border-green-500/30 bg-green-950/20 flex items-center justify-center text-lg font-black text-green-300 font-mono">{c}</span>
+                <span key={i} className="w-8 h-10 rounded-lg border border-green-300 bg-green-50 flex items-center justify-center text-lg font-black text-green-600 font-mono">{c}</span>
               ))}
             </div>
             <motion.button onClick={handleCopy} whileTap={{ scale: 0.9 }}
-              className="p-2 rounded-lg border border-white/10 bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all">
+              className="p-2 rounded-lg border border-border bg-card text-muted-foreground hover:text-foreground hover:bg-muted transition-all">
               {copied ? <Check size={13} className="text-green-400" /> : <Copy size={13} />}
             </motion.button>
           </div>
@@ -374,7 +374,7 @@ const WardOtpInvite: React.FC<{ ward: AlzheimerWard; userName: string }> = ({ wa
           </AnimatePresence>
           <motion.button onClick={handleSend} whileTap={{ scale: 0.98 }}
             disabled={loading || phone.replace(/\D/g, '').length < 7}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400 disabled:opacity-40 text-white font-bold text-xs shadow-lg shadow-green-900/30 transition-all">
+            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-[#2b5289] to-[#1e3a5f] hover:from-[#3468a8] hover:to-[#2b5289] disabled:opacity-40 text-white font-bold text-xs shadow-lg shadow-[#152d4a]/30 transition-all">
             {loading
               ? <motion.span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full" animate={{ rotate: 360 }} transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }} />
               : <><Send size={12} /> {t('alzheimerSponsor.sendOtp')}</>}
@@ -422,8 +422,8 @@ export const AlzheimerSponsorView: React.FC = () => {
 
   if (!isPro) {
     return (
-      <div className="flex flex-col min-h-screen bg-[#0a0a0a] p-5">
-        <button onClick={() => setView('settings')} className="flex items-center gap-2 text-gray-400 mb-6">
+      <div className="flex flex-col min-h-screen bg-background p-5">
+        <button onClick={() => setView('settings')} className="flex items-center gap-2 text-muted-foreground mb-6">
           <ArrowLeft size={18} /> <span className="text-sm">{t('common.back')}</span>
         </button>
         <div className="flex-1 flex flex-col items-center justify-center gap-4">
@@ -443,11 +443,11 @@ export const AlzheimerSponsorView: React.FC = () => {
         <>
           <div className="flex items-center gap-3">
             <button onClick={() => setView('settings')}
-              className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-500 hover:text-white transition-all">
+              className="p-2 rounded-xl bg-card hover:bg-muted text-muted-foreground hover:text-foreground transition-all">
               <ArrowLeft size={16} />
             </button>
             <div className="flex flex-col gap-0.5">
-              <h2 className="text-lg font-black text-white flex items-center gap-2">
+              <h2 className="text-lg font-black text-foreground flex items-center gap-2">
                 <Brain size={17} className="text-blue-400" /> {t('alzheimerSponsor.title')}
               </h2>
               <p className="text-[11px] text-gray-500">{t('alzheimerSponsor.subtitle')}</p>
@@ -456,10 +456,10 @@ export const AlzheimerSponsorView: React.FC = () => {
 
           <AnimatePresence>
             {showSaved && (
-              <motion.div className="rounded-xl border border-green-500/30 bg-green-950/25 p-3 flex items-center gap-2.5"
+              <motion.div className="rounded-xl border border-green-300 bg-green-50 p-3 flex items-center gap-2.5"
                 initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
                 <Check size={14} className="text-green-400 shrink-0" />
-                <span className="text-xs text-green-300 font-bold">{t('alzheimerSponsor.saved')}</span>
+                <span className="text-xs text-green-600 font-bold">{t('alzheimerSponsor.saved')}</span>
               </motion.div>
             )}
           </AnimatePresence>
@@ -471,7 +471,7 @@ export const AlzheimerSponsorView: React.FC = () => {
           </div>
 
           {alzheimerWards.length === 0 ? (
-            <motion.div className="rounded-2xl border border-blue-500/15 bg-blue-950/10 p-6 flex flex-col items-center gap-3 text-center"
+            <motion.div className="rounded-2xl border border-blue-200 bg-blue-50 p-6 flex flex-col items-center gap-3 text-center"
               initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <Brain size={32} className="text-blue-400/50" />
               <p className="text-sm font-bold text-gray-400">{t('alzheimerSponsor.noPersons')}</p>
@@ -480,14 +480,14 @@ export const AlzheimerSponsorView: React.FC = () => {
           ) : (
             <div className="flex flex-col gap-2.5">
               {alzheimerWards.map((ward) => (
-                <motion.div key={ward.id} className="rounded-2xl border border-blue-500/20 bg-blue-950/10 p-4"
+                <motion.div key={ward.id} className="rounded-2xl border border-blue-300 bg-blue-50 p-4"
                   initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/25 flex items-center justify-center shrink-0">
                       <Brain size={18} className="text-blue-400" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-black text-white truncate">{ward.displayName || ward.name}</p>
+                      <p className="text-sm font-black text-foreground truncate">{ward.displayName || ward.name}</p>
                       <p className="text-xs text-gray-500 font-mono">{ward.phone || '—'}</p>
                     </div>
                   </div>
@@ -496,7 +496,7 @@ export const AlzheimerSponsorView: React.FC = () => {
                     <div className="flex items-center gap-2 mb-3 px-3 py-2 rounded-lg bg-white/[0.03] border border-white/5">
                       <Users size={11} className="text-green-400 shrink-0" />
                       <span className="text-xs text-gray-400">
-                        Tuteur : <span className="text-white font-bold">{ward.caregiverName}</span>
+                        Tuteur : <span className="text-foreground font-bold">{ward.caregiverName}</span>
                       </span>
                     </div>
                   )}
@@ -504,17 +504,17 @@ export const AlzheimerSponsorView: React.FC = () => {
                   <div className="flex gap-2">
                     <motion.button whileTap={{ scale: 0.95 }}
                       onClick={() => { setSelectedId(ward.id); setMode('qr'); }}
-                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-bold border border-blue-500/25 bg-blue-950/20 text-blue-300 hover:bg-blue-950/40 transition-all">
+                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-bold border border-blue-500/25 bg-blue-50 text-blue-600 hover:bg-blue-100 transition-all">
                       <QrCode size={12} /> {t('alzheimerSponsor.viewQR')}
                     </motion.button>
                     <motion.button whileTap={{ scale: 0.95 }}
                       onClick={() => { setSelectedId(ward.id); setMode('edit'); }}
-                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-bold border border-white/10 bg-white/5 text-gray-300 hover:bg-white/10 transition-all">
+                      className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-bold border border-border bg-card text-gray-300 hover:bg-muted transition-all">
                       <Edit3 size={12} /> {t('alzheimerSponsor.editProfile')}
                     </motion.button>
                     <motion.button whileTap={{ scale: 0.9 }}
                       onClick={() => setDeleteConfirm(ward.id)}
-                      className="p-2.5 rounded-xl border border-red-500/20 bg-red-950/10 text-red-400 hover:bg-red-950/30 transition-all">
+                      className="p-2.5 rounded-xl border border-red-200 bg-red-50 text-red-400 hover:bg-red-950/30 transition-all">
                       <Trash2 size={13} />
                     </motion.button>
                   </div>
@@ -545,7 +545,7 @@ export const AlzheimerSponsorView: React.FC = () => {
           {(estAdmin || alzheimerWards.length < 2) ? (
             <motion.button whileTap={{ scale: 0.98 }}
               onClick={() => setMode('add')}
-              className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-black text-sm shadow-lg shadow-blue-900/30 transition-all">
+              className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-black text-sm shadow-lg shadow-blue-200/50 transition-all">
               <Plus size={16} /> {t('alzheimerSponsor.addPerson')}
             </motion.button>
           ) : (

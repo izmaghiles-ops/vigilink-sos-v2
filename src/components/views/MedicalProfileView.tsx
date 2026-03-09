@@ -34,7 +34,7 @@ const TagInput: React.FC<TagInputProps> = ({ items, onChange, placeholder }) => 
         {items.map((item, i) => (
           <span
             key={i}
-            className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-red-500/20 text-red-300 text-sm"
+            className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-red-100 text-red-700 text-sm"
           >
             {item}
             <button
@@ -54,7 +54,7 @@ const TagInput: React.FC<TagInputProps> = ({ items, onChange, placeholder }) => 
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
-          className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500/40"
+          className="flex-1 bg-card border border-border rounded-xl px-4 py-2.5 text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-red-500/40"
         />
         <button
           type="button"
@@ -64,7 +64,7 @@ const TagInput: React.FC<TagInputProps> = ({ items, onChange, placeholder }) => 
               setValue('');
             }
           }}
-          className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+          className="p-2.5 rounded-xl bg-card border border-border text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
         >
           <Plus size={16} />
         </button>
@@ -95,12 +95,12 @@ export const MedicalProfileView: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#0a0a0a] text-white">
-      <div className="flex items-center gap-3 px-5 py-4 border-b border-white/10">
+    <div className="flex flex-col h-full bg-background text-foreground">
+      <div className="flex items-center gap-3 px-5 py-4 border-b border-border">
         <button
           type="button"
           onClick={() => setView('settings')}
-          className="p-2 rounded-xl hover:bg-white/10 transition-colors"
+          className="p-2 rounded-xl hover:bg-muted transition-colors"
         >
           <ArrowLeft size={20} />
         </button>
@@ -111,10 +111,10 @@ export const MedicalProfileView: React.FC = () => {
       <div className="flex-1 overflow-y-auto px-5 py-6 flex flex-col gap-6">
         {!hasAccess ? (
           <div className="flex flex-col items-center justify-center gap-4 py-20 text-center">
-            <div className="p-4 rounded-full bg-white/5 border border-white/10">
-              <Lock size={32} className="text-gray-500" />
+            <div className="p-4 rounded-full bg-card border border-border">
+              <Lock size={32} className="text-muted-foreground" />
             </div>
-            <p className="text-gray-400 text-sm">{t('medical.proOnly')}</p>
+            <p className="text-muted-foreground text-sm">{t('medical.proOnly')}</p>
             <button
               type="button"
               onClick={() => setView('upgrade')}
@@ -126,23 +126,23 @@ export const MedicalProfileView: React.FC = () => {
         ) : (
           <>
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs text-gray-500 uppercase tracking-wider">
+              <label className="text-xs text-muted-foreground uppercase tracking-wider">
                 {t('medical.bloodType')}
               </label>
               <select
                 value={bloodType}
                 onChange={(e) => setBloodType(e.target.value)}
-                className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:ring-2 focus:ring-red-500/40 appearance-none"
+                className="bg-card border border-border rounded-xl px-4 py-2.5 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-red-500/40 appearance-none"
               >
-                <option value="" className="bg-[#1a1a1a]">{t('medical.unknown')}</option>
+                <option value="">{t('medical.unknown')}</option>
                 {BLOOD_TYPES.filter(bt => bt !== 'Unknown').map((bt) => (
-                  <option key={bt} value={bt} className="bg-[#1a1a1a]">{bt}</option>
+                  <option key={bt} value={bt}>{bt}</option>
                 ))}
               </select>
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs text-gray-500 uppercase tracking-wider">
+              <label className="text-xs text-muted-foreground uppercase tracking-wider">
                 {t('medical.allergies')}
               </label>
               <TagInput
@@ -153,7 +153,7 @@ export const MedicalProfileView: React.FC = () => {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs text-gray-500 uppercase tracking-wider">
+              <label className="text-xs text-muted-foreground uppercase tracking-wider">
                 {t('medical.medications')}
               </label>
               <TagInput
@@ -164,7 +164,7 @@ export const MedicalProfileView: React.FC = () => {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs text-gray-500 uppercase tracking-wider">
+              <label className="text-xs text-muted-foreground uppercase tracking-wider">
                 {t('medical.conditions')}
               </label>
               <TagInput
@@ -175,14 +175,14 @@ export const MedicalProfileView: React.FC = () => {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs text-gray-500 uppercase tracking-wider">
+              <label className="text-xs text-muted-foreground uppercase tracking-wider">
                 {t('medical.emergencyNotes')}
               </label>
               <textarea
                 value={emergencyNotes}
                 onChange={(e) => setEmergencyNotes(e.target.value)}
                 rows={4}
-                className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500/40 resize-none"
+                className="bg-card border border-border rounded-xl px-4 py-2.5 text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-red-500/40 resize-none"
                 placeholder={t('medical.emergencyNotes')}
               />
             </div>

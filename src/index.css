@@ -4,48 +4,48 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 98%;
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 65%;
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 98%;
-    --border: 0 0% 18%;
-    --input: 0 0% 12%;
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 98%;
-    --primary: 0 85% 55%;
+    --background: 214 25% 95%;
+    --foreground: 215 45% 18%;
+    --muted: 214 20% 90%;
+    --muted-foreground: 215 15% 42%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 45% 18%;
+    --border: 214 20% 82%;
+    --input: 214 18% 88%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 45% 18%;
+    --primary: 355 78% 42%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 92%;
-    --accent: 0 75% 45%;
+    --secondary: 214 22% 88%;
+    --secondary-foreground: 215 35% 25%;
+    --accent: 215 55% 28%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 100% 50%;
     --destructive-foreground: 0 0% 100%;
-    --ring: 0 85% 55%;
+    --ring: 355 78% 42%;
     --radius: 1rem;
   }
 
   .dark {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 98%;
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 65%;
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 98%;
-    --border: 0 0% 18%;
-    --input: 0 0% 12%;
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 98%;
-    --primary: 0 85% 55%;
+    --background: 214 25% 95%;
+    --foreground: 215 45% 18%;
+    --muted: 214 20% 90%;
+    --muted-foreground: 215 15% 42%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 45% 18%;
+    --border: 214 20% 82%;
+    --input: 214 18% 88%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 45% 18%;
+    --primary: 355 78% 42%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 92%;
-    --accent: 0 75% 45%;
+    --secondary: 214 22% 88%;
+    --secondary-foreground: 215 35% 25%;
+    --accent: 215 55% 28%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 100% 50%;
     --destructive-foreground: 0 0% 100%;
-    --ring: 0 85% 55%;
+    --ring: 355 78% 42%;
   }
 }
 
@@ -87,21 +87,21 @@
 /* ── Thèmes dynamiques par plan ───────────────────────────────────────────── */
 .theme-free,
 .theme-free body {
-  --background:         0 0% 4%;
-  --foreground:         0 0% 98%;
-  --card:               0 0% 7%;
-  --card-foreground:    0 0% 98%;
-  --border:             0 0% 18%;
-  --input:              0 0% 12%;
-  --muted:              0 0% 10%;
-  --muted-foreground:   0 0% 65%;
-  --primary:            0 85% 55%;
+  --background:         214 25% 95%;
+  --foreground:         215 45% 18%;
+  --card:               0 0% 100%;
+  --card-foreground:    215 45% 18%;
+  --border:             214 20% 82%;
+  --input:              214 18% 88%;
+  --muted:              214 20% 90%;
+  --muted-foreground:   215 15% 42%;
+  --primary:            355 78% 42%;
   --primary-foreground: 0 0% 100%;
-  --accent:             0 75% 45%;
-  --nav-bg:             rgba(10,10,10,0.97);
-  --nav-border:         rgba(255,255,255,0.12);
-  background-color:     #0a0a0a;
-  color:                #fafafa;
+  --accent:             215 55% 28%;
+  --nav-bg:             rgba(240,244,248,0.97);
+  --nav-border:         rgba(26,46,74,0.12);
+  background-color:     #edf1f7;
+  color:                #1a2e4a;
 }
 
 /* ── PLAN PRO — Argent / Gris métal brossé ──────────────────────────────── */
@@ -190,16 +190,16 @@ body,
 }
 
 .btn-3d-green {
-  background: linear-gradient(180deg, #22c55e 0%, #15803d 100%);
+  background: linear-gradient(180deg, #2b5289 0%, #1e3a5f 100%);
   box-shadow:
-    0 5px 0 #14532d,
-    0 7px 16px rgba(34,197,94,0.3),
+    0 5px 0 #152d4a,
+    0 7px 16px rgba(30,58,95,0.4),
     inset 0 1px 0 rgba(255,255,255,0.2);
 }
 .btn-3d-green:active {
   box-shadow:
-    0 2px 0 #14532d,
-    0 3px 8px rgba(34,197,94,0.25),
+    0 2px 0 #152d4a,
+    0 3px 8px rgba(30,58,95,0.35),
     inset 0 1px 0 rgba(255,255,255,0.15);
 }
 
@@ -292,7 +292,7 @@ body,
 .genesis__spinner-container {
   position: fixed;
   inset: 0;
-  background: #000000;
+  background: #edf1f7;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -303,7 +303,7 @@ body,
   width: 20px;
   height: 20px;
   border: 1.5px solid transparent;
-  border-top: 1.5px solid rgba(255, 255, 255, 0.6);
+  border-top: 1.5px solid rgba(26, 46, 74, 0.6);
   border-radius: 50%;
   animation: genesis__spin 1s linear infinite;
 }

@@ -44,11 +44,11 @@ export function MeetingModeView() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white px-4 py-6 pb-24">
+    <div className="min-h-screen bg-background text-foreground px-4 py-6 pb-24">
       <div className="max-w-md mx-auto space-y-6">
         <button
           onClick={() => setView('settings')}
-          className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+          className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft size={20} />
           <span>{t('common.back')}</span>
@@ -60,14 +60,14 @@ export function MeetingModeView() {
           </div>
           <div>
             <h1 className="text-xl font-bold">{t('meeting.title')}</h1>
-            <p className="text-sm text-gray-400">{t('meeting.description')}</p>
+            <p className="text-sm text-muted-foreground">{t('meeting.description')}</p>
           </div>
         </div>
 
         {!isPro ? (
-          <div className="bg-gray-800/60 border border-gray-700 rounded-2xl p-6 text-center space-y-4">
-            <Lock size={40} className="text-gray-500 mx-auto" />
-            <p className="text-gray-400">{t('meeting.proOnly')}</p>
+          <div className="bg-card border border-border rounded-2xl p-6 text-center space-y-4">
+            <Lock size={40} className="text-muted-foreground mx-auto" />
+            <p className="text-muted-foreground">{t('meeting.proOnly')}</p>
             <button
               onClick={() => setView('upgrade')}
               className="px-6 py-2 bg-yellow-500 text-black font-semibold rounded-xl hover:bg-yellow-400 transition-colors"
@@ -78,9 +78,9 @@ export function MeetingModeView() {
         ) : (
           <>
             {meetingMode.active && (
-              <div className="flex items-center gap-2 bg-red-900/30 border border-red-500/40 rounded-xl px-4 py-3">
-                <AlertTriangle size={18} className="text-red-400" />
-                <span className="text-red-300 font-semibold text-sm">{t('meeting.active')}</span>
+              <div className="flex items-center gap-2 bg-red-100 border border-red-300 rounded-xl px-4 py-3">
+                <AlertTriangle size={18} className="text-red-600" />
+                <span className="text-red-700 font-semibold text-sm">{t('meeting.active')}</span>
               </div>
             )}
 
@@ -94,7 +94,7 @@ export function MeetingModeView() {
             ) : (
               <div className="space-y-4">
                 <div className="space-y-1">
-                  <label className="text-sm text-gray-400 flex items-center gap-2">
+                  <label className="text-sm text-muted-foreground flex items-center gap-2">
                     <Users size={14} />
                     {t('meeting.personName')}
                   </label>
@@ -102,12 +102,12 @@ export function MeetingModeView() {
                     type="text"
                     value={personName}
                     onChange={(e) => setPersonName(e.target.value)}
-                    className="w-full bg-gray-800/60 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:border-purple-500 focus:outline-none transition-colors"
+                    className="w-full bg-card border border-border rounded-xl px-4 py-3 text-foreground placeholder-muted-foreground focus:border-purple-500 focus:outline-none transition-colors"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-sm text-gray-400 flex items-center gap-2">
+                  <label className="text-sm text-muted-foreground flex items-center gap-2">
                     <Phone size={14} />
                     {t('meeting.personPhone')}
                   </label>
@@ -115,12 +115,12 @@ export function MeetingModeView() {
                     type="text"
                     value={personPhone}
                     onChange={(e) => setPersonPhone(e.target.value)}
-                    className="w-full bg-gray-800/60 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:border-purple-500 focus:outline-none transition-colors"
+                    className="w-full bg-card border border-border rounded-xl px-4 py-3 text-foreground placeholder-muted-foreground focus:border-purple-500 focus:outline-none transition-colors"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-sm text-gray-400 flex items-center gap-2">
+                  <label className="text-sm text-muted-foreground flex items-center gap-2">
                     <MapPin size={14} />
                     {t('meeting.location')}
                   </label>
@@ -128,12 +128,12 @@ export function MeetingModeView() {
                     type="text"
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
-                    className="w-full bg-gray-800/60 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:border-purple-500 focus:outline-none transition-colors"
+                    className="w-full bg-card border border-border rounded-xl px-4 py-3 text-foreground placeholder-muted-foreground focus:border-purple-500 focus:outline-none transition-colors"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-sm text-gray-400 flex items-center gap-2">
+                  <label className="text-sm text-muted-foreground flex items-center gap-2">
                     <Calendar size={14} />
                     {t('meeting.dateTime')}
                   </label>
@@ -141,12 +141,12 @@ export function MeetingModeView() {
                     type="datetime-local"
                     value={dateTime}
                     onChange={(e) => setDateTime(e.target.value)}
-                    className="w-full bg-gray-800/60 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:border-purple-500 focus:outline-none transition-colors"
+                    className="w-full bg-card border border-border rounded-xl px-4 py-3 text-foreground placeholder-muted-foreground focus:border-purple-500 focus:outline-none transition-colors"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-sm text-gray-400 flex items-center gap-2">
+                  <label className="text-sm text-muted-foreground flex items-center gap-2">
                     <AlertTriangle size={14} />
                     {t('meeting.notes')}
                   </label>
@@ -155,7 +155,7 @@ export function MeetingModeView() {
                     onChange={(e) => setNotes(e.target.value)}
                     rows={3}
                     placeholder={t('meeting.notes')}
-                    className="w-full bg-gray-800/60 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:border-purple-500 focus:outline-none transition-colors resize-none"
+                    className="w-full bg-card border border-border rounded-xl px-4 py-3 text-foreground placeholder-muted-foreground focus:border-purple-500 focus:outline-none transition-colors resize-none"
                   />
                 </div>
 

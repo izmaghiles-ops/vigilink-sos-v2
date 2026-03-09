@@ -53,8 +53,8 @@ function CurrencySelector({ currency, onChange }: { currency: CurrencyCode; onCh
   return (
     <div className="flex flex-col items-center gap-2">
       <div className="flex items-center gap-1.5">
-        <DollarSign size={13} className="text-gray-500" />
-        <span className="text-sm font-bold text-gray-400 uppercase tracking-wider">{t('upgrade.chooseCurrency')}</span>
+        <DollarSign size={13} className="text-muted-foreground" />
+        <span className="text-sm font-bold text-muted-foreground uppercase tracking-wider">{t('upgrade.chooseCurrency')}</span>
       </div>
       <div className="flex items-center gap-2">
         {CURRENCIES.map(c => (
@@ -68,8 +68,8 @@ function CurrencySelector({ currency, onChange }: { currency: CurrencyCode; onCh
             className={[
               'flex items-center gap-1.5 px-3 py-2 rounded-xl border text-sm font-bold transition-all',
               currency === c.code
-                ? 'border-yellow-500/50 bg-yellow-950/30 text-yellow-400'
-                : 'border-white/10 bg-white/5 text-gray-500 hover:border-white/20',
+                ? 'border-yellow-400 bg-yellow-50 text-yellow-700'
+                : 'border-border bg-card text-muted-foreground hover:border-muted-foreground',
             ].join(' ')}
           >
             <span>{c.flag}</span>
@@ -78,7 +78,7 @@ function CurrencySelector({ currency, onChange }: { currency: CurrencyCode; onCh
         ))}
       </div>
       {currency === 'cad' && (
-        <span className="text-sm text-gray-600 text-center">
+        <span className="text-sm text-muted-foreground text-center">
           {t('upgrade.taxNotice')}
         </span>
       )}
@@ -88,7 +88,7 @@ function CurrencySelector({ currency, onChange }: { currency: CurrencyCode; onCh
 
 function BadgePaiement({ label }: { label: string }) {
   return (
-    <span className="px-2.5 py-1 rounded-lg border border-white/10 bg-white/5 text-sm font-bold text-gray-500 uppercase tracking-wider">
+    <span className="px-2.5 py-1 rounded-lg border border-border bg-card text-sm font-bold text-muted-foreground uppercase tracking-wider">
       {label}
     </span>
   );
@@ -100,18 +100,18 @@ function LigneFeature({ libelle, inclus, couleur }: {
   couleur: 'gray' | 'yellow' | 'purple';
 }) {
   const couleurCheck = couleur === 'purple'
-    ? 'text-purple-400'
+    ? 'text-purple-600'
     : couleur === 'yellow'
-      ? 'text-yellow-400'
+      ? 'text-yellow-600'
       : 'text-green-600';
 
   return (
     <div className="flex items-start gap-1.5">
       {inclus
         ? <Check size={10} className={`${couleurCheck} shrink-0 mt-0.5`} />
-        : <X     size={10} className="text-gray-800 shrink-0 mt-0.5" />
+        : <X     size={10} className="text-muted-foreground/50 shrink-0 mt-0.5" />
       }
-      <span className={`text-sm leading-tight ${inclus ? 'text-gray-300' : 'text-gray-700'}`}>
+      <span className={`text-sm leading-tight ${inclus ? 'text-foreground' : 'text-muted-foreground'}`}>
         {libelle}
       </span>
     </div>
@@ -158,21 +158,21 @@ function BanniereRetourCheckout({
     <motion.div
       className={[
         'rounded-2xl border p-4 flex items-start gap-3',
-        ok ? 'border-green-500/30 bg-green-950/25' : 'border-orange-500/30 bg-orange-950/20',
+        ok ? 'border-green-300 bg-green-50' : 'border-orange-300 bg-orange-50',
       ].join(' ')}
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -8 }}
     >
       {ok
-        ? <CheckCircle size={16} className="text-green-400 shrink-0 mt-0.5" />
-        : <XCircle     size={16} className="text-orange-400 shrink-0 mt-0.5" />
+        ? <CheckCircle size={16} className="text-green-600 shrink-0 mt-0.5" />
+        : <XCircle     size={16} className="text-orange-600 shrink-0 mt-0.5" />
       }
       <div className="flex flex-col gap-0.5">
-        <span className={`text-xs font-bold ${ok ? 'text-green-300' : 'text-orange-300'}`}>
+        <span className={`text-xs font-bold ${ok ? 'text-green-700' : 'text-orange-700'}`}>
           {ok ? t('upgrade.paymentConfirmed') : t('upgrade.paymentCancelled')}
         </span>
-        <span className="text-sm text-gray-500 leading-relaxed">
+        <span className="text-sm text-muted-foreground leading-relaxed">
           {ok ? t('upgrade.paymentConfirmedDesc') : t('upgrade.paymentCancelledDesc')}
         </span>
       </div>
@@ -201,25 +201,25 @@ function ColonneGratuit({ onGratuit, estAdmin, currentPlan }: { onGratuit?: () =
 
   return (
     <motion.div
-      className={`flex flex-col gap-3 rounded-2xl border ${estActuel && estAdmin ? 'border-green-500/40 bg-green-950/15' : 'border-white/10 bg-white/4'} p-4 min-w-[140px] flex-1`}
+      className={`flex flex-col gap-3 rounded-2xl border ${estActuel && estAdmin ? 'border-green-300 bg-green-50' : 'border-border bg-card'} p-4 min-w-[140px] flex-1`}
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0 }}
     >
       {estActuel && estAdmin && (
-        <span className="text-xs font-black text-green-400 uppercase tracking-wider text-center">{t('upgrade.currentPlan')}</span>
+        <span className="text-xs font-black text-green-600 uppercase tracking-wider text-center">{t('upgrade.currentPlan')}</span>
       )}
       <div className="flex flex-col gap-0.5">
-        <span className="text-sm font-black text-gray-500 uppercase tracking-widest">
+        <span className="text-sm font-black text-muted-foreground uppercase tracking-widest">
           {t('upgrade.freePlan.name')}
         </span>
         <div className="flex items-baseline gap-1">
-          <span className="text-xl font-black text-gray-400">{t('upgrade.freePlan.price')}</span>
+          <span className="text-xl font-black text-foreground">{t('upgrade.freePlan.price')}</span>
         </div>
-        <span className="text-sm text-gray-700 mt-0.5">{t('upgrade.basicAccess')}</span>
+        <span className="text-sm text-muted-foreground mt-0.5">{t('upgrade.basicAccess')}</span>
       </div>
 
-      <div className="h-px bg-white/6" />
+      <div className="h-px bg-border" />
 
       <div className="flex flex-col gap-2 flex-1">
         {fonctionnalites.map(({ cle, libelle, inclus }) => (
@@ -228,7 +228,7 @@ function ColonneGratuit({ onGratuit, estAdmin, currentPlan }: { onGratuit?: () =
       </div>
 
       <button
-        className={`w-full mt-2 py-2.5 px-3 rounded-xl border text-sm font-bold transition-all ${estActuel && estAdmin ? 'border-green-500/30 bg-green-500/10 text-green-400' : 'border-white/10 bg-white/5 text-gray-500 hover:border-white/20 hover:text-gray-400'}`}
+        className={`w-full mt-2 py-2.5 px-3 rounded-xl border text-sm font-bold transition-all ${estActuel && estAdmin ? 'border-green-300 bg-green-50 text-green-600' : 'border-border bg-card text-muted-foreground hover:border-muted-foreground hover:text-foreground'}`}
         onClick={() => { if (onGratuit) onGratuit(); }}
       >
         {estActuel && estAdmin ? t('upgrade.activePlan') : estAdmin ? t('upgrade.switchToFree') : t('upgrade.stayFree')}
@@ -280,24 +280,24 @@ function ColonnePro({
 
   return (
     <motion.div
-      className={`flex flex-col gap-3 rounded-2xl border ${estActuel && estAdmin ? 'border-green-500/40 bg-green-950/15' : 'border-yellow-500/30 bg-yellow-950/15'} p-4 min-w-[140px] flex-1 relative`}
+      className={`flex flex-col gap-3 rounded-2xl border ${estActuel && estAdmin ? 'border-green-300 bg-green-50' : 'border-yellow-300 bg-yellow-50'} p-4 min-w-[140px] flex-1 relative`}
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.08 }}
     >
       <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-        <span className="px-2.5 py-1 rounded-full bg-yellow-500/20 border border-yellow-500/40 text-xs font-black text-yellow-400 uppercase tracking-wider whitespace-nowrap">
+        <span className="px-2.5 py-1 rounded-full bg-yellow-100 border border-yellow-300 text-xs font-black text-yellow-700 uppercase tracking-wider whitespace-nowrap">
           {t('upgrade.trial24h')}
         </span>
       </div>
 
       <div className="flex flex-col gap-0.5 mt-1">
-        <span className="text-sm font-black text-yellow-500 uppercase tracking-widest">
+        <span className="text-sm font-black text-yellow-600 uppercase tracking-widest">
           {t('upgrade.proPlan.name')}
         </span>
         <div className="flex items-baseline gap-1">
-          <span className="text-xl font-black text-white">{t('upgrade.proPlan.price')}</span>
-          <span className="text-sm text-gray-600">{t('upgrade.proPlan.period')}</span>
+          <span className="text-xl font-black text-foreground">{t('upgrade.proPlan.price')}</span>
+          <span className="text-sm text-muted-foreground">{t('upgrade.proPlan.period')}</span>
         </div>
         <div className="flex items-center gap-1 mt-1">
           <IconeHorloge plan="pro" />
@@ -307,7 +307,7 @@ function ColonnePro({
         </div>
       </div>
 
-      <div className="h-px bg-yellow-500/15" />
+      <div className="h-px bg-yellow-200" />
 
       <div className="flex flex-col gap-2 flex-1">
         {fonctionnalites.map(({ cle, libelle, inclus }) => (
@@ -318,7 +318,7 @@ function ColonnePro({
       {estAdmin ? (
         <motion.button
           onClick={onEssai}
-          className={`w-full mt-2 py-2.5 px-3 rounded-xl font-black text-sm transition-all ${estActuel ? 'bg-green-500/20 border border-green-500/30 text-green-400' : 'bg-gradient-to-r from-yellow-600 to-yellow-500 text-white shadow-lg shadow-yellow-900/40 hover:brightness-110'}`}
+          className={`w-full mt-2 py-2.5 px-3 rounded-xl font-black text-sm transition-all ${estActuel ? 'bg-green-50 border border-green-300 text-green-600' : 'bg-gradient-to-r from-yellow-600 to-yellow-500 text-white shadow-lg shadow-yellow-200/40 hover:brightness-110'}`}
           whileTap={{ scale: 0.97 }}
         >
           {estActuel ? t('upgrade.activePlan') : t('upgrade.activatePro')}
@@ -332,8 +332,8 @@ function ColonnePro({
               'relative w-full flex items-center justify-center gap-1.5 mt-2',
               'py-2.5 px-3 rounded-xl font-black text-sm overflow-hidden select-none',
               chargementEssai
-                ? 'bg-sky-900/40 text-sky-300/50 cursor-wait'
-                : 'bg-gradient-to-r from-sky-600 via-indigo-500 to-sky-600 text-white shadow-lg shadow-sky-900/40 hover:brightness-110 transition-all',
+                ? 'bg-sky-200 text-sky-600 cursor-wait'
+                : 'bg-gradient-to-r from-sky-600 via-indigo-500 to-sky-600 text-white shadow-lg shadow-sky-200/40 hover:brightness-110 transition-all',
             ].join(' ')}
             whileTap={enChargement ? {} : { scale: 0.97 }}
           >
@@ -357,8 +357,8 @@ function ColonnePro({
               'w-full flex items-center justify-center gap-1.5',
               'py-2 px-3 rounded-xl font-bold text-sm border transition-all',
               chargementAbonnement
-                ? 'border-yellow-800/30 text-yellow-800 cursor-wait'
-                : 'border-yellow-500/25 text-yellow-500 hover:border-yellow-400/50 hover:bg-yellow-950/20',
+                ? 'border-yellow-300 text-yellow-600 cursor-wait'
+                : 'border-yellow-400 text-yellow-600 hover:border-yellow-500 hover:bg-yellow-50',
             ].join(' ')}
             whileTap={enChargement ? {} : { scale: 0.98 }}
           >
@@ -404,24 +404,24 @@ function ColonnePlatinum({ onPlatinum, estAdmin, currentPlan }: { onPlatinum: ()
 
   return (
     <motion.div
-      className={`flex flex-col gap-3 rounded-2xl border ${estActuel && estAdmin ? 'border-green-500/40 bg-green-950/15' : 'border-purple-500/35 bg-purple-950/20'} p-4 min-w-[140px] flex-1 relative`}
+      className={`flex flex-col gap-3 rounded-2xl border ${estActuel && estAdmin ? 'border-green-300 bg-green-50' : 'border-purple-300 bg-purple-50'} p-4 min-w-[140px] flex-1 relative`}
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.16 }}
     >
       <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-        <span className="px-2.5 py-1 rounded-full bg-purple-500/20 border border-purple-500/40 text-xs font-black text-purple-300 uppercase tracking-wider whitespace-nowrap">
+        <span className="px-2.5 py-1 rounded-full bg-purple-100 border border-purple-300 text-xs font-black text-purple-600 uppercase tracking-wider whitespace-nowrap">
           {t('upgrade.platinumPlan.name')}
         </span>
       </div>
 
       <div className="flex flex-col gap-0.5 mt-1">
-        <span className="text-sm font-black text-purple-400 uppercase tracking-widest">
+        <span className="text-sm font-black text-purple-600 uppercase tracking-widest">
           {t('upgrade.platinumPlan.name')}
         </span>
         <div className="flex items-baseline gap-1">
-          <span className="text-xl font-black text-white">{t('upgrade.platinumPlan.price')}</span>
-          <span className="text-sm text-gray-600">{t('upgrade.platinumPlan.period')}</span>
+          <span className="text-xl font-black text-foreground">{t('upgrade.platinumPlan.price')}</span>
+          <span className="text-sm text-muted-foreground">{t('upgrade.platinumPlan.period')}</span>
         </div>
         <div className="flex items-center gap-1 mt-1">
           <IconeHorloge plan="platinum" />
@@ -431,7 +431,7 @@ function ColonnePlatinum({ onPlatinum, estAdmin, currentPlan }: { onPlatinum: ()
         </div>
       </div>
 
-      <div className="h-px bg-purple-500/15" />
+      <div className="h-px bg-purple-200" />
 
       <div className="flex flex-col gap-2 flex-1">
         {fonctionnalites.map(({ cle, libelle, inclus }) => (
@@ -441,7 +441,7 @@ function ColonnePlatinum({ onPlatinum, estAdmin, currentPlan }: { onPlatinum: ()
 
       <motion.button
         onClick={onPlatinum}
-        className={`relative w-full flex items-center justify-center gap-1.5 mt-1 py-2.5 px-3 rounded-xl font-black text-sm overflow-hidden select-none transition-all ${estActuel && estAdmin ? 'bg-green-500/20 border border-green-500/30 text-green-400' : 'bg-gradient-to-r from-purple-700 via-violet-600 to-purple-700 text-white shadow-lg shadow-purple-900/40 hover:brightness-110'}`}
+        className={`relative w-full flex items-center justify-center gap-1.5 mt-1 py-2.5 px-3 rounded-xl font-black text-sm overflow-hidden select-none transition-all ${estActuel && estAdmin ? 'bg-green-50 border border-green-300 text-green-600' : 'bg-gradient-to-r from-purple-700 via-violet-600 to-purple-700 text-white shadow-lg shadow-purple-200/40 hover:brightness-110'}`}
         whileTap={{ scale: 0.97 }}
       >
         <Star size={11} className="shrink-0" />
@@ -697,10 +697,10 @@ export const UpgradeView: React.FC = () => {
           transition={{ duration: 0.35 }}
         >
           <div className="flex items-center gap-2">
-            <Crown size={20} className="text-yellow-400" />
-            <h2 className="text-xl font-black text-white tracking-tight">{t('upgrade.chooseProtection')}</h2>
+            <Crown size={20} className="text-yellow-500" />
+            <h2 className="text-xl font-black text-foreground tracking-tight">{t('upgrade.chooseProtection')}</h2>
           </div>
-          <p className="text-sm text-gray-500 text-center leading-relaxed max-w-[300px]">
+          <p className="text-sm text-muted-foreground text-center leading-relaxed max-w-[300px]">
             {t('upgrade.chooseProtectionDesc')}
           </p>
         </motion.div>
@@ -716,19 +716,19 @@ export const UpgradeView: React.FC = () => {
 
         {IS_DEV && (
           <motion.div
-            className="flex items-center gap-2.5 rounded-xl border border-yellow-500/25 bg-yellow-950/20 px-3 py-2.5"
+            className="flex items-center gap-2.5 rounded-xl border border-yellow-300 bg-yellow-50 px-3 py-2.5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <FlaskConical size={13} className="text-yellow-400 shrink-0" />
+            <FlaskConical size={13} className="text-yellow-600 shrink-0" />
             <div className="flex flex-col gap-0.5">
-              <span className="text-sm font-black text-yellow-400 uppercase tracking-wider">
+              <span className="text-sm font-black text-yellow-700 uppercase tracking-wider">
                 {t('upgrade.testMode')}
               </span>
               <span className="text-sm text-yellow-600 leading-relaxed">
                 {t('upgrade.testModeDesc')}
-                {' '}<span className="font-mono text-yellow-500">4242 4242 4242 4242</span>
+                {' '}<span className="font-mono text-yellow-700">4242 4242 4242 4242</span>
               </span>
             </div>
           </motion.div>
@@ -736,12 +736,12 @@ export const UpgradeView: React.FC = () => {
 
         {estAdmin && (
           <motion.div
-            className="flex items-center justify-center gap-2 py-3 rounded-2xl border border-red-500/30 bg-red-950/15"
+            className="flex items-center justify-center gap-2 py-3 rounded-2xl border border-red-300 bg-red-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <Crown size={14} className="text-red-400" />
-            <span className="text-sm font-black text-red-400 uppercase tracking-wider">
+            <Crown size={14} className="text-red-600" />
+            <span className="text-sm font-black text-red-600 uppercase tracking-wider">
               {t('upgrade.adminMode')}
             </span>
           </motion.div>
@@ -755,8 +755,8 @@ export const UpgradeView: React.FC = () => {
             <div className={[
               'flex items-center justify-center gap-2.5 py-4 rounded-2xl border font-black text-sm',
               isPlatinum
-                ? 'border-yellow-500/30 bg-yellow-950/20 text-yellow-400'
-                : 'border-green-500/30 bg-green-950/20 text-green-400',
+                ? 'border-yellow-300 bg-yellow-50 text-yellow-700'
+                : 'border-green-300 bg-green-50 text-green-600',
             ].join(' ')}>
               <Crown size={16} />
               {isPlatinum ? t('upgrade.platinumActive') : t('upgrade.proActive')}
@@ -764,33 +764,33 @@ export const UpgradeView: React.FC = () => {
 
             <AnimatePresence>
               {manageMessage && (
-                <motion.div className="flex items-center gap-2.5 px-4 py-3 rounded-xl border border-green-500/30 bg-green-950/20"
+                <motion.div className="flex items-center gap-2.5 px-4 py-3 rounded-xl border border-green-300 bg-green-50"
                   initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-                  <CheckCircle size={14} className="text-green-400 shrink-0" />
-                  <span className="text-xs text-green-300 font-bold">{manageMessage}</span>
+                  <CheckCircle size={14} className="text-green-600 shrink-0" />
+                  <span className="text-xs text-green-700 font-bold">{manageMessage}</span>
                 </motion.div>
               )}
             </AnimatePresence>
 
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 flex flex-col gap-3">
+            <div className="rounded-2xl border border-border bg-card p-4 flex flex-col gap-3">
               <div className="flex items-center gap-2">
-                <Settings size={14} className="text-gray-400" />
-                <span className="text-xs font-bold text-gray-300 uppercase tracking-wider">{t('upgrade.manageSubscription')}</span>
+                <Settings size={14} className="text-muted-foreground" />
+                <span className="text-xs font-bold text-foreground uppercase tracking-wider">{t('upgrade.manageSubscription')}</span>
               </div>
-              <p className="text-xs text-gray-500 leading-relaxed">{t('upgrade.manageSubscriptionDesc')}</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">{t('upgrade.manageSubscriptionDesc')}</p>
 
               <div className="flex flex-col gap-2">
                 {isPlatinum && (
                   <motion.button whileTap={{ scale: 0.98 }}
                     onClick={() => setShowDowngradeConfirm(true)}
-                    className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-yellow-500/25 bg-yellow-950/15 text-yellow-400 font-bold text-xs hover:bg-yellow-950/30 transition-all">
+                    className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-yellow-300 bg-yellow-50 text-yellow-700 font-bold text-xs hover:bg-yellow-100 transition-all">
                     <ArrowDownCircle size={14} /> {t('upgrade.downgradeToProTitle')}
                   </motion.button>
                 )}
 
                 <motion.button whileTap={{ scale: 0.98 }}
                   onClick={() => setShowCancelConfirm(true)}
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-red-500/25 bg-red-950/15 text-red-400 font-bold text-xs hover:bg-red-950/30 transition-all">
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-red-300 bg-red-50 text-red-600 font-bold text-xs hover:bg-red-100 transition-all">
                   <XOctagon size={14} /> {t('upgrade.cancelSubscription')}
                 </motion.button>
               </div>
@@ -798,20 +798,20 @@ export const UpgradeView: React.FC = () => {
 
             <AnimatePresence>
               {showDowngradeConfirm && (
-                <motion.div className="rounded-2xl border border-yellow-500/30 bg-yellow-950/20 p-4 flex flex-col gap-3"
+                <motion.div className="rounded-2xl border border-yellow-300 bg-yellow-50 p-4 flex flex-col gap-3"
                   initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
                   <div className="flex items-center gap-2">
-                    <AlertTriangle size={14} className="text-yellow-400 shrink-0" />
-                    <span className="text-xs font-bold text-yellow-300">{t('upgrade.downgradeToProTitle')}</span>
+                    <AlertTriangle size={14} className="text-yellow-600 shrink-0" />
+                    <span className="text-xs font-bold text-yellow-700">{t('upgrade.downgradeToProTitle')}</span>
                   </div>
-                  <p className="text-xs text-yellow-200/60 leading-relaxed">{t('upgrade.downgradeToProDesc')}</p>
+                  <p className="text-xs text-yellow-600 leading-relaxed">{t('upgrade.downgradeToProDesc')}</p>
                   <div className="flex gap-2">
                     <button onClick={handleDowngrade}
                       className="flex-1 py-2.5 rounded-xl bg-yellow-600 text-white text-xs font-bold hover:bg-yellow-500 transition-colors">
                       {t('common.confirm')}
                     </button>
                     <button onClick={() => setShowDowngradeConfirm(false)}
-                      className="flex-1 py-2.5 rounded-xl bg-white/10 text-gray-400 text-xs font-bold hover:bg-white/15 transition-colors">
+                      className="flex-1 py-2.5 rounded-xl bg-muted text-muted-foreground text-xs font-bold hover:bg-muted/80 transition-colors">
                       {t('common.cancel')}
                     </button>
                   </div>
@@ -821,20 +821,20 @@ export const UpgradeView: React.FC = () => {
 
             <AnimatePresence>
               {showCancelConfirm && (
-                <motion.div className="rounded-2xl border border-red-500/30 bg-red-950/20 p-4 flex flex-col gap-3"
+                <motion.div className="rounded-2xl border border-red-300 bg-red-50 p-4 flex flex-col gap-3"
                   initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}>
                   <div className="flex items-center gap-2">
-                    <AlertTriangle size={14} className="text-red-400 shrink-0" />
-                    <span className="text-xs font-bold text-red-300">{t('upgrade.cancelSubscription')}</span>
+                    <AlertTriangle size={14} className="text-red-600 shrink-0" />
+                    <span className="text-xs font-bold text-red-700">{t('upgrade.cancelSubscription')}</span>
                   </div>
-                  <p className="text-xs text-red-200/60 leading-relaxed">{t('upgrade.cancelConfirm')}</p>
+                  <p className="text-xs text-red-600 leading-relaxed">{t('upgrade.cancelConfirm')}</p>
                   <div className="flex gap-2">
                     <button onClick={handleCancel}
                       className="flex-1 py-2.5 rounded-xl bg-red-600 text-white text-xs font-bold hover:bg-red-500 transition-colors">
                       {t('common.confirm')}
                     </button>
                     <button onClick={() => setShowCancelConfirm(false)}
-                      className="flex-1 py-2.5 rounded-xl bg-white/10 text-gray-400 text-xs font-bold hover:bg-white/15 transition-colors">
+                      className="flex-1 py-2.5 rounded-xl bg-muted text-muted-foreground text-xs font-bold hover:bg-muted/80 transition-colors">
                       {t('common.cancel')}
                     </button>
                   </div>
@@ -849,7 +849,7 @@ export const UpgradeView: React.FC = () => {
             whileTap={{ scale: 0.97 }}
             onClick={handleRestore}
             disabled={restoring}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-blue-500/25 bg-blue-950/15 text-blue-400 font-bold text-xs hover:bg-blue-950/30 transition-all disabled:opacity-50"
+            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-blue-300 bg-blue-50 text-blue-600 font-bold text-xs hover:bg-blue-100 transition-all disabled:opacity-50"
           >
             {restoring ? <Loader2 size={14} className="animate-spin" /> : <RefreshCw size={14} />}
             {t('upgrade.restorePurchase')}
@@ -878,34 +878,34 @@ export const UpgradeView: React.FC = () => {
         )}
 
         {(!isPlatinum || estAdmin) && currency === 'cad' && (
-          <div className="rounded-2xl border border-blue-500/20 bg-blue-950/10 p-3 flex flex-col gap-2">
-            <span className="text-sm font-bold text-blue-400 uppercase tracking-wider">{t('upgrade.taxSummary')}</span>
+          <div className="rounded-2xl border border-blue-300 bg-blue-50 p-3 flex flex-col gap-2">
+            <span className="text-sm font-bold text-blue-600 uppercase tracking-wider">{t('upgrade.taxSummary')}</span>
             <div className="grid grid-cols-2 gap-y-1.5 text-sm">
-              <span className="text-gray-400">PRO</span>
-              <span className="text-gray-300 text-right">{formatPrice(9.99, 'cad')}</span>
-              <span className="text-gray-500 pl-2">+ TPS (5%)</span>
-              <span className="text-gray-400 text-right">{formatPrice(9.99 * TPS_RATE, 'cad')}</span>
-              <span className="text-gray-500 pl-2">+ TVQ (9.975%)</span>
-              <span className="text-gray-400 text-right">{formatPrice(9.99 * TVQ_RATE, 'cad')}</span>
-              <span className="text-blue-300 font-bold">{t('upgrade.totalPro')}</span>
-              <span className="text-blue-300 font-bold text-right">{formatPrice(9.99 * (1 + TPS_RATE + TVQ_RATE), 'cad')}{t('upgrade.perMonth')}</span>
+              <span className="text-foreground">PRO</span>
+              <span className="text-foreground text-right">{formatPrice(9.99, 'cad')}</span>
+              <span className="text-muted-foreground pl-2">+ TPS (5%)</span>
+              <span className="text-muted-foreground text-right">{formatPrice(9.99 * TPS_RATE, 'cad')}</span>
+              <span className="text-muted-foreground pl-2">+ TVQ (9.975%)</span>
+              <span className="text-muted-foreground text-right">{formatPrice(9.99 * TVQ_RATE, 'cad')}</span>
+              <span className="text-blue-700 font-bold">{t('upgrade.totalPro')}</span>
+              <span className="text-blue-700 font-bold text-right">{formatPrice(9.99 * (1 + TPS_RATE + TVQ_RATE), 'cad')}{t('upgrade.perMonth')}</span>
 
-              <div className="col-span-2 h-px bg-blue-500/10 my-1" />
+              <div className="col-span-2 h-px bg-blue-200 my-1" />
 
-              <span className="text-gray-400">PLATINUM</span>
-              <span className="text-gray-300 text-right">{formatPrice(19.99, 'cad')}</span>
-              <span className="text-gray-500 pl-2">+ TPS (5%)</span>
-              <span className="text-gray-400 text-right">{formatPrice(19.99 * TPS_RATE, 'cad')}</span>
-              <span className="text-gray-500 pl-2">+ TVQ (9.975%)</span>
-              <span className="text-gray-400 text-right">{formatPrice(19.99 * TVQ_RATE, 'cad')}</span>
-              <span className="text-purple-300 font-bold">{t('upgrade.totalPlatinum')}</span>
-              <span className="text-purple-300 font-bold text-right">{formatPrice(19.99 * (1 + TPS_RATE + TVQ_RATE), 'cad')}{t('upgrade.perMonth')}</span>
+              <span className="text-foreground">PLATINUM</span>
+              <span className="text-foreground text-right">{formatPrice(19.99, 'cad')}</span>
+              <span className="text-muted-foreground pl-2">+ TPS (5%)</span>
+              <span className="text-muted-foreground text-right">{formatPrice(19.99 * TPS_RATE, 'cad')}</span>
+              <span className="text-muted-foreground pl-2">+ TVQ (9.975%)</span>
+              <span className="text-muted-foreground text-right">{formatPrice(19.99 * TVQ_RATE, 'cad')}</span>
+              <span className="text-purple-700 font-bold">{t('upgrade.totalPlatinum')}</span>
+              <span className="text-purple-700 font-bold text-right">{formatPrice(19.99 * (1 + TPS_RATE + TVQ_RATE), 'cad')}{t('upgrade.perMonth')}</span>
             </div>
           </div>
         )}
 
         {!estActif && !estAdmin && (
-          <p className="text-sm text-gray-600 text-center leading-relaxed px-2">
+          <p className="text-sm text-muted-foreground text-center leading-relaxed px-2">
             {t('upgrade.proTrialInfo')}
           </p>
         )}
@@ -919,7 +919,7 @@ export const UpgradeView: React.FC = () => {
         )}
 
         {!estActif && !estAdmin && (
-          <div className="rounded-2xl border border-white/5 bg-white/3 p-4 flex flex-col gap-3">
+          <div className="rounded-2xl border border-border bg-card p-4 flex flex-col gap-3">
             <div className="grid grid-cols-3 gap-2">
               {[
                 { icone: <Lock size={13} />,      texte: t('upgrade.ssl') },
@@ -927,24 +927,24 @@ export const UpgradeView: React.FC = () => {
                 { icone: <RefreshCw size={13} />, texte: t('upgrade.noCommitment') },
               ].map(({ icone, texte }) => (
                 <div key={texte} className="flex flex-col items-center gap-1.5 text-center">
-                  <span className="text-gray-600">{icone}</span>
-                  <span className="text-sm text-gray-600 leading-tight whitespace-pre-line">{texte}</span>
+                  <span className="text-muted-foreground">{icone}</span>
+                  <span className="text-sm text-muted-foreground leading-tight whitespace-pre-line">{texte}</span>
                 </div>
               ))}
             </div>
-            <p className="text-sm text-gray-700 text-center leading-relaxed pt-2 border-t border-white/5">
+            <p className="text-sm text-muted-foreground text-center leading-relaxed pt-2 border-t border-border">
               {t('upgrade.stripeDisclaimer')}
             </p>
           </div>
         )}
 
         {!estActif && import.meta.env?.DEV && (
-          <div className="rounded-xl border border-blue-500/20 bg-blue-950/15 p-3 flex flex-col gap-1">
-            <span className="text-sm font-bold text-blue-400 uppercase tracking-widest">
+          <div className="rounded-xl border border-blue-300 bg-blue-50 p-3 flex flex-col gap-1">
+            <span className="text-sm font-bold text-blue-600 uppercase tracking-widest">
               {t('upgrade.testCard')}
             </span>
-            <span className="text-sm text-blue-300/70 font-mono">4242 4242 4242 4242</span>
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-blue-700 font-mono">4242 4242 4242 4242</span>
+            <span className="text-sm text-muted-foreground">
               {t('upgrade.testCardDate')}
             </span>
           </div>

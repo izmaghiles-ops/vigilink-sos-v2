@@ -49,11 +49,11 @@ const StatusBanner: React.FC<{ status: SendStatus }> = ({ status }) => {
   if (status === 'sending') {
     return (
       <motion.div
-        className="flex items-center justify-center gap-3 w-full rounded-2xl border border-white/10 bg-white/5 py-4 px-5 text-lg text-gray-300"
+        className="flex items-center justify-center gap-3 w-full rounded-2xl border border-border bg-card py-4 px-5 text-lg text-foreground"
         animate={{ opacity: [0.4, 1, 0.4] }}
         transition={{ repeat: Infinity, duration: 1.2 }}
       >
-        <span className="w-2.5 h-2.5 rounded-full bg-gray-400 animate-pulse" />
+        <span className="w-2.5 h-2.5 rounded-full bg-muted-foreground animate-pulse" />
         {t('home.sendStatus.sending')}
       </motion.div>
     );
@@ -63,10 +63,10 @@ const StatusBanner: React.FC<{ status: SendStatus }> = ({ status }) => {
   const isQueued = status === 'queued';
 
   const cls = isSent
-    ? 'border-green-500/30 bg-green-950/30 text-green-300'
+    ? 'border-green-300 bg-green-50 text-green-600'
     : isQueued
-      ? 'border-amber-500/30 bg-amber-950/20 text-amber-300'
-      : 'border-red-500/40 bg-red-950/30 text-red-300';
+      ? 'border-amber-300 bg-amber-50 text-amber-600'
+      : 'border-red-300 bg-red-50 text-red-600';
 
   const icon = isSent
     ? <CheckCircle size={22} className="shrink-0" />
@@ -332,7 +332,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onAlertTriggered }) => {
         <AnimatePresence>
           {!isOnline && (
             <motion.div
-              className="w-full flex items-center gap-3 rounded-2xl border border-red-500/40 bg-red-950/30 py-4 px-5 text-lg font-bold text-red-300"
+              className="w-full flex items-center gap-3 rounded-2xl border border-red-300 bg-red-50 py-4 px-5 text-lg font-bold text-red-600"
               initial={{ opacity: 0, y: -6 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
@@ -344,8 +344,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ onAlertTriggered }) => {
         </AnimatePresence>
 
         <div className="flex flex-col items-center gap-2">
-          <h1 className="text-3xl font-black tracking-[0.15em] text-white uppercase">Vigilink-SOS</h1>
-          <p className="text-base text-gray-400 tracking-wider text-center font-medium">
+          <h1 className="text-3xl font-black tracking-[0.15em] text-foreground uppercase">Vigilink-SOS</h1>
+          <p className="text-base text-muted-foreground tracking-wider text-center font-medium">
             {t('app.tagline')}
           </p>
         </div>
@@ -362,7 +362,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onAlertTriggered }) => {
             {sendStatus === 'idle' || sendStatus === 'sending' ? (
               <motion.p
                 key="instruction"
-                className="text-base text-gray-400 text-center max-w-64 leading-relaxed font-medium"
+                className="text-base text-muted-foreground text-center max-w-64 leading-relaxed font-medium"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -385,13 +385,13 @@ export const HomeView: React.FC<HomeViewProps> = ({ onAlertTriggered }) => {
 
         {isTrial && (
           <motion.div
-            className="w-full flex items-center justify-center gap-3 rounded-2xl border border-sky-500/30 bg-sky-950/20 py-4 px-5"
+            className="w-full flex items-center justify-center gap-3 rounded-2xl border border-sky-300 bg-sky-50 py-4 px-5"
             initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05 }}
           >
-            <Sparkles size={20} className="text-sky-400 shrink-0" />
-            <span className="text-lg font-bold text-sky-300">
+            <Sparkles size={20} className="text-sky-600 shrink-0" />
+            <span className="text-lg font-bold text-sky-600">
               {t('home.trialBadge')}
             </span>
           </motion.div>
@@ -423,7 +423,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onAlertTriggered }) => {
             'btn-3d flex items-center justify-center gap-3 w-full py-5 rounded-2xl text-lg font-bold tracking-wide',
             compteARebours
               ? 'btn-3d-slate text-white'
-              : 'btn-3d-slate text-gray-200',
+              : 'btn-3d-slate text-white',
           ].join(' ')}
         >
           <Phone size={24} className="shrink-0" />
@@ -444,18 +444,18 @@ export const HomeView: React.FC<HomeViewProps> = ({ onAlertTriggered }) => {
               className="w-full flex items-center gap-3 py-4 group"
               aria-expanded={plansOpen}
             >
-              <div className="flex-1 h-px bg-white/15 transition-colors group-hover:bg-white/25" />
-              <span className="flex items-center gap-2 text-sm font-bold text-gray-300 uppercase tracking-widest px-2 group-hover:text-gray-200 transition-colors">
+              <div className="flex-1 h-px bg-border transition-colors group-hover:bg-muted-foreground" />
+              <span className="flex items-center gap-2 text-sm font-bold text-muted-foreground uppercase tracking-widest px-2 group-hover:text-foreground transition-colors">
                 {t('home.comparePlans')}
                 <motion.span
                   animate={{ rotate: plansOpen ? 180 : 0 }}
                   transition={{ duration: 0.25, ease: 'easeInOut' }}
                   className="inline-flex"
                 >
-                  <ChevronDown size={18} className="text-gray-400 group-hover:text-gray-300" />
+                  <ChevronDown size={18} className="text-muted-foreground group-hover:text-foreground" />
                 </motion.span>
               </span>
-              <div className="flex-1 h-px bg-white/15 transition-colors group-hover:bg-white/25" />
+              <div className="flex-1 h-px bg-border transition-colors group-hover:bg-muted-foreground" />
             </button>
 
             <AnimatePresence initial={false}>
@@ -468,14 +468,14 @@ export const HomeView: React.FC<HomeViewProps> = ({ onAlertTriggered }) => {
                   transition={{ duration: 0.3, ease: 'easeInOut' }}
                   className="overflow-hidden"
                 >
-                  <div className="rounded-2xl border border-white/15 bg-white/[0.04] overflow-hidden mt-2">
+                  <div className="rounded-2xl border border-border bg-card overflow-hidden mt-2">
                     <table className="w-full text-sm">
                       <thead>
-                        <tr className="border-b border-white/15">
-                          <th className="text-left py-3 px-3 text-gray-400 font-bold uppercase tracking-wider">{t('home.planTable.feature')}</th>
-                          <th className="text-center py-3 px-2 text-gray-300 font-black uppercase">{t('common.free')}</th>
-                          <th className="text-center py-3 px-2 text-yellow-400 font-black uppercase">{t('common.pro')}</th>
-                          <th className="text-center py-3 px-2 text-yellow-300 font-black uppercase">{t('common.platinum')}</th>
+                        <tr className="border-b border-border">
+                          <th className="text-left py-3 px-3 text-muted-foreground font-bold uppercase tracking-wider">{t('home.planTable.feature')}</th>
+                          <th className="text-center py-3 px-2 text-foreground font-black uppercase">{t('common.free')}</th>
+                          <th className="text-center py-3 px-2 text-yellow-600 font-black uppercase">{t('common.pro')}</th>
+                          <th className="text-center py-3 px-2 text-yellow-600 font-black uppercase">{t('common.platinum')}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -504,26 +504,26 @@ export const HomeView: React.FC<HomeViewProps> = ({ onAlertTriggered }) => {
                           { labelKey: 'settings.platinum.discreetMode',    free: false, pro: false, plat: true  },
                           { labelKey: 'home.planTable.familyPack',         free: false, pro: false, plat: true  },
                         ].map((row, i) => (
-                          <tr key={row.labelKey} className={i % 2 === 0 ? 'bg-white/[0.03]' : ''}>
-                            <td className="py-2.5 px-3 text-gray-300">{t(row.labelKey)}</td>
+                          <tr key={row.labelKey} className={i % 2 === 0 ? 'bg-muted/50' : ''}>
+                            <td className="py-2.5 px-3 text-foreground">{t(row.labelKey)}</td>
                             {[row.free, row.pro, row.plat].map((val, j) => (
                               <td key={j} className="text-center py-2.5 px-2">
                                 {val === true ? (
-                                  <Check size={18} className="text-green-400 mx-auto" />
+                                  <Check size={18} className="text-green-600 mx-auto" />
                                 ) : val === false ? (
-                                  <X size={18} className="text-gray-600 mx-auto" />
+                                  <X size={18} className="text-muted-foreground mx-auto" />
                                 ) : (
-                                  <span className="text-sm font-bold text-white">{val}</span>
+                                  <span className="text-sm font-bold text-foreground">{val}</span>
                                 )}
                               </td>
                             ))}
                           </tr>
                         ))}
-                        <tr className="border-t border-white/15 bg-white/[0.04]">
-                          <td className="py-3 px-3 text-gray-400 font-bold text-base">{t('common.price')}</td>
-                          <td className="text-center py-3 px-2 text-gray-300 font-black">0 $</td>
-                          <td className="text-center py-3 px-2 text-yellow-400 font-black">9,99 $<span className="text-xs text-gray-500 font-normal">/{t('common.month')}</span></td>
-                          <td className="text-center py-3 px-2 text-yellow-300 font-black">19,99 $<span className="text-xs text-gray-500 font-normal">/{t('common.month')}</span></td>
+                        <tr className="border-t border-border bg-card">
+                          <td className="py-3 px-3 text-muted-foreground font-bold text-base">{t('common.price')}</td>
+                          <td className="text-center py-3 px-2 text-foreground font-black">0 $</td>
+                          <td className="text-center py-3 px-2 text-yellow-600 font-black">9,99 $<span className="text-xs text-muted-foreground font-normal">/{t('common.month')}</span></td>
+                          <td className="text-center py-3 px-2 text-yellow-600 font-black">19,99 $<span className="text-xs text-muted-foreground font-normal">/{t('common.month')}</span></td>
                         </tr>
                       </tbody>
                     </table>

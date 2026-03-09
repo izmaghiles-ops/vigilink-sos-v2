@@ -35,7 +35,7 @@ export const DuressKeypad: React.FC<DuressKeypadProps> = (props) => {
       <div className="flex gap-2 mb-2">
         {[0,1,2,3].map((i) => (
           <div key={i}
-            className={`w-3 h-3 rounded-full transition-all ${i < entry.length ? 'bg-red-500' : 'bg-white/20'}`}
+            className={`w-3 h-3 rounded-full transition-all ${i < entry.length ? 'bg-red-500' : 'bg-muted'}`}
           />
         ))}
       </div>
@@ -45,19 +45,19 @@ export const DuressKeypad: React.FC<DuressKeypadProps> = (props) => {
           k === '⌫' ? (
             <motion.button key={i} whileTap={{ scale: 0.9 }}
               onClick={() => setEntry(e => e.slice(0,-1))}
-              className="h-14 rounded-2xl bg-white/10 text-white text-lg font-bold hover:bg-white/20 transition-colors">
+              className="h-14 rounded-2xl bg-card border border-border text-foreground text-lg font-bold hover:bg-muted transition-colors">
               {k}
             </motion.button>
           ) : (
             <motion.button key={i} whileTap={{ scale: 0.9 }}
               onClick={() => handleKey(k)}
-              className="h-14 rounded-2xl bg-white/10 text-white text-lg font-bold hover:bg-white/20 transition-colors">
+              className="h-14 rounded-2xl bg-card border border-border text-foreground text-lg font-bold hover:bg-muted transition-colors">
               {k}
             </motion.button>
           )
         ))}
       </div>
-      <button onClick={onCancel} className="text-xs text-gray-500 hover:text-gray-400 transition-colors mt-2">
+      <button onClick={onCancel} className="text-xs text-muted-foreground hover:text-foreground transition-colors mt-2">
         Annuler
       </button>
     </div>

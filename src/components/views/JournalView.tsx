@@ -61,17 +61,17 @@ export default function JournalView() {
 
   if (isLocked) {
     return (
-      <div className="min-h-screen bg-[#0a0a0f] text-white flex flex-col">
-        <div className="flex items-center gap-3 p-4 border-b border-white/10">
-          <button onClick={() => setView('settings')} className="p-2 rounded-lg hover:bg-white/10">
+      <div className="min-h-screen bg-background text-foreground flex flex-col">
+        <div className="flex items-center gap-3 p-4 border-b border-border">
+          <button onClick={() => setView('settings')} className="p-2 rounded-lg hover:bg-muted">
             <ArrowLeft size={20} />
           </button>
-          <BookOpen size={20} className="text-yellow-400" />
+          <BookOpen size={20} className="text-yellow-500" />
           <h1 className="text-lg font-bold">{t('journal.title')}</h1>
         </div>
         <div className="flex-1 flex flex-col items-center justify-center p-8 text-center gap-4">
-          <Lock size={48} className="text-gray-500" />
-          <p className="text-gray-400 text-sm">{t('journal.proOnly')}</p>
+          <Lock size={48} className="text-muted-foreground" />
+          <p className="text-muted-foreground text-sm">{t('journal.proOnly')}</p>
           <button
             type="button"
             onClick={() => setView('upgrade')}
@@ -85,16 +85,16 @@ export default function JournalView() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white flex flex-col">
-      <div className="flex items-center gap-3 p-4 border-b border-white/10">
-        <button onClick={() => setView('settings')} className="p-2 rounded-lg hover:bg-white/10">
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
+      <div className="flex items-center gap-3 p-4 border-b border-border">
+        <button onClick={() => setView('settings')} className="p-2 rounded-lg hover:bg-muted">
           <ArrowLeft size={20} />
         </button>
-        <BookOpen size={20} className="text-yellow-400" />
+        <BookOpen size={20} className="text-yellow-500" />
         <h1 className="text-lg font-bold flex-1">{t('journal.title')}</h1>
         <button
           onClick={() => setShowForm(!showForm)}
-          className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-yellow-500/20 text-yellow-400 text-sm font-medium hover:bg-yellow-500/30"
+          className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-yellow-100 text-yellow-700 text-sm font-medium hover:bg-yellow-200"
         >
           <Plus size={16} />
           {t('journal.addEntry')}
@@ -103,35 +103,35 @@ export default function JournalView() {
 
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {showForm && (
-          <div className="bg-white/5 border border-white/10 rounded-xl p-4 space-y-3">
+          <div className="bg-card border border-border rounded-xl p-4 space-y-3">
             <div>
-              <label className="text-xs text-gray-400 mb-1 block">{t('journal.entryTitle')}</label>
+              <label className="text-xs text-muted-foreground mb-1 block">{t('journal.entryTitle')}</label>
               <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full bg-white/10 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500/50"
+                className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-yellow-500/50"
               />
             </div>
             <div>
-              <label className="text-xs text-gray-400 mb-1 block">{t('journal.entryDate')}</label>
+              <label className="text-xs text-muted-foreground mb-1 block">{t('journal.entryDate')}</label>
               <div className="relative">
-                <Calendar size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+                <Calendar size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
                 <input
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="w-full bg-white/10 border border-white/10 rounded-lg pl-9 pr-3 py-2 text-sm text-white focus:outline-none focus:border-yellow-500/50"
+                  className="w-full bg-card border border-border rounded-lg pl-9 pr-3 py-2 text-sm text-foreground focus:outline-none focus:border-yellow-500/50"
                 />
               </div>
             </div>
             <div>
-              <label className="text-xs text-gray-400 mb-1 block">{t('journal.entryDescription')}</label>
+              <label className="text-xs text-muted-foreground mb-1 block">{t('journal.entryDescription')}</label>
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 rows={4}
-                className="w-full bg-white/10 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500/50 resize-none"
+                className="w-full bg-card border border-border rounded-lg px-3 py-2 text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-yellow-500/50 resize-none"
               />
             </div>
             <div>
@@ -144,14 +144,14 @@ export default function JournalView() {
               />
               <button
                 onClick={() => fileRef.current?.click()}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 text-gray-300 text-sm hover:bg-white/15"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-muted text-foreground text-sm hover:bg-muted/80"
               >
                 <Camera size={16} />
                 {t('journal.addPhoto')}
               </button>
-              {photoError && <p className="text-red-400 text-xs mt-1">{photoError}</p>}
+              {photoError && <p className="text-red-600 text-xs mt-1">{photoError}</p>}
               {photo && (
-                <img src={photo} alt="preview" className="mt-2 w-20 h-20 object-cover rounded-lg border border-white/10" />
+                <img src={photo} alt="preview" className="mt-2 w-20 h-20 object-cover rounded-lg border border-border" />
               )}
             </div>
             <button
@@ -166,35 +166,35 @@ export default function JournalView() {
 
         {sorted.length === 0 && !showForm && (
           <div className="flex flex-col items-center justify-center py-16 text-center gap-3">
-            <BookOpen size={40} className="text-gray-600" />
-            <p className="text-gray-500 text-sm max-w-xs">{t('journal.empty')}</p>
+            <BookOpen size={40} className="text-muted-foreground" />
+            <p className="text-muted-foreground text-sm max-w-xs">{t('journal.empty')}</p>
           </div>
         )}
 
         {sorted.map((entry) => (
           <div
             key={entry.id}
-            className="bg-white/5 border border-white/10 rounded-xl p-4 space-y-2"
+            className="bg-card border border-border rounded-xl p-4 space-y-2"
           >
             <div className="flex items-start justify-between gap-2">
               <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-semibold text-white truncate">{entry.title}</h3>
-                <p className="text-xs text-gray-500 flex items-center gap-1 mt-0.5">
+                <h3 className="text-sm font-semibold text-foreground truncate">{entry.title}</h3>
+                <p className="text-xs text-muted-foreground flex items-center gap-1 mt-0.5">
                   <Calendar size={12} />
                   {entry.date}
                 </p>
               </div>
               <button
                 onClick={() => removeJournalEntry(entry.id)}
-                className="p-1.5 rounded-lg text-red-400 hover:bg-red-500/20 shrink-0"
+                className="p-1.5 rounded-lg text-red-600 hover:bg-red-100 shrink-0"
                 title={t('journal.delete')}
               >
                 <Trash2 size={16} />
               </button>
             </div>
-            <p className="text-xs text-gray-400 line-clamp-3">{entry.description}</p>
+            <p className="text-xs text-muted-foreground line-clamp-3">{entry.description}</p>
             {entry.photo && (
-              <img src={entry.photo} alt="" className="w-16 h-16 object-cover rounded-lg border border-white/10" />
+              <img src={entry.photo} alt="" className="w-16 h-16 object-cover rounded-lg border border-border" />
             )}
           </div>
         ))}

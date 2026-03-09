@@ -2,6 +2,14 @@
 
 Multilingual personal safety Progressive Web App (PWA) built with React 18 + TypeScript + Vite + Tailwind CSS. Supports 18 languages via react-i18next with auto-detection.
 
+## Brand Identity
+- **Logo**: Navy blue shield with chain links + "SOS" text, red accent for "SOS" in wordmark
+- **Color Palette**: Light blue-gray background (`#edf1f7`), navy blue text (`#1a2e4a`), red SOS (`#c41e2a`), white cards
+- **Theme**: Light mode — pale blue-gray backgrounds, white cards, navy blue text, red primary buttons (SOS), plan-specific overrides (PRO=dark metallic blue, Platinum=dark gold)
+- **3D Buttons**: `btn-3d-red` (SOS), `btn-3d-green` (navy blue gradient), `btn-3d-blue`, `btn-3d-slate`, `btn-3d-gold`
+- **Marketing site**: `public/site/` — light theme matching logo, navy footer
+- **PWA Icons**: `public/icon-192.png`, `public/icon-512.png` — navy blue shield with chain links + SOS
+
 ## Features
 - SOS alert triggers with GPS tracking (cached via watchPosition — no re-prompt after initial grant)
 - Voice Trigger: COMPLETELY REMOVED — all code, hooks, i18n keys, types, and store state deleted
@@ -102,7 +110,7 @@ server/
 src/
 ├── App.tsx              # Root component, auth guard, SOS dispatch, motion detection
 ├── main.tsx             # React DOM entry point
-├── index.css            # Tailwind + CSS variables (dark theme)
+├── index.css            # Tailwind + CSS variables (navy blue + red theme)
 ├── types.ts             # All TypeScript types and defaults
 ├── store/
 │   ├── useAppStore.ts   # App state (GPS, alerts, contacts, views)
@@ -220,7 +228,7 @@ npm run dev:client # Vite frontend only
 - Fall detection uses 300ms window (was 80ms) with shared debounce to prevent double triggers
 - iOS DeviceMotion permission is requested on first user gesture (click/touch) for fall/shake detection
 - Plan comparison tables updated: removed voice/AI detection, added Widget SOS, medical, fall, shake, discreet mode
-- SW cache: `vigilinksos-v16`
+- SW cache: `vigilinksos-v21`
 - In-app update banner: `UpdateBanner` component checks server version via `/api/health` every 5 min + listens for SW `pwa-update-available` event; shows blue banner with "Update now" / "Later" buttons; clears caches and reloads on update
 - Medical profile, meeting mode, journal entries, and travel mode now persist in localStorage (added to Zustand partialize)
 - Emergency profile page: server stores alert data and generates a link (valid 24h) included in every SMS

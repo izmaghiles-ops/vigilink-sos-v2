@@ -114,7 +114,7 @@ export const QRCodeView: React.FC = () => {
     QRCode.toCanvas(canvasRef.current, profileUrl, {
       width: 280,
       margin: 2,
-      color: { dark: '#ffffff', light: '#0a0a0a' },
+      color: { dark: '#1a2e4a', light: '#edf1f7' },
       errorCorrectionLevel: 'M',
     }).then(() => {
       setGenerated(true);
@@ -177,13 +177,13 @@ export const QRCodeView: React.FC = () => {
 
   if (!isPro) {
     return (
-      <div className="flex flex-col min-h-screen bg-[#0a0a0a] p-5">
-        <button onClick={() => setView('settings')} className="flex items-center gap-2 text-gray-400 mb-6">
+      <div className="flex flex-col min-h-screen bg-background p-5">
+        <button onClick={() => setView('settings')} className="flex items-center gap-2 text-muted-foreground mb-6">
           <ArrowLeft size={18} /> <span className="text-sm">{t('common.back')}</span>
         </button>
         <div className="flex-1 flex flex-col items-center justify-center gap-4">
-          <Lock size={40} className="text-gray-600" />
-          <p className="text-gray-500 text-sm text-center">{t('qrcode.proOnly')}</p>
+          <Lock size={40} className="text-muted-foreground" />
+          <p className="text-muted-foreground text-sm text-center">{t('qrcode.proOnly')}</p>
           <button onClick={() => setView('upgrade')} className="px-6 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-sm font-bold transition-colors">
             {t('upgrade.upgrade')}
           </button>
@@ -193,37 +193,37 @@ export const QRCodeView: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#0a0a0a] p-5 pb-24">
-      <button onClick={() => setView('settings')} className="flex items-center gap-2 text-gray-400 mb-4">
+    <div className="flex flex-col min-h-screen bg-background p-5 pb-24">
+      <button onClick={() => setView('settings')} className="flex items-center gap-2 text-muted-foreground mb-4">
         <ArrowLeft size={18} /> <span className="text-sm">{t('common.back')}</span>
       </button>
 
       <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 rounded-xl bg-red-950/40 border border-red-500/30 flex items-center justify-center">
-          <QrCode size={20} className="text-red-400" />
+        <div className="w-10 h-10 rounded-xl bg-red-100 border border-red-300 flex items-center justify-center">
+          <QrCode size={20} className="text-red-600" />
         </div>
         <div>
-          <h1 className="text-lg font-bold text-white">{t('qrcode.title')}</h1>
-          <p className="text-[11px] text-gray-500">{t('qrcode.description')}</p>
+          <h1 className="text-lg font-bold text-foreground">{t('qrcode.title')}</h1>
+          <p className="text-[11px] text-muted-foreground">{t('qrcode.description')}</p>
         </div>
       </div>
 
       <div className="flex flex-col items-center gap-4 py-6">
-        <div className="p-4 rounded-2xl border border-white/10 bg-white/[0.02]">
+        <div className="p-4 rounded-2xl border border-border bg-card">
           <canvas ref={canvasRef} />
         </div>
 
         {generated && (
           <>
-            <p className="text-[10px] text-gray-500 text-center">{t('qrcode.scanInfo')}</p>
-            <p className="text-[9px] text-blue-400 text-center break-all px-4">{profileUrl}</p>
+            <p className="text-[10px] text-muted-foreground text-center">{t('qrcode.scanInfo')}</p>
+            <p className="text-[9px] text-blue-600 text-center break-all px-4">{profileUrl}</p>
             {profileSaved && (
-              <p className="text-[9px] text-green-500 text-center">Profil synchronisé avec le serveur</p>
+              <p className="text-[9px] text-green-600 text-center">Profil synchronisé avec le serveur</p>
             )}
             {alzheimerMode.enabled && (
-              <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-950/30 border border-blue-500/20">
-                <Brain size={14} className="text-blue-400" />
-                <span className="text-[10px] text-blue-300">Mode Alzheimer actif</span>
+              <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-50 border border-blue-300">
+                <Brain size={14} className="text-blue-600" />
+                <span className="text-[10px] text-blue-700">Mode Alzheimer actif</span>
               </div>
             )}
           </>
@@ -241,60 +241,60 @@ export const QRCodeView: React.FC = () => {
       </div>
 
       <div className="flex flex-col gap-3 mt-4">
-        <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
-          <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+        <div className="rounded-xl border border-border bg-card p-4">
+          <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">
             <Shield size={12} className="inline mr-1" />
             {t('qrcode.contacts')}
           </h3>
           {contacts.length > 0 ? (
             <div className="flex flex-col gap-1">
               {contacts.map((c) => (
-                <p key={c.id} className="text-sm text-gray-300">{c.name} — {c.phone}</p>
+                <p key={c.id} className="text-sm text-foreground">{c.name} — {c.phone}</p>
               ))}
             </div>
           ) : (
-            <p className="text-xs text-gray-600">—</p>
+            <p className="text-xs text-muted-foreground">—</p>
           )}
         </div>
 
         {(medicalProfile.bloodType || medicalProfile.allergies.length > 0) && (
-          <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
-            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+          <div className="rounded-xl border border-border bg-card p-4">
+            <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">
               {t('qrcode.medicalInfo')}
             </h3>
             {medicalProfile.bloodType && (
-              <p className="text-sm text-gray-300">{t('medical.bloodType')}: {medicalProfile.bloodType}</p>
+              <p className="text-sm text-foreground">{t('medical.bloodType')}: {medicalProfile.bloodType}</p>
             )}
             {medicalProfile.allergies.length > 0 && (
-              <p className="text-sm text-gray-300">{t('medical.allergies')}: {medicalProfile.allergies.join(', ')}</p>
+              <p className="text-sm text-foreground">{t('medical.allergies')}: {medicalProfile.allergies.join(', ')}</p>
             )}
             {medicalProfile.medications.length > 0 && (
-              <p className="text-sm text-gray-300">{t('medical.medications')}: {medicalProfile.medications.join(', ')}</p>
+              <p className="text-sm text-foreground">{t('medical.medications')}: {medicalProfile.medications.join(', ')}</p>
             )}
             {medicalProfile.conditions.length > 0 && (
-              <p className="text-sm text-gray-300">{t('medical.conditions')}: {medicalProfile.conditions.join(', ')}</p>
+              <p className="text-sm text-foreground">{t('medical.conditions')}: {medicalProfile.conditions.join(', ')}</p>
             )}
           </div>
         )}
 
         {meetingMode.active && (
-          <div className="rounded-xl border border-amber-500/20 bg-amber-950/10 p-4">
-            <h3 className="text-xs font-bold text-amber-400 uppercase tracking-wider mb-2">
+          <div className="rounded-xl border border-amber-300 bg-amber-50 p-4">
+            <h3 className="text-xs font-bold text-amber-600 uppercase tracking-wider mb-2">
               {t('qrcode.meetingInfo')}
             </h3>
-            <p className="text-sm text-gray-300">{meetingMode.personName} — {meetingMode.personPhone}</p>
-            {meetingMode.location && <p className="text-sm text-gray-300">{meetingMode.location}</p>}
-            {meetingMode.notes && <p className="text-sm text-gray-400 italic">{meetingMode.notes}</p>}
+            <p className="text-sm text-foreground">{meetingMode.personName} — {meetingMode.personPhone}</p>
+            {meetingMode.location && <p className="text-sm text-foreground">{meetingMode.location}</p>}
+            {meetingMode.notes && <p className="text-sm text-muted-foreground italic">{meetingMode.notes}</p>}
           </div>
         )}
 
         {journalEntries.length > 0 && (
-          <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
-            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+          <div className="rounded-xl border border-border bg-card p-4">
+            <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">
               {t('qrcode.journalSummary')} ({journalEntries.length})
             </h3>
             {journalEntries.slice(0, 3).map((e) => (
-              <p key={e.id} className="text-sm text-gray-300">{e.date} — {e.title}</p>
+              <p key={e.id} className="text-sm text-foreground">{e.date} — {e.title}</p>
             ))}
           </div>
         )}
