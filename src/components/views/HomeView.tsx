@@ -16,6 +16,7 @@ import { useNetworkMonitor } from '../../hooks/useNetworkMonitor';
 import { getGPSPosition, getCachedGPS, logAlert, normalisePhone, AlertResult } from '../../lib/api';
 import { useTranslation }   from 'react-i18next';
 import { v4 as uuidv4 }    from 'uuid';
+import SwipeablePlatinumHome from '../SwipeablePlatinumHome';
 import {
   saveBackgroundTimer,
   getBackgroundTimer,
@@ -317,19 +318,10 @@ export const HomeView: React.FC<HomeViewProps> = ({ onAlertTriggered }) => {
 
   const compteARebours = fakeCallCountdown !== null;
 
-  return (
-    <>
-      <PermissionModal visible={showExplanation} onConfirm={confirmExplanation} />
-      <FakeCallScreen
-        visible={fakeCallVisible}
-        callerName={callerName}
-        callerPhone={callerPhone}
-        onDecline={handleFakeCallDecline}
-      />
+  const coreHomeContent = (
+    <div className="flex flex-col items-center gap-6 py-5 pb-12 w-full">
 
-      <div className="flex flex-col items-center gap-6 py-5 pb-12 w-full">
-
-        <AnimatePresence>
+      <AnimatePresence>
           {!isOnline && (
             <motion.div
               className="w-full flex items-center gap-3 rounded-2xl border border-red-300 bg-red-50 py-4 px-5 text-lg font-bold text-red-600"
@@ -540,7 +532,24 @@ export const HomeView: React.FC<HomeViewProps> = ({ onAlertTriggered }) => {
           </motion.div>
         )}
 
-      </div>
+    </div>
+  );
+
+  return (
+    <>
+      <PermissionModal visible={showExplanation} onConfirm={confirmExplanation} />
+      <FakeCallScreen
+        visible={fakeCallVisible}
+        callerName={callerName}
+        callerPhone={callerPhone}
+        onDecline={handleFakeCallDecline}
+      />
+
+      {isPlatinum ? (
+        <SwipeablePlatinumHome homeContent={coreHomeContent} />
+      ) : (
+        coreHomeContent
+      )}
     </>
   );
 };

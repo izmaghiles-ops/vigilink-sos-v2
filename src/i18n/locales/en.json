@@ -188,7 +188,7 @@
       "sent": "MESSAGE SENT — Alert sent to your contacts.",
       "queued": "Offline — Alert queued. Automatic sending on reconnection.",
       "error": "Network error — Check your internet connection.",
-      "errorServer": "Server error — Check Twilio keys.",
+      "errorServer": "Server error — Check SMS configuration.",
       "errorNoContacts": "No contacts configured. Add a number in Contacts."
     },
     "planTable": {
@@ -207,7 +207,7 @@
       "volumeSos": "Volume button SOS (×3)",
       "emergencyNumbers": "Emergency numbers",
       "familyPack": "Family Pack",
-      "smsTwilio": "Automatic Twilio SMS (multi-contacts)",
+      "smsTwilio": "Automatic SMS (multi-contacts)",
       "fakeCallCustom": "Customizable fake call",
       "fakeCallRingtone": "Realistic ringtone & vibration",
       "alzheimerSponsor": "Alzheimer Sponsorship (2 pers.)",
@@ -665,6 +665,8 @@
     "phoneError": "Enter a valid phone number with country code.",
     "sendInvite": "Send invitation",
     "otpInfo": "A 6-digit OTP code valid for 15 min will be generated. The guest gets the PRO plan.",
+    "qrLabel": "Invitation QR Code",
+    "qrHint": "The guest can scan this QR code to activate their invitation directly.",
     "giftPlanLabel": "Plan to gift (Admin)",
     "guestActive": "Active Platinum Guest",
     "linkedSince": "Linked since {{date}}",
@@ -858,5 +860,17 @@
     "noPersonsDesc": "Add an Alzheimer's patient to manage their QR code remotely and leave instructions for anyone who finds them.",
     "profileInfo": "The QR code will show a simplified page: call caregiver button, GPS location, and your custom instructions.",
     "backToList": "Back to list"
+  },
+  "swipe": {
+    "sponsorTitle": "Sponsorship",
+    "sponsorDesc": "The sponsorship system lets you invite your loved ones to enjoy Pro or Platinum benefits for free. Generate a unique code, share it, and your guest activates their benefits in seconds. Swipe left or right to navigate between sections.",
+    "sponsorLabel": "Sponsor",
+    "alzheimerTitle": "Alzheimer Mode",
+    "alzheimerDesc": "Alzheimer mode lets you create profiles for people with cognitive disorders. Each profile generates a unique QR code the person carries. If found, anyone can scan the code to see instructions, call the caregiver, and share the GPS location.",
+    "alzheimerLabel": "Alzheimer",
+    "homeTitle": "Home",
+    "homeDesc": "Vigilink-SOS main screen.",
+    "homeLabel": "Home",
+    "navHint": "Swipe left or right to navigate between Sponsorship, Home, and Alzheimer."
   }
 }

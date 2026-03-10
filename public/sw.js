@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vigilinksos-v21';
+const CACHE_NAME = 'vigilinksos-v23';
 const STATIC_ASSETS = [
   '/',
   '/index.html',

@@ -1,10 +1,10 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Crown, Users, Gift, Copy, Check, ArrowLeft,
   Shield, AlertTriangle, Clock, ChevronRight,
   Sparkles, UserCheck, Lock, Phone, Send,
-  Smartphone, Trash2, X,
+  Smartphone, Trash2, X, QrCode,
 } from 'lucide-react';
 import { useAppStore }  from '../../store/useAppStore';
 import { useAuthStore } from '../../store/useAuthStore';
@@ -12,6 +12,7 @@ import { PhoneField }   from '../PhoneField';
 import { useTranslation } from 'react-i18next';
 import { getIntlLocaleTag } from '../../lib/dateLocale';
 import { apiUrl } from '../../lib/apiBase';
+import QRCode from 'qrcode';
 
 function formatExpiry(isoDate: string | undefined | null): string {
   if (!isoDate) return '—';
@@ -60,6 +61,39 @@ function estMobile(): boolean {
 function normaliserNuméro(tel: string): string {
   return tel.replace(/[\s\-().]/g, '');
 }
+
+const SponsorQRCode: React.FC<{ url: string }> = ({ url }) => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    if (!url || !canvasRef.current) return;
+    QRCode.toCanvas(canvasRef.current, url, {
+      width: 180,
+      margin: 2,
+      color: { dark: '#1a2e4a', light: '#ffffff' },
+    });
+  }, [url]);
+
+  if (!url) return null;
+
+  return (
+    <div className="flex flex-col items-center gap-2 pt-3 border-t border-border mt-2">
+      <div className="flex items-center gap-1.5">
+        <QrCode size={14} className="text-amber-500" />
+        <span className="text-[11px] font-bold text-muted-foreground uppercase tracking-wider">
+          {t('sponsor.qrLabel', 'QR Code d\'invitation')}
+        </span>
+      </div>
+      <div className="bg-white rounded-xl p-3 shadow-sm">
+        <canvas ref={canvasRef} />
+      </div>
+      <p className="text-[10px] text-muted-foreground text-center leading-relaxed max-w-[220px]">
+        {t('sponsor.qrHint', 'Scannez ce QR code pour activer l\'invitation directement.')}
+      </p>
+    </div>
+  );
+};
 
 const PanneauParrain: React.FC = () => {
   const { t } = useTranslation();
@@ -281,6 +315,7 @@ const PanneauParrain: React.FC = () => {
                   ))}
                 </div>
               </div>
+              <SponsorQRCode url={lienIntelligent} />
             </div>
 
             {smsEnvoyé && (
@@ -508,7 +543,6 @@ export const SponsorView: React.FC = () => {
   const isPlatinum  = user.subscription === 'platinum';
   const isGuest     = user.sponsorRole  === 'guest';
   const peutParrainer = isPlatinum && !isGuest;
-  const [onglet, setOnglet] = useState<'sponsor' | 'guest'>(peutParrainer ? 'sponsor' : 'guest');
 
   return (
     <div className="flex flex-col gap-5 py-2">
@@ -525,22 +559,9 @@ export const SponsorView: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex gap-1 rounded-xl bg-card p-1">
-        {peutParrainer && (
-          <button onClick={() => setOnglet('sponsor')}
-            className={['flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs font-bold transition-all',
-              onglet === 'sponsor' ? 'bg-yellow-600 text-white shadow' : 'text-muted-foreground hover:text-foreground'].join(' ')}>
-            <Gift size={12} /> {t('sponsor.inviteTab')}
-          </button>
-        )}
-        <button onClick={() => setOnglet('guest')}
-          className={['flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs font-bold transition-all',
-            onglet === 'guest' ? 'bg-muted text-foreground shadow' : 'text-muted-foreground hover:text-foreground'].join(' ')}>
-          <UserCheck size={12} /> {isGuest ? t('sponsor.mySponsor') : t('sponsor.enterCodeTab')}
-        </button>
-      </div>
-
-      {!isPlatinum && onglet === 'sponsor' && (
+      {peutParrainer ? (
+        <PanneauParrain />
+      ) : !isPlatinum ? (
         <motion.div className="rounded-2xl border border-yellow-500/20 bg-yellow-950/15 p-4 flex items-start gap-3"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <Crown size={15} className="text-yellow-600 shrink-0 mt-0.5" />
@@ -553,19 +574,9 @@ export const SponsorView: React.FC = () => {
             </button>
           </div>
         </motion.div>
-      )}
-
-      <AnimatePresence mode="wait">
-        {onglet === 'sponsor' && isPlatinum && !isGuest ? (
-          <motion.div key="sponsor" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 10 }}>
-            <PanneauParrain />
-          </motion.div>
-        ) : onglet === 'guest' ? (
-          <motion.div key="guest" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }}>
-            <PanneauInvité />
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+      ) : isGuest ? (
+        <PanneauInvité />
+      ) : null}
     </div>
   );
 };

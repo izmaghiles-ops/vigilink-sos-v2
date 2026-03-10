@@ -20,7 +20,8 @@ Multilingual personal safety Progressive Web App (PWA) built with React 18 + Typ
 - Fake call timer with background persistence, Web Audio ringtone/vibration, configurable caller name/phone/delay (PRO/Platinum)
 - Senior-friendly UI: min 18px fonts, high contrast, 3D buttons (CSS perspective + gradient + multi-layer box-shadow), large touch targets (py-5), explicit icons with text
 - Emergency contact management (1 free / 5 PRO / 10 Platinum)
-- Sponsor/invite system (Platinum tier)
+- Sponsor/invite system (Platinum tier) — accessible via swipe panels on home screen
+- Swipeable Platinum Home: 3-panel horizontal navigation (Sponsor ← Home → Alzheimer) with dot indicators, arrow buttons, info modals, and touch gesture support via framer-motion
 - Guardian AI chat (OpenAI GPT-4o-mini streaming) — draggable floating button
 - Subscription tiers: Free, PRO, Platinum
 - PWA installable with offline queue support

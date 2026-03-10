@@ -188,7 +188,7 @@
       "sent": "MESSAGE ENVOYÉ — Alerte transmise à vos contacts.",
       "queued": "Hors-ligne — Alerte en file. Envoi automatique à la reconnexion.",
       "error": "Erreur réseau — Vérifiez votre connexion internet.",
-      "errorServer": "Erreur serveur — Vérifiez les clés Twilio.",
+      "errorServer": "Erreur serveur — Vérifiez la configuration SMS.",
       "errorNoContacts": "Aucun contact configuré. Ajoutez un numéro dans Contacts."
     },
     "planTable": {
@@ -207,7 +207,7 @@
       "volumeSos": "SOS bouton volume (×3)",
       "emergencyNumbers": "Numéros d'urgence",
       "familyPack": "Pack Familial",
-      "smsTwilio": "SMS automatique Twilio (multi-contacts)",
+      "smsTwilio": "SMS automatique (multi-contacts)",
       "fakeCallCustom": "Appel simulé personnalisé",
       "fakeCallRingtone": "Sonnerie et vibration réalistes",
       "alzheimerSponsor": "Parrainage Alzheimer (2 pers.)",
@@ -669,6 +669,8 @@
     "phoneError": "Entrez un numéro de téléphone valide avec indicatif de pays.",
     "sendInvite": "Envoyer l'invitation",
     "otpInfo": "Un code OTP à 6 chiffres valide 15 min sera généré. L'invité reçoit le plan PRO.",
+    "qrLabel": "QR Code d'invitation",
+    "qrHint": "L'invité peut scanner ce QR code pour activer son invitation directement.",
     "newInvitation": "Nouvelle invitation",
     "limitReached": "Limite de 10 invitations atteinte.",
     "giftPlanLabel": "Plan offert à l'invité (Admin)",
@@ -858,5 +860,17 @@
     "noPersonsDesc": "Ajoutez une personne atteinte d'Alzheimer pour gérer son QR code à distance et laisser des consignes aux gens qui la retrouvent.",
     "profileInfo": "Le QR code affichera une page simplifiée : bouton d'appel au tuteur, position GPS, et vos consignes personnalisées.",
     "backToList": "Retour à la liste"
+  },
+  "swipe": {
+    "sponsorTitle": "Parrainage",
+    "sponsorDesc": "Le système de parrainage vous permet d'inviter vos proches à bénéficier des avantages Pro ou Platinum gratuitement. Générez un code unique, partagez-le, et votre invité active ses avantages en quelques secondes. Glissez l'écran vers la gauche ou la droite pour naviguer entre les sections.",
+    "sponsorLabel": "Parrainage",
+    "alzheimerTitle": "Mode Alzheimer",
+    "alzheimerDesc": "Le mode Alzheimer vous permet de créer des fiches pour les personnes atteintes de troubles cognitifs. Chaque fiche génère un QR code unique que la personne porte sur elle. Si elle est retrouvée, n'importe qui peut scanner le code pour voir les consignes, appeler le tuteur et partager la position GPS.",
+    "alzheimerLabel": "Alzheimer",
+    "homeTitle": "Accueil",
+    "homeDesc": "Écran principal de Vigilink-SOS.",
+    "homeLabel": "Accueil",
+    "navHint": "Glissez l'écran vers la gauche ou la droite pour naviguer entre Parrainage, Accueil et Alzheimer."
   }
 }
