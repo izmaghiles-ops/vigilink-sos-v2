@@ -1329,7 +1329,17 @@ app.get('/sw.js', (_req, res) => {
 
 app.use(express.static(distPath, { dotfiles: 'allow' }));
 app.get('/{*splat}', (req, res) => {
-  if (req.path.startsWith('/site/') || req.path === '/site' || req.path.startsWith('/privacy') || req.path.startsWith('/.well-known/')) {
+  if (req.path.startsWith('/site/') || req.path === '/site' || req.path.startsWith('/privacy')) {
+    res.status(404).send('Not Found');
+    return;
+  }
+  if (req.path.startsWith('/.well-known/')) {
+    const filePath = path.join(distPath, req.path);
+    if (fs.existsSync(filePath)) {
+      res.setHeader('Content-Type', 'application/json');
+      res.sendFile(filePath);
+      return;
+    }
     res.status(404).send('Not Found');
     return;
   }

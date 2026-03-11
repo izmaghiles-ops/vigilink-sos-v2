@@ -48,14 +48,14 @@
   <ul>
     <li><strong>En local</strong> — La majorité de vos données (contacts, paramètres, journal) sont stockées uniquement sur votre appareil via le stockage local du navigateur (localStorage)</li>
     <li><strong>Sur serveur</strong> — Si vous activez la synchronisation cloud, votre profil chiffré est stocké sur notre serveur PostgreSQL sécurisé. Votre mot de passe n'est jamais transmis ni stocké — seul un jeton dérivé (hash SHA-256) est utilisé pour l'authentification</li>
-    <li><strong>SMS via Twilio</strong> — Les messages SOS sont envoyés via le service Twilio. Nous ne conservons pas les journaux de SMS au-delà de la session</li>
+    <li><strong>SMS d'urgence</strong> — Les messages SOS sont envoyés via notre service cloud sécurisé. Nous ne conservons pas les journaux de SMS au-delà de la session</li>
   </ul>
 
   <h2>5. Partage des données</h2>
   <p>Nous ne vendons, ne louons et ne partageons jamais vos données personnelles avec des tiers à des fins commerciales ou publicitaires.</p>
   <p>Vos données sont partagées uniquement avec :</p>
   <ul>
-    <li><strong>Twilio</strong> — pour l'envoi des SMS d'urgence (numéros de téléphone et contenu du message uniquement)</li>
+    <li><strong>Service SMS</strong> — pour l'envoi des SMS d'urgence (numéros de téléphone et contenu du message uniquement)</li>
     <li><strong>Stripe</strong> — pour le traitement des paiements (aucune donnée de carte bancaire ne transite par nos serveurs)</li>
     <li><strong>OpenAI</strong> — pour le chat Guardian IA (les messages de conversation uniquement, sans données personnelles identifiantes)</li>
   </ul>
